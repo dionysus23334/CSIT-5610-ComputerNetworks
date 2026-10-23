@@ -1,0 +1,84 @@
+site_name: CSIT5610 计算机网络复习笔记
+site_description: HKUST CSIT5610 Computer Networks 复习资料（Kurose & Ross 第 1–3 章）
+site_author: dionysus23334
+site_url: https://dionysus23334.github.io/CSIT-5610-ComputerNetworks/
+repo_url: https://github.com/dionysus23334/CSIT-5610-ComputerNetworks
+repo_name: dionysus23334/CSIT-5610-ComputerNetworks
+edit_uri: edit/main/docs/
+copyright: 个人复习整理 · 非官方资料 · 课件版权归授课教师所有
+
+theme:
+  name: material
+  language: zh
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: 切换到深色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: 切换到浅色模式
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - toc.follow
+
+nav:
+  - 首页: index.md
+  - 知识大纲: outline.md
+  - 分章复习:
+      - 总目录: review/index.md
+      - 第 1 章 · 计算机网络导论: review/ch1-intro.md
+      - 第 2 章 · 应用层: review/ch2-application.md
+      - 第 3 章 · 传输层: review/ch3-transport.md
+
+plugins:
+  - search:
+      lang:
+        - zh
+        - en
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - fenced_code
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.arithmatex:
+      generic: true
+      inline_syntax: [round]
+      block_syntax: [square]
+  - pymdownx.tabbed:
+      alternate_style: true
+
+exclude_docs: |
+  .DS_Store
+
+validation:
+  links:
+    absolute_links: ignore
+    unrecognized_links: warn
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
