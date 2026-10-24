@@ -15,6 +15,7 @@
 | **CBR** | Constant Bit Rate | 恒定比特率 | [第 2 章 · 6.1 视频基础](review/ch2-application.md) |
 | **CDN** | Content Distribution Network | 内容分发网络 | [第 1 章 · 3.5 Internet 结构：网络的网络](review/ch1-intro.md) |
 | **CNAME** | Canonical Name record | 规范名/别名记录 | [第 2 章 · 4.1 作用](review/ch2-application.md) |
+| **cwnd** | Congestion Window | 拥塞窗口 | [第 3 章 · 0. 本章主线（先记住这三句）](review/ch3-transport.md) |
 | **DASH** | Dynamic Adaptive Streaming over HTTP | 基于 HTTP 的动态自适应流 | [第 2 章 · 0. 本章主线（先记住这三句）](review/ch2-application.md) |
 | **DHCP** | Dynamic Host Configuration Protocol | 动态主机配置协议 | [第 3 章 · 2.1 特点](review/ch3-transport.md) |
 | **DNS** | Domain Name System | 域名系统 | [第 1 章 · 6.2 历史阶段](review/ch1-intro.md) |
@@ -23,6 +24,7 @@
 | **DSLAM** | Digital Subscriber Line Access Multiplexer | DSL 接入复用器 | [第 1 章 · 2.1 接入网络（access networks）](review/ch1-intro.md) |
 | **ECN** | Explicit Congestion Notification | 显式拥塞通知 | [第 3 章 · 6.2 两种方法](review/ch3-transport.md) |
 | **FIN** | Finish | 结束标志 | [第 3 章 · 5.2 TCP 段结构](review/ch3-transport.md) |
+| **FTTH** | Fiber To The Home | 光纤到户 | [第 1 章 · 2.1 接入网络（access networks）](review/ch1-intro.md) |
 | **GBN** | Go-Back-N | 回退 N 步协议 | [第 3 章 · 传输层 · 复习资料](review/ch3-transport.md) |
 | **HFC** | Hybrid Fiber Coax | 光纤同轴混合网络 | [第 1 章 · 2.1 接入网络（access networks）](review/ch1-intro.md) |
 | **HOL** | Head-of-Line | 队头阻塞 | [第 2 章 · 2.5 HTTP/2 与 HTTP/3](review/ch2-application.md) |
@@ -50,6 +52,7 @@
 | **RR** | Resource Record | 资源记录 | [第 2 章 · 应用层 · 复习资料](review/ch2-application.md) |
 | **RST** | Reset | 重置标志 | [第 3 章 · 5.2 TCP 段结构](review/ch3-transport.md) |
 | **RTT** | Round-Trip Time | 往返时间 | [第 1 章 · 4.5 traceroute](review/ch1-intro.md) |
+| **rwnd** | Receive Window | 接收窗口 | [第 3 章 · 0. 本章主线（先记住这三句）](review/ch3-transport.md) |
 | **SMTP** | Simple Mail Transfer Protocol | 简单邮件传输协议 | [第 2 章 · 0. 本章主线（先记住这三句）](review/ch2-application.md) |
 | **SNMP** | Simple Network Management Protocol | 简单网络管理协议 | [第 3 章 · 2.1 特点](review/ch3-transport.md) |
 | **SR** | Selective Repeat | 选择重传协议 | [第 3 章 · 传输层 · 复习资料](review/ch3-transport.md) |

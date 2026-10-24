@@ -218,9 +218,20 @@ const GLOSSARY = {
   "ASCII": [
     "American Standard Code for Information Interchange",
     "美国信息交换标准代码"
+  ],
+  "FTTH": [
+    "Fiber To The Home",
+    "光纤到户"
+  ],
+  "cwnd": [
+    "Congestion Window",
+    "拥塞窗口"
+  ],
+  "rwnd": [
+    "Receive Window",
+    "接收窗口"
   ]
 };
-
 (function () {
   function esc(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
   function expand() {
