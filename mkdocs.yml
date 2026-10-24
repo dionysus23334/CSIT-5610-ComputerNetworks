@@ -10,6 +10,7 @@ copyright: 个人复习整理 · 非官方资料 · 课件版权归授课教师�
 theme:
   name: material
   language: zh
+  font: false
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -79,6 +80,10 @@ validation:
     absolute_links: ignore
     unrecognized_links: warn
 
+extra_css:
+  - stylesheets/extra.css
+
 extra_javascript:
+  - javascripts/table-wrap.js
   - javascripts/mathjax.js
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js

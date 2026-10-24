@@ -113,7 +113,7 @@
 
 **请求**
 
-```
+```http
 GET /index.html HTTP/1.1\r\n
 Host: www.example.com\r\n
 User-Agent: ...\r\n
@@ -128,7 +128,7 @@ Connection: keep-alive\r\n
 
 **响应**
 
-```
+```http
 HTTP/1.1 200 OK\r\n
 Date: ...\r\n
 Server: ...\r\n
@@ -412,7 +412,7 @@ D_p2p = max{ F/u_s , F/d_min , N·F / (u_s + Σ u_i) }
 
 **服务器**
 
-```
+```python
 sock = socket(AF_INET, SOCK_DGRAM)
 sock.bind(('', port))
 loop:
@@ -422,7 +422,7 @@ loop:
 
 **客户端**
 
-```
+```python
 sock = socket(AF_INET, SOCK_DGRAM)
 sock.sendto(msg, (server, port))
 data, addr = sock.recvfrom(2048)
@@ -434,7 +434,7 @@ data, addr = sock.recvfrom(2048)
 
 **服务器**
 
-```
+```python
 sock = socket(AF_INET, SOCK_STREAM)
 sock.bind(('', port))
 sock.listen(5)
@@ -446,7 +446,7 @@ conn.close()
 
 **客户端**
 
-```
+```python
 sock = socket(AF_INET, SOCK_STREAM)
 sock.connect((server, port))
 sock.send(msg)
