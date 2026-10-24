@@ -1,0 +1,2638 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="HKUST CSIT5610 Computer Networks 复习资料（Kurose & Ross 第 1–3 章）">
+      
+      
+        <meta name="author" content="dionysus23334">
+      
+      
+        <link rel="canonical" href="https://dionysus23334.github.io/CSIT-5610-ComputerNetworks/review/ch3-transport/">
+      
+      
+        <link rel="prev" href="../ch2-application/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>第 3 章 · 传输层 - CSIT5610 计算机网络复习笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#3" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="CSIT5610 计算机网络复习笔记" class="md-header__button md-logo" aria-label="CSIT5610 计算机网络复习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CSIT5610 计算机网络复习笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第 3 章 · 传输层
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dionysus23334/CSIT-5610-ComputerNetworks" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dionysus23334/CSIT-5610-ComputerNetworks
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="CSIT5610 计算机网络复习笔记" class="md-nav__button md-logo" aria-label="CSIT5610 计算机网络复习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    CSIT5610 计算机网络复习笔记
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dionysus23334/CSIT-5610-ComputerNetworks" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dionysus23334/CSIT-5610-ComputerNetworks
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../outline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    知识大纲
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    术语表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    分章复习
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    分章复习
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    总目录
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch1-intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 1 章 · 计算机网络导论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch2-application/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 2 章 · 应用层
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 · 传输层
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第 3 章 · 传输层
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0. 本章主线（先记住这三句）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 传输层服务
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 传输层服务">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 位置与职责 ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-muxdemux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 多路复用/解复用（mux/demux）★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. UDP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. UDP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 特点 ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 UDP 头部 ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-rdt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 可靠数据传输原理（rdt）★★
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 可靠数据传输原理（rdt）★★">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 接口与假设
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-rdt10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 rdt1.0：可靠信道
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-rdt20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 rdt2.0：有比特错误 ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-rdt21-acknak" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 rdt2.1：处理损坏的 ACK/NAK ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-rdt22-nak" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 rdt2.2：无 NAK ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-rdt30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 rdt3.0：有丢包 ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-stop-and-wait" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7 stop-and-wait 性能 ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-gbn-sr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 流水线协议：GBN 与 SR
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 流水线协议：GBN 与 SR">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-go-back-ngbn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Go-Back-N（GBN）★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-selective-repeatsr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Selective Repeat（SR）★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-gbn-vs-sr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 GBN vs SR ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. TCP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. TCP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 概述 ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 TCP 段结构 ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-ack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 序号与 ACK ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-rtt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 RTT 估计与超时 ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 TCP 发送方（简化）★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56-fast-retransmit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 快速重传（fast retransmit）★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#57-tcp-ack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7 TCP 接收方 ACK 生成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#58" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.8 流量控制 ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#59" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.9 连接管理 ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#510" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.10 重传场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 拥塞控制
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 拥塞控制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 拥塞的代价 ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 两种方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-tcp-aimd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 TCP AIMD ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-slow-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 慢启动（slow start）★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-tcp-cubic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 TCP CUBIC ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#66" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.6 延迟型拥塞控制
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#67-ecn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.7 ECN（显式拥塞通知）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#68" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.8 公平性 ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#69-tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.9 TCP 吞吐（补充）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-quic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. QUIC（了解）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 例题精讲
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 例题精讲">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1stop-and-wait-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        例 1：stop-and-wait 利用率（8 分）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2gbn-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        例 2：GBN 重传（10 分）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3tcp-ack8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        例 3：TCP 序号/ACK（8 分）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4rtt-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        例 4：RTT 估计（8 分）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5aimd10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        例 5：AIMD（10 分）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6tcp-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        例 6：TCP 吞吐（6 分）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 易错点（考场最易丢分）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 自测（先做，再看答案）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. 自测（先做，再看答案）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        答案
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. 考前速记卡
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0. 本章主线（先记住这三句）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 传输层服务
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 传输层服务">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 位置与职责 ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-muxdemux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 多路复用/解复用（mux/demux）★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. UDP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. UDP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 特点 ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 UDP 头部 ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-rdt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 可靠数据传输原理（rdt）★★
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 可靠数据传输原理（rdt）★★">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 接口与假设
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-rdt10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 rdt1.0：可靠信道
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-rdt20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 rdt2.0：有比特错误 ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-rdt21-acknak" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 rdt2.1：处理损坏的 ACK/NAK ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-rdt22-nak" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 rdt2.2：无 NAK ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-rdt30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 rdt3.0：有丢包 ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-stop-and-wait" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7 stop-and-wait 性能 ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-gbn-sr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 流水线协议：GBN 与 SR
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 流水线协议：GBN 与 SR">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-go-back-ngbn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Go-Back-N（GBN）★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-selective-repeatsr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Selective Repeat（SR）★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-gbn-vs-sr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 GBN vs SR ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. TCP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. TCP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 概述 ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 TCP 段结构 ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-ack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 序号与 ACK ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-rtt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 RTT 估计与超时 ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 TCP 发送方（简化）★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56-fast-retransmit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 快速重传（fast retransmit）★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#57-tcp-ack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7 TCP 接收方 ACK 生成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#58" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.8 流量控制 ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#59" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.9 连接管理 ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#510" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.10 重传场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 拥塞控制
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 拥塞控制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 拥塞的代价 ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 两种方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-tcp-aimd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 TCP AIMD ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-slow-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 慢启动（slow start）★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-tcp-cubic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 TCP CUBIC ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#66" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.6 延迟型拥塞控制
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#67-ecn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.7 ECN（显式拥塞通知）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#68" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.8 公平性 ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#69-tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.9 TCP 吞吐（补充）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-quic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. QUIC（了解）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 例题精讲
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 例题精讲">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1stop-and-wait-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        例 1：stop-and-wait 利用率（8 分）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2gbn-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        例 2：GBN 重传（10 分）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3tcp-ack8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        例 3：TCP 序号/ACK（8 分）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4rtt-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        例 4：RTT 估计（8 分）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5aimd10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        例 5：AIMD（10 分）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6tcp-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        例 6：TCP 吞吐（6 分）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 易错点（考场最易丢分）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 自测（先做，再看答案）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. 自测（先做，再看答案）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        答案
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. 考前速记卡
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="3">第 3 章 · 传输层 · 复习资料<a class="headerlink" href="#3" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>对应课件</strong>：<code>ch3-8.pdf</code>（Kurose &amp; Ross, Chapter 3 Transport Layer, 8th ed.）</p>
+<p><strong>建议用时</strong>：第一遍 120 分钟 + 例题 50 分钟 + 自测 40 分钟</p>
+<p><strong>配套</strong>：知识大纲 §4</p>
+<p><strong>本章权重</strong>：全课计算/机制题最密集的一章：rdt、GBN/SR、TCP 序号/ACK/RTT、流量控制、拥塞控制。</p>
+</blockquote>
+<hr />
+<h2 id="0">0. 本章主线（先记住这三句）<a class="headerlink" href="#0" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>传输层提供进程到进程的逻辑通信</strong>；多路复用/解复用靠端口（TCP 还要四元组）。</li>
+<li><strong>可靠传输 = 确认 + 序号 + 定时器 + 重传</strong>；流水线（GBN/SR）用窗口提高利用率。</li>
+<li><strong>TCP 在可靠传输之上做流量控制（rwnd）和拥塞控制（cwnd）</strong>；AIMD + 慢启动是经典，CUBIC/QUIC 是现代演进。</li>
+</ol>
+<p><strong>本章常见考法</strong></p>
+<table>
+<thead>
+<tr>
+<th>题型</th>
+<th>典型问法</th>
+<th>备考动作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>计算</td>
+<td>stop-and-wait 利用率、TCP 吞吐、RTT 估计</td>
+<td>记公式 + 单位</td>
+</tr>
+<tr>
+<td>机制</td>
+<td>rdt2.0 缺陷、GBN/SR 窗口、三次握手</td>
+<td>画时序/状态</td>
+</tr>
+<tr>
+<td>分析</td>
+<td>给丢包/延迟场景，问重传/ACK</td>
+<td>按“序号+定时器”推演</td>
+</tr>
+<tr>
+<td>比较</td>
+<td>TCP vs UDP、GBN vs SR、流量 vs 拥塞</td>
+<td>列表格</td>
+</tr>
+<tr>
+<td>简答</td>
+<td>为什么三次握手？AIMD 为什么公平？</td>
+<td>抓关键原因</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="1">1. 传输层服务<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<h3 id="11">1.1 位置与职责 ★<a class="headerlink" href="#11" title="Permanent link">&para;</a></h3>
+<ul>
+<li>网络层：<strong>主机到主机</strong>；传输层：<strong>进程到进程</strong>。</li>
+<li>发送方：把应用数据切段、加传输层头、交给网络层。</li>
+<li>接收方：重组段、按端口交给正确 socket。</li>
+<li>传输层只在端系统实现；路由器不处理传输层。</li>
+</ul>
+<h3 id="12-muxdemux">1.2 多路复用/解复用（mux/demux）★★<a class="headerlink" href="#12-muxdemux" title="Permanent link">&para;</a></h3>
+<p><strong>复用（发送方）</strong>：从多个 socket 收集数据，加头（源/目的端口等），交给网络层。</p>
+<p><strong>解复用（接收方）</strong>：根据头部字段，把段交给正确的 socket。</p>
+<table>
+<thead>
+<tr>
+<th>协议</th>
+<th>解复用标识</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>UDP</strong></td>
+<td><code>&lt;目的 IP, 目的端口&gt;</code></td>
+</tr>
+<tr>
+<td><strong>TCP</strong></td>
+<td><code>&lt;源 IP, 源端口, 目的 IP, 目的端口&gt;</code> 四元组</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>UDP：目的端口相同但源不同 → 交给同一 socket。</li>
+<li>TCP：四元组唯一标识一个连接；同一端口可以有多个连接。</li>
+</ul>
+<hr />
+<h2 id="2-udp">2. UDP<a class="headerlink" href="#2-udp" title="Permanent link">&para;</a></h2>
+<h3 id="21">2.1 特点 ★<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>无连接</strong>：无握手；每个数据报独立。</li>
+<li><strong>不可靠</strong>：不保证到达、顺序、不重复。</li>
+<li><strong>无流控/拥塞控制</strong>：发送方按应用节奏发。</li>
+<li>开销小、延迟低、头部只有 8 字节。</li>
+<li>适合：DNS、DHCP、SNMP、流媒体、游戏、QUIC 底层。</li>
+</ul>
+<p><strong>为什么用 UDP</strong>：</p>
+<ul>
+<li>应用自己实现可靠性/实时性；</li>
+<li>不想被 TCP 的拥塞控制/重传拖慢；</li>
+<li>短请求/响应（DNS）建连成本不划算。</li>
+</ul>
+<h3 id="22-udp">2.2 UDP 头部 ★★<a class="headerlink" href="#22-udp" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>0               16              31
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>+----------------+---------------+
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>| 源端口 (16)     | 目的端口 (16)  |
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>+----------------+---------------+
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>| 长度 (16)       | 校验和 (16)    |
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>+----------------+---------------+
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>| 数据 ...                        |
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>+---------------------------------+
+</code></pre></div>
+<ul>
+<li>长度：头部 + 数据（字节），最小 8。</li>
+<li>校验和：覆盖 <strong>伪头部 + UDP 头部 + 数据</strong>；伪头部含源/目的 IP、协议号、UDP 长度。</li>
+<li>计算：16-bit 反码求和，再取反；接收方验证（全 1 表示无校验和，IPv4 可选）。</li>
+</ul>
+<p><strong>校验和很弱</strong>：16 位，可能漏检；但比没有好。</p>
+<hr />
+<h2 id="3-rdt">3. 可靠数据传输原理（rdt）★★<a class="headerlink" href="#3-rdt" title="Permanent link">&para;</a></h2>
+<h3 id="31">3.1 接口与假设<a class="headerlink" href="#31" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>rdt_send(data)        // 上层调用
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>udt_send(packet)      // 交给不可靠信道
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>rdt_rcv(packet)       // 从信道收到包
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>deliver_data(data)    // 交给上层
+</code></pre></div>
+<p>逐步增加信道假设：<strong>可靠 → 比特错误 → 丢包</strong>。</p>
+<h3 id="32-rdt10">3.2 rdt1.0：可靠信道<a class="headerlink" href="#32-rdt10" title="Permanent link">&para;</a></h3>
+<ul>
+<li>发送方：收数据 → 打包 → 发送。</li>
+<li>接收方：收包 → 提取 → 交付。</li>
+<li>无需 ACK、序号、定时器。</li>
+</ul>
+<h3 id="33-rdt20">3.3 rdt2.0：有比特错误 ★<a class="headerlink" href="#33-rdt20" title="Permanent link">&para;</a></h3>
+<ul>
+<li>需要：<strong>差错检测（checksum）</strong>、<strong>ACK/NAK</strong>、<strong>重传</strong>。</li>
+<li>发送方发完等 ACK/NAK；收到 NAK 或损坏 → 重传。</li>
+<li><strong>致命缺陷</strong>：ACK/NAK 本身可能损坏 → 发送方不知道是“成功”还是“失败”，可能重复发送。</li>
+</ul>
+<h3 id="34-rdt21-acknak">3.4 rdt2.1：处理损坏的 ACK/NAK ★<a class="headerlink" href="#34-rdt21-acknak" title="Permanent link">&para;</a></h3>
+<ul>
+<li>给数据包加 <strong>序号 0/1</strong>。</li>
+<li>发送方：发送当前包，等待对应 ACK；超时/损坏 → 重传。</li>
+<li>接收方：用序号判重；重复包丢弃但回 ACK。</li>
+<li>状态数翻倍（等待 ACK0 / ACK1）。</li>
+</ul>
+<h3 id="35-rdt22-nak">3.5 rdt2.2：无 NAK ★<a class="headerlink" href="#35-rdt22-nak" title="Permanent link">&para;</a></h3>
+<ul>
+<li>只使用 <strong>ACK</strong>；ACK 带“期望的下一个序号”。</li>
+<li>接收方收到正确包 → 回 ACK（期望序号）；收到重复/失序 → 回上一次的 ACK。</li>
+<li>发送方收到<strong>重复 ACK</strong> → 重传当前包。</li>
+<li>效果与 rdt2.1 等价，但减少一种报文。</li>
+</ul>
+<h3 id="36-rdt30">3.6 rdt3.0：有丢包 ★★<a class="headerlink" href="#36-rdt30" title="Permanent link">&para;</a></h3>
+<ul>
+<li>增加<strong>定时器</strong>：发送后启动；超时未收到 ACK → 重传。</li>
+<li>序号 0/1；处理：</li>
+<li>数据丢失 → 超时重传；</li>
+<li>ACK 丢失 → 超时重传（接收方丢重复）；</li>
+<li>延迟 ACK → 可能重复，但序号可处理。</li>
+<li><strong>stop-and-wait</strong>：一次只发一个包，等 ACK；简单但利用率极低。</li>
+</ul>
+<h3 id="37-stop-and-wait">3.7 stop-and-wait 性能 ★★<a class="headerlink" href="#37-stop-and-wait" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>U_sender = (L/R) / (RTT + L/R)
+</code></pre></div>
+<p><strong>例</strong>（课件）：1 Gbps 链路，单向传播 15 ms（RTT=30 ms），8000 bit 包。
+- <code>L/R = 8000/10⁹ = 8 µs = 0.008 ms</code>
+- <code>U = 0.008 / (30 + 0.008) ≈ 0.00027</code>
+- 即发送方只有 <strong>0.027%</strong> 时间在发数据。</p>
+<p><strong>解决</strong>：流水线（pipelining）——允许多个未确认包同时在途，利用率提高 N 倍。</p>
+<hr />
+<h2 id="4-gbn-sr">4. 流水线协议：GBN 与 SR<a class="headerlink" href="#4-gbn-sr" title="Permanent link">&para;</a></h2>
+<h3 id="41-go-back-ngbn">4.1 Go-Back-N（GBN）★★<a class="headerlink" href="#41-go-back-ngbn" title="Permanent link">&para;</a></h3>
+<p><strong>发送方</strong></p>
+<ul>
+<li>窗口 N：最多 N 个连续未确认包。</li>
+<li>序号 k-bit；窗口滑动。</li>
+<li><strong>累积 ACK</strong>：<code>ACK(n)</code> 表示 n 及之前的包都收到。</li>
+<li><strong>一个定时器</strong>：只为最老的未确认包计时；超时 → 重传该包及窗口中所有后续包。</li>
+</ul>
+<p><strong>接收方</strong></p>
+<ul>
+<li>只按序接收；期望 <code>rcv_base</code>。</li>
+<li>收到正确序号 → 交付、回 ACK、<code>rcv_base++</code>。</li>
+<li>收到失序包 → <strong>丢弃</strong>（不缓存），回最后一个正确包的 ACK（可能重复 ACK）。</li>
+</ul>
+<p><strong>特点</strong>：接收方简单；丢一个包会重传整个窗口，浪费带宽。</p>
+<h3 id="42-selective-repeatsr">4.2 Selective Repeat（SR）★★<a class="headerlink" href="#42-selective-repeatsr" title="Permanent link">&para;</a></h3>
+<p><strong>发送方</strong></p>
+<ul>
+<li>窗口 N；每个包<strong>单独定时器</strong>。</li>
+<li>只重传超时的那个包。</li>
+<li>收到 ACK → 标记该包已确认；窗口滑动。</li>
+</ul>
+<p><strong>接收方</strong></p>
+<ul>
+<li>缓存失序包；对每个正确收到的包<strong>单独 ACK</strong>。</li>
+<li>按序交付；收到缺失包后，把缓存的连续包一起交付。</li>
+</ul>
+<p><strong>窗口约束</strong>：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>N ≤ 2^(k-1)
+</code></pre></div>
+<ul>
+<li>k 为序号位数；序号空间 2^k，窗口不能超过一半，否则无法区分“新包”和“旧包的重传”。</li>
+<li>例：k=2（序号 0..3），N 最大 2；N=3 会出现接收方把旧包当新包的歧义。</li>
+</ul>
+<h3 id="43-gbn-vs-sr">4.3 GBN vs SR ★★<a class="headerlink" href="#43-gbn-vs-sr" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>GBN</th>
+<th>SR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>接收方缓存</td>
+<td>不缓存失序包</td>
+<td>缓存失序包</td>
+</tr>
+<tr>
+<td>ACK</td>
+<td>累积 ACK</td>
+<td>单独 ACK</td>
+</tr>
+<tr>
+<td>重传</td>
+<td>整个窗口</td>
+<td>只重传丢失</td>
+</tr>
+<tr>
+<td>定时器</td>
+<td>一个（最老包）</td>
+<td>每个包一个</td>
+</tr>
+<tr>
+<td>窗口</td>
+<td>N</td>
+<td>N ≤ 2^(k-1)</td>
+</tr>
+<tr>
+<td>复杂度</td>
+<td>简单</td>
+<td>复杂</td>
+</tr>
+<tr>
+<td>适用</td>
+<td>错误少/窗口小</td>
+<td>错误多/高带宽</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-tcp">5. TCP<a class="headerlink" href="#5-tcp" title="Permanent link">&para;</a></h2>
+<h3 id="51">5.1 概述 ★<a class="headerlink" href="#51" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>点对点</strong>：一个发送方、一个接收方。</li>
+<li><strong>可靠、按序</strong>：字节流。</li>
+<li><strong>全双工</strong>：双向数据。</li>
+<li><strong>面向连接</strong>：握手建立状态。</li>
+<li><strong>流量控制</strong>：rwnd。</li>
+<li><strong>拥塞控制</strong>：cwnd。</li>
+</ul>
+<h3 id="52-tcp">5.2 TCP 段结构 ★★<a class="headerlink" href="#52-tcp" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>0               16              31
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>+----------------+---------------+
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>| 源端口 (16)     | 目的端口 (16)  |
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>+----------------+---------------+
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>| 序号 (32)                       |
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>+---------------------------------+
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>| 确认号 (32)                     |
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>+----+-----+-----+----------------+
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>|首部|保留 |标志 | 窗口 (16)       |
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>+----+-----+-----+----------------+
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>| 校验和 (16)     | 紧急指针 (16)   |
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>+----------------+---------------+
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>| 选项（可变）                     |
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>+---------------------------------+
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>| 数据 ...                        |
+</code></pre></div>
+<ul>
+<li>最小头部 <strong>20 字节</strong>（无选项）。</li>
+<li>标志：SYN、ACK、FIN、RST、PSH、URG。</li>
+<li>序号：<strong>字节流编号</strong>，不是包编号。</li>
+<li>确认号：期望收到的下一个字节序号（累积确认）。</li>
+</ul>
+<h3 id="53-ack">5.3 序号与 ACK ★★<a class="headerlink" href="#53-ack" title="Permanent link">&para;</a></h3>
+<ul>
+<li>发送方给每个字节编号；段首字节序号放在 <code>Seq</code>。</li>
+<li>接收方 <code>ACK = 期望的下一个字节</code>。</li>
+<li>例：发送 1000 字节，<code>Seq=1000</code>；接收方正确收到 → <code>ACK=2000</code>。</li>
+<li>丢失/失序：接收方重复 ACK 当前期望值；发送方看到 3 个重复 ACK → 快速重传。</li>
+</ul>
+<h3 id="54-rtt">5.4 RTT 估计与超时 ★★<a class="headerlink" href="#54-rtt" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>EstimatedRTT = (1-α)·EstimatedRTT + α·SampleRTT        α = 0.125
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>DevRTT      = (1-β)·DevRTT + β·|SampleRTT - EstimatedRTT|   β = 0.25
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>TimeoutInterval = EstimatedRTT + 4·DevRTT
+</code></pre></div>
+<ul>
+<li><code>EstimatedRTT</code>：平滑的 RTT 估计。</li>
+<li><code>DevRTT</code>：RTT 偏差（抖动）。</li>
+<li>超时 = 估计值 + 安全边际；偏差大 → 超时更长。</li>
+<li>超时太长 → 反应慢；太短 → 不必要的重传。</li>
+</ul>
+<p><strong>例</strong>：EstimatedRTT=120 ms，DevRTT=10 ms，SampleRTT=100 ms。
+- 新 Estimated = 0.875×120 + 0.125×100 = <strong>117.5 ms</strong>
+- 新 Dev = 0.75×10 + 0.25×|100−120| = <strong>12.5 ms</strong>
+- Timeout = 117.5 + 4×12.5 = <strong>167.5 ms</strong></p>
+<h3 id="55-tcp">5.5 TCP 发送方（简化）★<a class="headerlink" href="#55-tcp" title="Permanent link">&para;</a></h3>
+<p>事件：</p>
+<ol>
+<li>应用传数据 → 封装段 → 启动定时器 → 发送。</li>
+<li>超时 → 重传最老的未确认段 → 重启定时器。</li>
+<li>收到 ACK → 更新窗口；若还有未确认数据 → 重启定时器；否则停止。</li>
+</ol>
+<h3 id="56-fast-retransmit">5.6 快速重传（fast retransmit）★<a class="headerlink" href="#56-fast-retransmit" title="Permanent link">&para;</a></h3>
+<ul>
+<li>收到 <strong>3 个重复 ACK</strong>（同一确认号）→ 认为该段丢失，立即重传，不等超时。</li>
+<li>为什么是 3：少量乱序也会产生重复 ACK；3 个是折中，减少误判。</li>
+</ul>
+<h3 id="57-tcp-ack">5.7 TCP 接收方 ACK 生成<a class="headerlink" href="#57-tcp-ack" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>动作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>按序收到、之前都已确认</td>
+<td>延迟 ACK（最多 500 ms）</td>
+</tr>
+<tr>
+<td>收到失序段</td>
+<td>立即发重复 ACK（期望序号）</td>
+</tr>
+<tr>
+<td>收到填补空缺的段</td>
+<td>立即 ACK</td>
+</tr>
+</tbody>
+</table>
+<h3 id="58">5.8 流量控制 ★★<a class="headerlink" href="#58" title="Permanent link">&para;</a></h3>
+<ul>
+<li>目的：防止发送方淹没接收方缓冲区。</li>
+<li>接收方在头部 <strong>rwnd（receive window）</strong> 通告空闲空间。</li>
+<li>发送方保证：<code>未确认数据 ≤ rwnd</code>。</li>
+<li><strong>与拥塞控制的区别</strong>：</li>
+<li>流量控制：接收方限制（端到端）。</li>
+<li>拥塞控制：网络限制（全局）。</li>
+</ul>
+<h3 id="59">5.9 连接管理 ★★<a class="headerlink" href="#59" title="Permanent link">&para;</a></h3>
+<p><strong>三次握手</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>客户端 → 服务器：SYN, seq=x
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>服务器 → 客户端：SYN-ACK, seq=y, ack=x+1
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>客户端 → 服务器：ACK, ack=y+1
+</code></pre></div>
+<ul>
+<li>目的：同步双方序号、确认双方收发能力。</li>
+<li>为什么三次：防止<strong>旧的重复 SYN</strong> 到达服务器，导致建立错误连接；两次不够，四次浪费。</li>
+</ul>
+<p><strong>关闭连接</strong></p>
+<ul>
+<li>主动关闭方发 FIN；对方 ACK；对方也发 FIN；最后 ACK。</li>
+<li>主动关闭方进入 <strong>TIME_WAIT</strong>，等待 2×MSL，确保最后的 ACK 能到达、旧包消失。</li>
+</ul>
+<h3 id="510">5.10 重传场景<a class="headerlink" href="#510" title="Permanent link">&para;</a></h3>
+<ul>
+<li>ACK 丢失：发送方超时重传；接收方收到重复 → 再 ACK。</li>
+<li>数据丢失：超时/3 个重复 ACK → 重传。</li>
+<li>延迟 ACK：可能造成“过早超时”，但序号/ACK 可恢复。</li>
+</ul>
+<hr />
+<h2 id="6">6. 拥塞控制<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<h3 id="61">6.1 拥塞的代价 ★<a class="headerlink" href="#61" title="Permanent link">&para;</a></h3>
+<ul>
+<li>排队延迟增加；</li>
+<li>缓冲区溢出 → 丢包；</li>
+<li>重传浪费带宽；</li>
+<li>拥塞崩溃（吞吐骤降）。</li>
+</ul>
+<p><strong>三种场景</strong>：</p>
+<ol>
+<li>一个路由器、有限缓冲：到达速率接近容量 → 排队/丢包。</li>
+<li>多个路由器、重传：丢包导致重传，进一步加重拥塞。</li>
+<li>四发送方、多跳：竞争带宽，吞吐下降。</li>
+</ol>
+<h3 id="62">6.2 两种方法<a class="headerlink" href="#62" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>谁做</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>端到端</strong></td>
+<td>端系统根据丢包/延迟推断</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td><strong>网络辅助</strong></td>
+<td>路由器显式通知</td>
+<td>ECN、ATM ABR</td>
+</tr>
+</tbody>
+</table>
+<h3 id="63-tcp-aimd">6.3 TCP AIMD ★★<a class="headerlink" href="#63-tcp-aimd" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>加性增（AI）</strong>：每个 RTT <code>cwnd += 1 MSS</code>。</li>
+<li><strong>乘性减（MD）</strong>：丢包时 <code>cwnd = cwnd/2</code>。</li>
+<li>锯齿状：探测可用带宽 → 丢包 → 减半 → 再增。</li>
+<li>公平性：多条流竞争时，AIMD 会收敛到大致公平。</li>
+</ul>
+<h3 id="64-slow-start">6.4 慢启动（slow start）★★<a class="headerlink" href="#64-slow-start" title="Permanent link">&para;</a></h3>
+<ul>
+<li>初始 <code>cwnd = 1 MSS</code>。</li>
+<li>每收到一个 ACK，<code>cwnd += 1 MSS</code> → 每 RTT <strong>翻倍</strong>（指数增长）。</li>
+<li>到达 <code>ssthresh</code> 后进入<strong>拥塞避免</strong>（线性增长）。</li>
+<li>超时：<code>ssthresh = cwnd/2</code>，<code>cwnd = 1</code>，重新慢启动。</li>
+<li>3 个重复 ACK：快速重传 + 快速恢复：</li>
+<li><code>ssthresh = cwnd/2</code></li>
+<li><code>cwnd = ssthresh</code>（或 ssthresh+3）</li>
+<li>然后线性增长。</li>
+</ul>
+<p><strong>例</strong>：初始 cwnd=1，ssthresh=8。
+- 慢启动：1→2→4→8（3 个 RTT）。
+- 拥塞避免：9→10→11...
+- 在 cwnd=12 丢包（3 dup ACK）：ssthresh=6，cwnd=6，然后 7,8,...</p>
+<h3 id="65-tcp-cubic">6.5 TCP CUBIC ★<a class="headerlink" href="#65-tcp-cubic" title="Permanent link">&para;</a></h3>
+<ul>
+<li>用<strong>三次函数</strong>（以时间为自变量）增长窗口：</li>
+<li>靠近上一次拥塞点增长慢，远离时增长快；</li>
+<li>更适合高带宽、长延迟网络。</li>
+<li>Linux 默认；比 AIMD 更稳定、恢复更快。</li>
+</ul>
+<h3 id="66">6.6 延迟型拥塞控制<a class="headerlink" href="#66" title="Permanent link">&para;</a></h3>
+<ul>
+<li>测量 RTT 变化，保持管道“刚好满”而不引起丢包。</li>
+<li>代表：TCP Vegas；BBR 用带宽/RTT 估计。</li>
+<li>优点：少丢包；缺点：可能与丢包型流不公平。</li>
+</ul>
+<h3 id="67-ecn">6.7 ECN（显式拥塞通知）<a class="headerlink" href="#67-ecn" title="Permanent link">&para;</a></h3>
+<ul>
+<li>路由器在 IP 头标记拥塞（而不是丢包）。</li>
+<li>接收方通过 TCP ACK 回显；发送方降速。</li>
+<li>需要端到端支持。</li>
+</ul>
+<h3 id="68">6.8 公平性 ★<a class="headerlink" href="#68" title="Permanent link">&para;</a></h3>
+<ul>
+<li>目标：K 条 TCP 流共享瓶颈，每条约 <code>R/K</code>。</li>
+<li>AIMD 趋于公平。</li>
+<li>破坏公平的因素：</li>
+<li>不同 RTT（短 RTT 抢得多）；</li>
+<li>UDP 不降速；</li>
+<li>多并行连接；</li>
+<li>应用层不公平。</li>
+</ul>
+<h3 id="69-tcp">6.9 TCP 吞吐（补充）<a class="headerlink" href="#69-tcp" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>avg throughput ≈ 0.75·W / RTT
+</code></pre></div>
+<ul>
+<li>W 为丢包时的窗口大小；平均窗口约 <code>3/4 W</code>。</li>
+<li>丢包率 L 时（Mathis）：<code>throughput ≈ 1.22·MSS / (RTT·√L)</code>。</li>
+<li>高带宽长延迟网络需要大窗口；丢包率必须极低。</li>
+</ul>
+<hr />
+<h2 id="7-quic">7. QUIC（了解）<a class="headerlink" href="#7-quic" title="Permanent link">&para;</a></h2>
+<ul>
+<li>基于 <strong>UDP</strong> 的应用层协议；HTTP/3 的传输层。</li>
+<li><strong>流级多路复用</strong>：一个流丢包不影响其他流（避免 TCP HOL）。</li>
+<li><strong>0/1-RTT 建连</strong>：减少握手延迟。</li>
+<li><strong>内置加密</strong>（TLS 1.3）。</li>
+<li><strong>连接迁移</strong>：手机切换 WiFi/蜂窝时保持连接。</li>
+<li>用户态实现，便于快速迭代。</li>
+</ul>
+<hr />
+<h2 id="8">8. 例题精讲<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<h3 id="1stop-and-wait-8">例 1：stop-and-wait 利用率（8 分）<a class="headerlink" href="#1stop-and-wait-8" title="Permanent link">&para;</a></h3>
+<p><strong>题</strong>：1 Gbps 链路，单向传播 15 ms，8000 bit 包。求 stop-and-wait 的发送方利用率。</p>
+<p><strong>解</strong>：
+- <code>L/R = 8000/10⁹ = 8 µs = 0.008 ms</code>
+- <code>RTT = 30 ms</code>
+- <code>U = 0.008 / (30 + 0.008) ≈ 0.00027</code>（0.027%）
+- 结论：需要流水线提高利用率。</p>
+<h3 id="2gbn-10">例 2：GBN 重传（10 分）<a class="headerlink" href="#2gbn-10" title="Permanent link">&para;</a></h3>
+<p><strong>题</strong>：GBN，N=4，序号 0..7。发送 0,1,2,3；ACK0、ACK1 到达；又发 4,5；包 2 丢失。接收方收到 3,4,5 会怎样？发送方何时重传哪些包？</p>
+<p><strong>解</strong>：
+- 接收方期望 2；收到 3,4,5 都失序 → 丢弃（或缓存，取决于实现），重复 ACK1。
+- 发送方收到重复 ACK1，但未到 3 个；包 2 定时器超时 → 重传 <strong>2,3,4,5</strong>（整个窗口）。
+- 接收方收到 2 后按序交付 2,3,4,5，回 ACK5。</p>
+<h3 id="3tcp-ack8">例 3：TCP 序号/ACK（8 分）<a class="headerlink" href="#3tcp-ack8" title="Permanent link">&para;</a></h3>
+<p><strong>题</strong>：TCP 发送 2000 字节，Seq=5000；接收方正确收到前 1000 字节，后 1000 字节丢失。接收方回什么 ACK？发送方如何反应？</p>
+<p><strong>解</strong>：
+- 接收方收到 5000–5999，期望 6000 → <code>ACK=6000</code>。
+- 后续收到 6000–6999 之外的段（如果有）→ 重复 ACK 6000。
+- 发送方收到 3 个重复 ACK 6000 → 快速重传 6000 开始的段。</p>
+<h3 id="4rtt-8">例 4：RTT 估计（8 分）<a class="headerlink" href="#4rtt-8" title="Permanent link">&para;</a></h3>
+<p><strong>题</strong>：EstimatedRTT=200 ms，DevRTT=20 ms，SampleRTT=160 ms。求新的 EstimatedRTT、DevRTT、Timeout。</p>
+<p><strong>解</strong>：
+- Estimated = 0.875×200 + 0.125×160 = 175 + 20 = <strong>195 ms</strong>
+- Dev = 0.75×20 + 0.25×|160−195| = 15 + 8.75 = <strong>23.75 ms</strong>
+- Timeout = 195 + 4×23.75 = <strong>290 ms</strong></p>
+<h3 id="5aimd10">例 5：AIMD（10 分）<a class="headerlink" href="#5aimd10" title="Permanent link">&para;</a></h3>
+<p><strong>题</strong>：cwnd=1，ssthresh=16。描述慢启动到 cwnd=16，然后在 cwnd=20 时发生 3 个重复 ACK 的过程。</p>
+<p><strong>解</strong>：
+- 慢启动：1→2→4→8→16（4 个 RTT，指数）。
+- 拥塞避免：17,18,19,20（每 RTT +1）。
+- 3 dup ACK：ssthresh = 20/2 = 10；cwnd = 10（快速恢复），然后 11,12,... 线性增长。
+- 若是超时：ssthresh=10，cwnd=1，重新慢启动。</p>
+<h3 id="6tcp-6">例 6：TCP 吞吐（6 分）<a class="headerlink" href="#6tcp-6" title="Permanent link">&para;</a></h3>
+<p><strong>题</strong>：W=64 KB，RTT=100 ms。估算平均吞吐。</p>
+<p><strong>解</strong>：
+- <code>0.75×64 KB / 0.1 s = 480 KB/s ≈ 3.84 Mbps</code>。
+- 若丢包率高，实际更低；高带宽长延迟需要更大 W。</p>
+<hr />
+<h2 id="9">9. 易错点（考场最易丢分）<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>错误</th>
+<th>正确</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>传输层 = 主机到主机</td>
+<td>传输层是<strong>进程到进程</strong>；网络层才是主机到主机</td>
+</tr>
+<tr>
+<td>UDP 没有校验和</td>
+<td>UDP 有 16-bit 校验和（IPv4 可选，通常启用）</td>
+</tr>
+<tr>
+<td>rdt2.0 已经可靠</td>
+<td>ACK/NAK 可能损坏 → 有致命缺陷</td>
+</tr>
+<tr>
+<td>GBN 接收方缓存失序包</td>
+<td>GBN 通常<strong>丢弃</strong>失序包；SR 才缓存</td>
+</tr>
+<tr>
+<td>SR 窗口可以等于序号空间</td>
+<td><strong>N ≤ 2^(k-1)</strong>，否则有歧义</td>
+</tr>
+<tr>
+<td>TCP 序号是包编号</td>
+<td>是<strong>字节流编号</strong></td>
+</tr>
+<tr>
+<td>ACK 表示“已收到这个序号”</td>
+<td>ACK 表示“期望的下一个字节”</td>
+</tr>
+<tr>
+<td>超时 = 2×RTT</td>
+<td>用 EstimatedRTT + 4×DevRTT</td>
+</tr>
+<tr>
+<td>3 个重复 ACK 一定丢包</td>
+<td>也可能乱序；3 是折中</td>
+</tr>
+<tr>
+<td>流量控制 = 拥塞控制</td>
+<td>rwnd 防接收方溢出；cwnd 防网络过载</td>
+</tr>
+<tr>
+<td>三次握手是为了加密</td>
+<td>是为了同步序号、防旧连接</td>
+</tr>
+<tr>
+<td>慢启动一直指数增长</td>
+<td>到 ssthresh 后转线性</td>
+</tr>
+<tr>
+<td>AIMD 丢包时窗口减半</td>
+<td>乘性减；超时可能降到 1</td>
+</tr>
+<tr>
+<td>TCP 一定公平</td>
+<td>RTT/UDP/并行连接会破坏公平</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10">10. 自测（先做，再看答案）<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
+<ol>
+<li>传输层与网络层的区别？多路复用/解复用的作用？</li>
+<li>UDP 头部字段？校验和覆盖哪些内容？为什么说保护弱？</li>
+<li>rdt2.0 的致命缺陷？rdt2.1/2.2 如何解决？</li>
+<li>rdt3.0 如何应对丢包？stop-and-wait 的利用率公式？</li>
+<li>GBN 与 SR 的窗口、ACK、重传、缓存差异？</li>
+<li>TCP 段头部最小多少字节？序号和确认号的含义？</li>
+<li>TCP 如何估计 RTT 和设置超时？α、β 的作用？</li>
+<li>快速重传的触发条件？为什么是 3 个重复 ACK？</li>
+<li>流量控制和拥塞控制的区别？rwnd 与 cwnd 分别是什么？</li>
+<li>TCP 三次握手的过程？为什么需要三次？</li>
+<li>AIMD、慢启动、快速恢复的过程？CUBIC 改进什么？</li>
+<li>TCP 公平性是什么？哪些因素会破坏公平？</li>
+<li>QUIC 相比 TCP 的优势？</li>
+</ol>
+<h3 id="_1">答案<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>网络层主机到主机，传输层进程到进程；mux/demux 把段交给正确 socket。</li>
+<li>源/目的端口、长度、校验和；伪头部+UDP 段；16 位反码和，保护弱。</li>
+<li>ACK/NAK 可能损坏；rdt2.1 加序号，rdt2.2 用 ACK+期望序号。</li>
+<li>定时器超时重传；<code>U=(L/R)/(RTT+L/R)</code>。</li>
+<li>GBN 累积 ACK、一个定时器、重传整个窗口、接收方不缓存；SR 单独 ACK、每包定时器、只重传丢失、缓存失序。</li>
+<li>20 字节；Seq 是段首字节编号，ACK 是期望的下一个字节。</li>
+<li>指数加权移动平均；α 平滑 SampleRTT，β 平滑偏差；Timeout=EstimatedRTT+4DevRTT。</li>
+<li>3 个重复 ACK；说明后续包到了但缺失包没到，网络可能只丢了那一个。</li>
+<li>流量控制防接收方溢出（rwnd），拥塞控制防网络过载（cwnd）。</li>
+<li>SYN、SYN-ACK、ACK；同步序号、防止旧连接请求。</li>
+<li>AI 每 RTT +1 MSS，MD 丢包减半；慢启动指数增长到 ssthresh；快速恢复在 3 个重复 ACK 后；CUBIC 用三次函数。</li>
+<li>K 条流共享瓶颈各得约 R/K；不同 RTT、UDP、并行连接会破坏。</li>
+<li>UDP 上实现、流级多路复用、0/1-RTT、内置加密、连接迁移。</li>
+</ol>
+<hr />
+<h2 id="11_1">11. 考前速记卡<a class="headerlink" href="#11_1" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>传输层</td>
+<td>进程到进程；TCP/UDP</td>
+</tr>
+<tr>
+<td>解复用</td>
+<td>UDP 目的 IP+端口；TCP 四元组</td>
+</tr>
+<tr>
+<td>UDP 头</td>
+<td>8 字节；源/目的端口、长度、校验和</td>
+</tr>
+<tr>
+<td>rdt2.0</td>
+<td>ACK/NAK 可能损坏</td>
+</tr>
+<tr>
+<td>rdt2.1/2.2</td>
+<td>序号；ACK+期望序号</td>
+</tr>
+<tr>
+<td>rdt3.0</td>
+<td>定时器；stop-and-wait</td>
+</tr>
+<tr>
+<td>利用率</td>
+<td><code>(L/R)/(RTT+L/R)</code>；1Gbps/30ms/8Kbit ≈ 0.00027</td>
+</tr>
+<tr>
+<td>GBN</td>
+<td>累积 ACK；一个定时器；重传窗口</td>
+</tr>
+<tr>
+<td>SR</td>
+<td>单独 ACK；每包定时器；缓存；N≤2^(k-1)</td>
+</tr>
+<tr>
+<td>TCP 头</td>
+<td>20 字节；Seq/ACK/窗口/标志</td>
+</tr>
+<tr>
+<td>RTT</td>
+<td><code>0.875·Est + 0.125·Sample</code>；<code>Timeout=Est+4Dev</code></td>
+</tr>
+<tr>
+<td>快速重传</td>
+<td>3 个重复 ACK</td>
+</tr>
+<tr>
+<td>流量控制</td>
+<td>rwnd；接收方缓冲</td>
+</tr>
+<tr>
+<td>拥塞控制</td>
+<td>cwnd；AIMD；慢启动；CUBIC</td>
+</tr>
+<tr>
+<td>三次握手</td>
+<td>SYN / SYN-ACK / ACK</td>
+</tr>
+<tr>
+<td>吞吐</td>
+<td><code>0.75·W/RTT</code></td>
+</tr>
+<tr>
+<td>QUIC</td>
+<td>UDP；流级多路复用；0/1-RTT</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../ch2-application/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 第 2 章 · 应用层">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                第 2 章 · 应用层
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      个人复习整理 · 非官方资料 · 课件版权归授课教师所有
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.sections", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/table-wrap.js"></script>
+      
+        <script src="../../javascripts/glossary.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
