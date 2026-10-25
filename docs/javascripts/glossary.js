@@ -232,14 +232,263 @@ const GLOSSARY = {
     "接收窗口"
   ]
 };
+
+const GLOSSARY_EN = {
+  "ACK": [
+    "Acknowledgement",
+    "Acknowledgement"
+  ],
+  "AIMD": [
+    "Additive Increase Multiplicative Decrease",
+    "Additive increase, multiplicative decrease"
+  ],
+  "API": [
+    "Application Programming Interface",
+    "Application programming interface"
+  ],
+  "ASCII": [
+    "American Standard Code for Information Interchange",
+    "American Standard Code for Information Interchange"
+  ],
+  "CBR": [
+    "Constant Bit Rate",
+    "Constant bit rate"
+  ],
+  "CDN": [
+    "Content Distribution Network",
+    "Content distribution network"
+  ],
+  "CNAME": [
+    "Canonical Name record",
+    "Canonical name / alias record"
+  ],
+  "cwnd": [
+    "Congestion Window",
+    "Congestion window"
+  ],
+  "DASH": [
+    "Dynamic Adaptive Streaming over HTTP",
+    "Dynamic adaptive streaming over HTTP"
+  ],
+  "DHCP": [
+    "Dynamic Host Configuration Protocol",
+    "Dynamic host configuration protocol"
+  ],
+  "DNS": [
+    "Domain Name System",
+    "Domain name system"
+  ],
+  "DNSSEC": [
+    "DNS Security Extensions",
+    "DNS security extensions"
+  ],
+  "DSL": [
+    "Digital Subscriber Line",
+    "Digital subscriber line"
+  ],
+  "DSLAM": [
+    "Digital Subscriber Line Access Multiplexer",
+    "DSL access multiplexer"
+  ],
+  "ECN": [
+    "Explicit Congestion Notification",
+    "Explicit congestion notification"
+  ],
+  "FIN": [
+    "Finish",
+    "Finish flag"
+  ],
+  "FTTH": [
+    "Fiber To The Home",
+    "Fiber to the home"
+  ],
+  "GBN": [
+    "Go-Back-N",
+    "Go-Back-N protocol"
+  ],
+  "HFC": [
+    "Hybrid Fiber Coax",
+    "Hybrid fiber coax network"
+  ],
+  "HOL": [
+    "Head-of-Line",
+    "Head-of-line blocking"
+  ],
+  "HTTP": [
+    "HyperText Transfer Protocol",
+    "Hypertext transfer protocol"
+  ],
+  "HTTPS": [
+    "HyperText Transfer Protocol Secure",
+    "Secure hypertext transfer protocol"
+  ],
+  "ICMP": [
+    "Internet Control Message Protocol",
+    "Internet control message protocol"
+  ],
+  "IMAP": [
+    "Internet Message Access Protocol",
+    "Internet message access protocol"
+  ],
+  "IP": [
+    "Internet Protocol",
+    "Internet protocol"
+  ],
+  "ISP": [
+    "Internet Service Provider",
+    "Internet service provider"
+  ],
+  "IXP": [
+    "Internet Exchange Point",
+    "Internet exchange point"
+  ],
+  "MAC": [
+    "Media Access Control",
+    "Media access control (network interface card address)"
+  ],
+  "MIME": [
+    "Multipurpose Internet Mail Extensions",
+    "Multipurpose internet mail extensions"
+  ],
+  "MSS": [
+    "Maximum Segment Size",
+    "Maximum segment size"
+  ],
+  "MX": [
+    "Mail Exchanger record",
+    "Mail exchanger record"
+  ],
+  "NAK": [
+    "Negative Acknowledgement",
+    "Negative acknowledgement"
+  ],
+  "NAT": [
+    "Network Address Translation",
+    "Network address translation"
+  ],
+  "NS": [
+    "Name Server record",
+    "Name server record"
+  ],
+  "OSI": [
+    "Open Systems Interconnection",
+    "Open systems interconnection reference model"
+  ],
+  "OTT": [
+    "Over-The-Top",
+    "Internet content service that goes over the top of traditional operators"
+  ],
+  "P2P": [
+    "Peer-to-Peer",
+    "Peer-to-peer network"
+  ],
+  "PDU": [
+    "Protocol Data Unit",
+    "Protocol data unit"
+  ],
+  "POP3": [
+    "Post Office Protocol version 3",
+    "Post Office Protocol version 3"
+  ],
+  "PSH": [
+    "Push",
+    "Push flag"
+  ],
+  "QUIC": [
+    "Quick UDP Internet Connections",
+    "Fast transport protocol over UDP"
+  ],
+  "RR": [
+    "Resource Record",
+    "Resource record"
+  ],
+  "RST": [
+    "Reset",
+    "Reset flag"
+  ],
+  "RTT": [
+    "Round-Trip Time",
+    "Round-trip time"
+  ],
+  "rwnd": [
+    "Receive Window",
+    "Receive window"
+  ],
+  "SMTP": [
+    "Simple Mail Transfer Protocol",
+    "Simple mail transfer protocol"
+  ],
+  "SNMP": [
+    "Simple Network Management Protocol",
+    "Simple network management protocol"
+  ],
+  "SR": [
+    "Selective Repeat",
+    "Selective Repeat protocol"
+  ],
+  "SYN": [
+    "Synchronize",
+    "Synchronize flag"
+  ],
+  "TCP": [
+    "Transmission Control Protocol",
+    "Transmission control protocol"
+  ],
+  "TLD": [
+    "Top-Level Domain",
+    "Top-level domain"
+  ],
+  "TLS": [
+    "Transport Layer Security",
+    "Transport Layer Security protocol"
+  ],
+  "TTL": [
+    "Time To Live",
+    "Time to live"
+  ],
+  "UA": [
+    "User Agent",
+    "User agent"
+  ],
+  "UDP": [
+    "User Datagram Protocol",
+    "User datagram protocol"
+  ],
+  "URG": [
+    "Urgent",
+    "Urgent flag"
+  ],
+  "URL": [
+    "Uniform Resource Locator",
+    "Uniform resource locator"
+  ],
+  "VBR": [
+    "Variable Bit Rate",
+    "Variable bit rate"
+  ],
+  "Kerckhoffs": [
+    "Kerckhoffs's principle: security depends only on the key, not on keeping the algorithm secret",
+    "[Chapter 1 · 2.1 Basic vocabulary](review/ch1-intro.md)"
+  ],
+  "Saltzer & Schroeder": [
+    "Security design principles: open design, economy of mechanism, least privilege, etc.",
+    "[Chapter 1 · 1.4](review/ch1-intro.md)"
+  ],
+  "BitTorrent": [
+    "P2P file distribution protocol",
+    "[Chapter 2 · 5.2](review/ch2-application.md)"
+  ]
+};
+
 (function () {
   function esc(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
   function expand() {
-    if (!(document.documentElement.lang || '').toLowerCase().startsWith('zh')) return;
     if (location.pathname.indexOf('/glossary/') !== -1) return;
+    var lang = (document.documentElement.lang || '').toLowerCase();
+    var dict = lang.indexOf('zh') === 0 ? GLOSSARY : GLOSSARY_EN;
     if (location.pathname.indexOf('/review/') === -1 && location.pathname.indexOf('/hw/') === -1) return;
     var root = document.querySelector('.md-typeset');
-    if (!root || root.dataset.glossaryDone) return;
+    if (!root || root.dataset.glossaryDone || !root.querySelector('h1, p')) return;
     root.dataset.glossaryDone = '1';
 
     var skip = {CODE:1, PRE:1, H1:1, H2:1, H3:1, H4:1, H5:1, H6:1, A:1, TD:1, TH:1, SCRIPT:1, STYLE:1};
@@ -256,7 +505,7 @@ const GLOSSARY = {
     var nodes = [];
     while (walker.nextNode()) nodes.push(walker.currentNode);
 
-    var terms = Object.keys(GLOSSARY).sort(function (a, b) { return b.length - a.length; });
+    var terms = Object.keys(dict).sort(function (a, b) { return b.length - a.length; });
     var rx = new RegExp('(?<![A-Za-z0-9])(' + terms.map(esc).join('|') + ')(?![A-Za-z0-9])', 'g');
     var done = Object.create(null);
 
@@ -267,15 +516,18 @@ const GLOSSARY = {
       rx.lastIndex = 0;
       while ((m = rx.exec(text)) !== null) {
         var term = m[1];
-        if (done[term]) continue;
+        if (done[term] || !dict[term]) continue;
         var start = m.index, end = start + term.length;
         var before = text.slice(0, start);
         var after = text.slice(end);
         if (/^[（(]/.test(after)) continue;
         if (/[（(]$/.test(before)) continue;
         if (after.charAt(0) === '-') continue;
-        var info = GLOSSARY[term];
-        out += text.slice(last, start) + term + '（' + info[0] + '，' + info[1] + '）';
+        var info = dict[term];
+        var open = lang.indexOf('zh') === 0 ? '（' : ' (';
+        var sep = lang.indexOf('zh') === 0 ? '，' : ', ';
+        var close = lang.indexOf('zh') === 0 ? '）' : ')';
+        out += text.slice(last, start) + term + open + info[0] + sep + info[1] + close;
         last = end;
         done[term] = true;
       }
@@ -285,6 +537,8 @@ const GLOSSARY = {
       }
     });
   }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', expand);
+  else setTimeout(expand, 0);
+  window.addEventListener('load', expand);
   if (typeof document$ !== 'undefined') document$.subscribe(expand);
-  else document.addEventListener('DOMContentLoaded', expand);
 })();

@@ -10,12 +10,19 @@
       document.querySelectorAll('a[href="https://dionysus23334.github.io/study-blogs/"]').forEach(function (el) {
         el.href = 'https://dionysus23334.github.io/study-blogs/en/';
       });
+      var labels = {'切换到深色模式': 'Switch to dark mode', '切换到浅色模式': 'Switch to light mode'};
+      document.querySelectorAll('[aria-label], [title]').forEach(function (el) {
+        ['aria-label', 'title'].forEach(function (attr) {
+          var v = el.getAttribute(attr);
+          if (v && labels[v]) el.setAttribute(attr, labels[v]);
+        });
+      });
     }
     var a = document.createElement('a');
     a.className = 'lang-text';
     a.href = link.href;
-    a.textContent = other === 'en' ? 'EN' : '中文';
-    a.title = other === 'en' ? 'English version' : '中文版';
+    a.textContent = other === 'en' ? 'EN' : 'ZH';
+    a.title = other === 'en' ? 'English version' : 'Chinese version';
     a.setAttribute('hreflang', other);
     var anchor = header.querySelector('.md-header__option');
     if (anchor) header.insertBefore(a, anchor);
