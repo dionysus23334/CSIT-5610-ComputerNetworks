@@ -345,18 +345,18 @@ Format: `(name, value, type, ttl)`.
 
 **Client-Server**
 
-```
-D_cs = max{ N·F / u_s , F / d_min }
-```
+\[
+D_{\text{cs}} = \max\left\{\frac{NF}{u_s},\ \frac{F}{d_{\min}}\right\}
+\]
 
 - the server must upload N copies: `N·F/u_s`;
 - the slowest client's download: `F/d_min`.
 
 **P2P**
 
-```
-D_p2p = max{ F/u_s , F/d_min , N·F / (u_s + Σ u_i) }
-```
+\[
+D_{\text{p2p}} = \max\left\{\frac{F}{u_s},\ \frac{F}{d_{\min}},\ \frac{NF}{u_s + \sum_i u_i}\right\}
+\]
 
 - the server must upload at least one copy: `F/u_s`;
 - the slowest client: `F/d_min`;

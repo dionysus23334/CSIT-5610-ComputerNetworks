@@ -126,9 +126,9 @@
 
 **Store-and-forward delay over two links** (no queueing or processing):
 
-```
-d = 2L/R
-```
+\[
+d = \frac{2L}{R}
+\]
 
 ### 3.3 Circuit switching ★★
 
@@ -161,9 +161,9 @@ d = 2L/R
 
 ### 4.1 The four sources of delay ★★
 
-```
-d_nodal = d_proc + d_queue + d_trans + d_prop
-```
+\[
+d_{\text{nodal}} = d_{\text{proc}} + d_{\text{queue}} + d_{\text{trans}} + d_{\text{prop}}
+\]
 
 | Component | Formula / determining factor | Magnitude |
 |---|---|---|
@@ -182,9 +182,9 @@ d_nodal = d_proc + d_queue + d_trans + d_prop
 
 ### 4.2 Traffic intensity and queueing ★★
 
-```
-traffic intensity = La/R
-```
+\[
+\text{traffic intensity} = \frac{La}{R}
+\]
 
 - `a`: average packet arrival rate (packets/sec); `L`: packet length (bits); `R`: link bandwidth (bit transmission rate).
 - `La/R ≈ 0`: average queueing delay is small;
@@ -204,9 +204,9 @@ traffic intensity = La/R
 
 - End-end throughput = the rate of the **bottleneck link**:
 
-```
-throughput = min(R_s, R_c, ...)
-```
+\[
+\text{throughput} = \min(R_s, R_c, \ldots)
+\]
 
 - If 10 connections (fairly) share backbone `R`, each connection's throughput ≈ `min(R_s, R_c, R/10)`.
 - The bottleneck is usually the access link (`R_s` or `R_c`), not the core backbone.

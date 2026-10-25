@@ -345,18 +345,18 @@ Content-Type: text/html\r\n
 
 **Client-Server**
 
-```
-D_cs = max{ N·F / u_s , F / d_min }
-```
+\[
+D_{\text{cs}} = \max\left\{\frac{NF}{u_s},\ \frac{F}{d_{\min}}\right\}
+\]
 
 - 服务器必须上传 N 份：`N·F/u_s`；
 - 最慢客户端下载：`F/d_min`。
 
 **P2P**
 
-```
-D_p2p = max{ F/u_s , F/d_min , N·F / (u_s + Σ u_i) }
-```
+\[
+D_{\text{p2p}} = \max\left\{\frac{F}{u_s},\ \frac{F}{d_{\min}},\ \frac{NF}{u_s + \sum_i u_i}\right\}
+\]
 
 - 服务器至少上传一份：`F/u_s`；
 - 最慢客户端：`F/d_min`；

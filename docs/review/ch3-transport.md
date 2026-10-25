@@ -140,9 +140,9 @@ deliver_data(data)    // 交给上层
 
 ### 3.7 stop-and-wait 性能 ★★
 
-```
-U_sender = (L/R) / (RTT + L/R)
-```
+\[
+U_{\text{sender}} = \frac{L/R}{RTT + L/R}
+\]
 
 **例**（课件）：1 Gbps 链路，单向传播 15 ms（RTT=30 ms），8000 bit 包。
 - `L/R = 8000/10⁹ = 8 µs = 0.008 ms`
@@ -187,9 +187,9 @@ U_sender = (L/R) / (RTT + L/R)
 
 **窗口约束**：
 
-```
-N ≤ 2^(k-1)
-```
+\[
+N \le 2^{k-1}
+\]
 
 - k 为序号位数；序号空间 2^k，窗口不能超过一半，否则无法区分“新包”和“旧包的重传”。
 - 例：k=2（序号 0..3），N 最大 2；N=3 会出现接收方把旧包当新包的歧义。
@@ -253,11 +253,13 @@ N ≤ 2^(k-1)
 
 ### 5.4 RTT 估计与超时 ★★
 
-```
-EstimatedRTT = (1-α)·EstimatedRTT + α·SampleRTT        α = 0.125
-DevRTT      = (1-β)·DevRTT + β·|SampleRTT - EstimatedRTT|   β = 0.25
-TimeoutInterval = EstimatedRTT + 4·DevRTT
-```
+\[
+\begin{aligned}
+\text{EstimatedRTT} &= (1-\alpha)\cdot\text{EstimatedRTT} + \alpha\cdot\text{SampleRTT}, & \alpha &= 0.125\\
+\text{DevRTT} &= (1-\beta)\cdot\text{DevRTT} + \beta\cdot|\text{SampleRTT} - \text{EstimatedRTT}|, & \beta &= 0.25\\
+\text{TimeoutInterval} &= \text{EstimatedRTT} + 4\cdot\text{DevRTT}
+\end{aligned}
+\]
 
 - `EstimatedRTT`：平滑的 RTT 估计。
 - `DevRTT`：RTT 偏差（抖动）。
@@ -401,9 +403,9 @@ TimeoutInterval = EstimatedRTT + 4·DevRTT
 
 ### 6.9 TCP 吞吐（补充）
 
-```
-avg throughput ≈ 0.75·W / RTT
-```
+\[
+\text{avg throughput} \approx \frac{0.75W}{RTT}
+\]
 
 - W 为丢包时的窗口大小；平均窗口约 `3/4 W`。
 - 丢包率 L 时（Mathis）：`throughput ≈ 1.22·MSS / (RTT·√L)`。

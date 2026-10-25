@@ -149,9 +149,9 @@
 
 **四种延迟 ★★**
 
-```
-d_nodal = d_proc + d_queue + d_trans + d_prop
-```
+\[
+d_{\text{nodal}} = d_{\text{proc}} + d_{\text{queue}} + d_{\text{trans}} + d_{\text{prop}}
+\]
 
 | 分量 | 公式/含义 |
 |---|---|
@@ -162,9 +162,9 @@ d_nodal = d_proc + d_queue + d_trans + d_prop
 
 **流量强度（traffic intensity）★**
 
-```
-La/R
-```
+\[
+\text{traffic intensity} = \frac{La}{R}
+\]
 
 - `a`：平均到达速率（包/秒）；`L`：包长；`R`：链路速率。
 - `La/R ≈ 0`：排队延迟小；`→ 1`：延迟急剧增大；`> 1`：队列无限增长（实际会丢包）。
@@ -459,9 +459,9 @@ La/R
 
 **stop-and-wait 性能 ★**
 
-```
-U_sender = (L/R) / (RTT + L/R)
-```
+\[
+U_{\text{sender}} = \frac{L/R}{RTT + L/R}
+\]
 
 - 例：1 Gbps 链路、15 ms RTT、1 KB 包 → U ≈ 0.00027，效率极低。
 - 解决：**流水线（pipelining）**：允许多个未确认包同时在途。
@@ -519,11 +519,13 @@ U_sender = (L/R) / (RTT + L/R)
 
 **RTT 估计与超时 ★**
 
-```
-EstimatedRTT = (1-α)·EstimatedRTT + α·SampleRTT      α = 0.125
-DevRTT      = (1-β)·DevRTT + β·|SampleRTT - EstimatedRTT|   β = 0.25
-TimeoutInterval = EstimatedRTT + 4·DevRTT
-```
+\[
+\begin{aligned}
+\text{EstimatedRTT} &= (1-\alpha)\cdot\text{EstimatedRTT} + \alpha\cdot\text{SampleRTT}, & \alpha &= 0.125\\
+\text{DevRTT} &= (1-\beta)\cdot\text{DevRTT} + \beta\cdot|\text{SampleRTT} - \text{EstimatedRTT}|, & \beta &= 0.25\\
+\text{TimeoutInterval} &= \text{EstimatedRTT} + 4\cdot\text{DevRTT}
+\end{aligned}
+\]
 
 - 超时太长 → 反应慢；太短 → 不必要的重传。
 

@@ -140,9 +140,9 @@ Add channel assumptions step by step: **reliable → bit errors → packet loss*
 
 ### 3.7 stop-and-wait performance ★★
 
-```
-U_sender = (L/R) / (RTT + L/R)
-```
+\[
+U_{\text{sender}} = \frac{L/R}{RTT + L/R}
+\]
 
 **Example** (slides): 1 Gbps link, 15 ms one-way propagation (RTT=30 ms), 8000-bit packet.
 - `L/R = 8000/10⁹ = 8 µs = 0.008 ms`
@@ -187,9 +187,9 @@ U_sender = (L/R) / (RTT + L/R)
 
 **Window constraint**:
 
-```
-N ≤ 2^(k-1)
-```
+\[
+N \le 2^{k-1}
+\]
 
 - k is the number of sequence-number bits; the sequence-number space is 2^k, and the window cannot exceed half of it, otherwise “new packet” and “retransmission of an old packet” cannot be distinguished.
 - Example: k=2 (sequence numbers 0..3), N at most 2; with N=3 the receiver will mistake an old packet for a new one.
@@ -253,11 +253,13 @@ N ≤ 2^(k-1)
 
 ### 5.4 RTT estimation and timeout ★★
 
-```
-EstimatedRTT = (1-α)·EstimatedRTT + α·SampleRTT        α = 0.125
-DevRTT      = (1-β)·DevRTT + β·|SampleRTT - EstimatedRTT|   β = 0.25
-TimeoutInterval = EstimatedRTT + 4·DevRTT
-```
+\[
+\begin{aligned}
+\text{EstimatedRTT} &= (1-\alpha)\cdot\text{EstimatedRTT} + \alpha\cdot\text{SampleRTT}, & \alpha &= 0.125\\
+\text{DevRTT} &= (1-\beta)\cdot\text{DevRTT} + \beta\cdot|\text{SampleRTT} - \text{EstimatedRTT}|, & \beta &= 0.25\\
+\text{TimeoutInterval} &= \text{EstimatedRTT} + 4\cdot\text{DevRTT}
+\end{aligned}
+\]
 
 - `EstimatedRTT`: the smoothed RTT estimate.
 - `DevRTT`: RTT deviation (jitter).
@@ -401,9 +403,9 @@ client → server: ACK, ack=y+1
 
 ### 6.9 TCP throughput (supplement)
 
-```
-avg throughput ≈ 0.75·W / RTT
-```
+\[
+\text{avg throughput} \approx \frac{0.75W}{RTT}
+\]
 
 - W is the window size at loss; the average window is about `3/4 W`.
 - With loss rate L (Mathis): `throughput ≈ 1.22·MSS / (RTT·√L)`.

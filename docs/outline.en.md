@@ -149,9 +149,9 @@ browser --HTTP--> TCP connection (three-way handshake) --IP--> routers forward h
 
 **Four sources of delay ★★**
 
-```
-d_nodal = d_proc + d_queue + d_trans + d_prop
-```
+\[
+d_{\text{nodal}} = d_{\text{proc}} + d_{\text{queue}} + d_{\text{trans}} + d_{\text{prop}}
+\]
 
 | Component | Formula / meaning |
 |---|---|
@@ -162,9 +162,9 @@ d_nodal = d_proc + d_queue + d_trans + d_prop
 
 **Traffic intensity ★**
 
-```
-La/R
-```
+\[
+\text{traffic intensity} = \frac{La}{R}
+\]
 
 - `a`: average arrival rate (packets/sec); `L`: packet length; `R`: link transmission rate.
 - `La/R ≈ 0`: queueing delay is small; `→ 1`: delay grows sharply; `> 1`: the queue grows without bound (in practice packets are lost).
@@ -459,9 +459,9 @@ length (16)      | checksum (16)
 
 **stop-and-wait performance ★**
 
-```
-U_sender = (L/R) / (RTT + L/R)
-```
+\[
+U_{\text{sender}} = \frac{L/R}{RTT + L/R}
+\]
 
 - Example: 1 Gbps link, 15 ms RTT, 1 KB packet → U ≈ 0.00027, extremely low utilization.
 - Fix: **pipelining**: allow multiple not-yet-acknowledged packets to be in flight at the same time.
@@ -519,11 +519,13 @@ options          | data
 
 **RTT estimation and timeout ★**
 
-```
-EstimatedRTT = (1-α)·EstimatedRTT + α·SampleRTT      α = 0.125
-DevRTT      = (1-β)·DevRTT + β·|SampleRTT - EstimatedRTT|   β = 0.25
-TimeoutInterval = EstimatedRTT + 4·DevRTT
-```
+\[
+\begin{aligned}
+\text{EstimatedRTT} &= (1-\alpha)\cdot\text{EstimatedRTT} + \alpha\cdot\text{SampleRTT}, & \alpha &= 0.125\\
+\text{DevRTT} &= (1-\beta)\cdot\text{DevRTT} + \beta\cdot|\text{SampleRTT} - \text{EstimatedRTT}|, & \beta &= 0.25\\
+\text{TimeoutInterval} &= \text{EstimatedRTT} + 4\cdot\text{DevRTT}
+\end{aligned}
+\]
 
 - Timeout too long → slow reaction to segment loss; too short → unnecessary retransmissions.
 

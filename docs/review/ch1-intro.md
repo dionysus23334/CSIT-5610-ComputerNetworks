@@ -126,9 +126,9 @@
 
 **两段链路的存储转发延迟**（无排队/处理）：
 
-```
-d = 2L/R
-```
+\[
+d = \frac{2L}{R}
+\]
 
 ### 3.3 电路交换（circuit switching）★★
 
@@ -161,9 +161,9 @@ d = 2L/R
 
 ### 4.1 四种延迟 ★★
 
-```
-d_nodal = d_proc + d_queue + d_trans + d_prop
-```
+\[
+d_{\text{nodal}} = d_{\text{proc}} + d_{\text{queue}} + d_{\text{trans}} + d_{\text{prop}}
+\]
 
 | 分量 | 公式/决定因素 | 量级 |
 |---|---|---|
@@ -182,9 +182,9 @@ d_nodal = d_proc + d_queue + d_trans + d_prop
 
 ### 4.2 流量强度与排队 ★★
 
-```
-traffic intensity = La/R
-```
+\[
+\text{traffic intensity} = \frac{La}{R}
+\]
 
 - `a`：平均到达速率（包/秒）；`L`：包长（bit）；`R`：链路速率（bps）。
 - `La/R ≈ 0`：排队延迟小；
@@ -204,9 +204,9 @@ traffic intensity = La/R
 
 - 端到端吞吐 = **瓶颈链路**速率：
 
-```
-throughput = min(R_s, R_c, ...)
-```
+\[
+\text{throughput} = \min(R_s, R_c, \ldots)
+\]
 
 - 若 10 条连接公平共享骨干 `R`，每条吞吐 ≈ `min(R_s, R_c, R/10)`。
 - 瓶颈通常是接入链路（`R_s` 或 `R_c`），而不是核心骨干。
