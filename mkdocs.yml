@@ -27,7 +27,6 @@ theme:
         icon: material/brightness-4
         name: 切换到浅色模式
   features:
-    - navigation.instant
     - navigation.tracking
     - navigation.sections
     - navigation.top
@@ -53,6 +52,35 @@ plugins:
       lang:
         - zh
         - en
+  - i18n:
+      docs_structure: suffix
+      fallback_to_default: true
+      languages:
+        - locale: zh
+          name: 中文
+          default: true
+          build: true
+          site_name: CSIT5610 计算机网络复习笔记
+          site_description: HKUST CSIT5610 Computer Networks 复习资料
+        - locale: en
+          name: English
+          build: true
+          site_name: CSIT5610 Computer Networks Review Notes
+          site_description: HKUST CSIT5610 Computer Networks — review notes
+          site_url: https://dionysus23334.github.io/CSIT-5610-ComputerNetworks/en/
+          copyright: Personal study notes · Unofficial · Course materials remain the property of the instructor.
+          theme:
+            language: en
+          nav_translations:
+            '← 个人主页': '← Study archive'
+            '首页': 'Home'
+            '知识大纲': 'Outline'
+            '术语表': 'Glossary'
+            '分章复习': 'Chapters'
+            '总目录': 'All chapters'
+            '第 1 章 · 计算机网络导论': 'Chapter 1 · Introduction'
+            '第 2 章 · 应用层': 'Chapter 2 · Application Layer'
+            '第 3 章 · 传输层': 'Chapter 3 · Transport Layer'
 
 markdown_extensions:
   - admonition
@@ -87,6 +115,16 @@ extra_css:
 
 extra_javascript:
   - javascripts/table-wrap.js
+  - javascripts/lang-switch.js
   - javascripts/glossary.js
   - javascripts/mathjax.js
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+extra:
+  alternate:
+    - name: 中文
+      link: https://dionysus23334.github.io/CSIT-5610-ComputerNetworks/
+      lang: zh
+    - name: English
+      link: https://dionysus23334.github.io/CSIT-5610-ComputerNetworks/en/
+      lang: en

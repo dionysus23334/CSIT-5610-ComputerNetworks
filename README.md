@@ -4,7 +4,11 @@
 >
 > 基于 Kurose & Ross, *Computer Networking: A Top-Down Approach*, 8th ed. 的课件整理；非官方资料，课件版权归授课教师与原作者所有。
 
-**在线阅读**：<https://dionysus23334.github.io/CSIT-5610-ComputerNetworks/>
+**在线阅读（中文）**：<https://dionysus23334.github.io/CSIT-5610-ComputerNetworks/>
+
+**English edition**：<https://dionysus23334.github.io/CSIT-5610-ComputerNetworks/en/>
+
+> 右上角 `EN / 中文` 可在当前页面直接切换语言。
 
 ## 内容
 

@@ -235,6 +235,7 @@ const GLOSSARY = {
 (function () {
   function esc(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
   function expand() {
+    if (!(document.documentElement.lang || '').toLowerCase().startsWith('zh')) return;
     if (location.pathname.indexOf('/glossary/') !== -1) return;
     if (location.pathname.indexOf('/review/') === -1 && location.pathname.indexOf('/hw/') === -1) return;
     var root = document.querySelector('.md-typeset');

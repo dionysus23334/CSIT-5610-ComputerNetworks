@@ -561,3 +561,24 @@ body {
 .md-typeset .highlight .gt { color: #fca5a5; }
 .md-typeset .highlight .gs { font-weight: 600; }
 .md-typeset .highlight .w { color: inherit; }
+
+/* language switch (same page, other language) */
+.md-header .md-select { display: none; }
+.md-header .lang-text {
+  display: inline-flex; align-items: center; justify-content: center;
+  margin-right: .35rem; padding: .22rem .5rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: .25rem;
+  color: var(--md-default-fg-color--light);
+  font: 600 .62rem/1 var(--mono, monospace);
+  letter-spacing: .06em;
+  text-decoration: none;
+  transition: color .2s, border-color .2s;
+}
+.md-header .lang-text:hover {
+  color: var(--md-primary-fg-color);
+  border-color: var(--md-primary-fg-color);
+}
+@media (max-width: 600px) {
+  .md-header .lang-text { margin-right: .2rem; padding: .2rem .4rem; }
+}
