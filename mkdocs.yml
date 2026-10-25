@@ -38,6 +38,7 @@ theme:
     - toc.follow
 
 nav:
+  - ← 个人主页: https://dionysus23334.github.io/study-blogs/
   - 首页: index.md
   - 知识大纲: outline.md
   - 术语表: glossary.md

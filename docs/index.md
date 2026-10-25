@@ -4,6 +4,8 @@
 >
 > 非官方资料；课程内容与课件版权归授课教师与原作者所有。
 
+[← 返回个人主页 / Study archive](https://dionysus23334.github.io/study-blogs/)
+
 ## 从这里开始
 
 - [**知识大纲**](outline.md) —— 三章知识地图、协议栈主线、公式速记、30+ 道自测
