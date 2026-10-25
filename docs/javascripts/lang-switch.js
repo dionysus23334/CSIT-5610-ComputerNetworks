@@ -2,6 +2,8 @@
   function addSwitch() {
     var header = document.querySelector('.md-header__inner');
     if (!header || header.querySelector('.lang-text')) return;
+    var select = header.querySelector('.md-select');
+    if (select) select.remove();
     var lang = (document.documentElement.lang || 'en').toLowerCase().slice(0, 2);
     var other = lang === 'zh' ? 'en' : 'zh';
     var link = document.querySelector('link[rel="alternate"][hreflang="' + other + '"]');
