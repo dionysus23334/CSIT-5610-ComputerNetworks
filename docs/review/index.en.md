@@ -41,15 +41,15 @@
 
 | Type | Chapter | Key formula |
 |---|---|---|
-| The four sources of delay | 1 | `d = d_proc + d_queue + L/R + d/s` |
+| The four sources of delay | 1 | <span class="mchip">\(d = d_{\text{proc}} + d_{\text{queue}} + L/R + d/s\)</span> |
 | Traffic intensity / queueing | 1 | <span class="mchip">\(La/R\)</span> |
 | Throughput / bottleneck | 1 | `min(R_s,R_c,...)` |
 | Non-persistent HTTP | 2 | `2 RTT + L/R` |
 | Persistent HTTP | 2 | 1 RTT to initiate the TCP connection; with pipelining, as little as 1 RTT in total |
 | P2P file distribution | 2 | `max{F/u_s, F/d_min, NF/(u_s+Σu_i)}` |
-| stop-and-wait | 3 | `U=(L/R)/(RTT+L/R)` |
-| TCP RTT / timeout | 3 | `Est=0.875Est+0.125Sample`; `Timeout=Est+4Dev` |
-| TCP throughput | 3 | `0.75·W/RTT` |
+| stop-and-wait | 3 | <span class="mchip">\(U=(L/R)/(RTT+L/R)\)</span> |
+| TCP RTT / timeout | 3 | <span class="mchip">\(\text{Est}=0.875\text{Est}+0.125\text{Sample}\)</span>; <span class="mchip">\(\text{Timeout}=\text{Est}+4\text{Dev}\)</span> |
+| TCP throughput | 3 | <span class="mchip">\(0.75\cdot W/RTT\)</span> |
 
 ---
 

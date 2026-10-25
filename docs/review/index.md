@@ -41,15 +41,15 @@
 
 | 类型 | 所在章 | 关键公式 |
 |---|---|---|
-| 四种延迟 | 1 | `d = d_proc + d_queue + L/R + d/s` |
+| 四种延迟 | 1 | <span class="mchip">\(d = d_{\text{proc}} + d_{\text{queue}} + L/R + d/s\)</span> |
 | 流量强度/排队 | 1 | <span class="mchip">\(La/R\)</span> |
 | 吞吐/瓶颈 | 1 | `min(R_s,R_c,...)` |
 | 非持久 HTTP | 2 | `2 RTT + L/R` |
 | 持久 HTTP | 2 | 建连 1 RTT；流水线约 1 RTT 总计 |
 | P2P 分发 | 2 | `max{F/u_s, F/d_min, NF/(u_s+Σu_i)}` |
-| stop-and-wait | 3 | `U=(L/R)/(RTT+L/R)` |
-| TCP RTT/超时 | 3 | `Est=0.875Est+0.125Sample`；`Timeout=Est+4Dev` |
-| TCP 吞吐 | 3 | `0.75·W/RTT` |
+| stop-and-wait | 3 | <span class="mchip">\(U=(L/R)/(RTT+L/R)\)</span> |
+| TCP RTT/超时 | 3 | <span class="mchip">\(\text{Est}=0.875\text{Est}+0.125\text{Sample}\)</span>；<span class="mchip">\(\text{Timeout}=\text{Est}+4\text{Dev}\)</span> |
+| TCP 吞吐 | 3 | <span class="mchip">\(0.75\cdot W/RTT\)</span> |
 
 ---
 
