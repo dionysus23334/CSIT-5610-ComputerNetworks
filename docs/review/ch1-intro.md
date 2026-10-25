@@ -14,7 +14,7 @@
 
 1. **互联网可以从两个视角看**：nuts and bolts（主机、交换机、链路、网络）和 services（为应用提供通信服务的基础设施）。
 2. **数据走网络 = 分组交换 + 分层封装**；每一层加自己的头部，路由器只处理到网络层。
-3. **性能由延迟、丢包、吞吐决定**；四个延迟分量、`La/R`、瓶颈链路是计算题的核心。
+3. **性能由延迟、丢包、吞吐决定**；四个延迟分量、<span class="mchip">\(La/R\)</span>、瓶颈链路是计算题的核心。
 
 **本章常见考法**
 
@@ -22,7 +22,7 @@
 |---|---|---|
 | 概念 | 协议三要素？nuts and bolts 四类组件？ | 背定义 + 举例 |
 | 比较 | 分组交换 vs 电路交换 | 从“资源是否预留/是否统计复用”切入 |
-| 计算 | 四种延迟、`La/R`、吞吐、存储转发 | 记公式 + 单位换算 |
+| 计算 | 四种延迟、<span class="mchip">\(La/R\)</span>、吞吐、存储转发 | 记公式 + 单位换算 |
 | 分层 | 五层/OSI 七层、封装、PDU | 画图 + 说清每层作用 |
 | 简答 | 为什么分层？路由 vs 转发？ | 用“复杂系统分解/局部 vs 全局”回答 |
 
@@ -98,10 +98,10 @@
 
 - 应用消息被切成 **packets**，长度 `L` bit。
 - 链路传输速率 `R` bps。
-- **传输延迟**：`L/R`。
+- **传输延迟**：<span class="mchip">\(L/R\)</span>。
 - 交换机 **store-and-forward**：必须收完整包、校验后才转发到下一段。
 
-**例**：L=10 Kbit，R=100 Mbps → `L/R = 10^4 / 10^8 = 0.1 ms`（课件例）。
+**例**：L=10 Kbit，R=100 Mbps → <span class="mchip">\(\tfrac{L}{R} = \tfrac{10^4}{10^8} = 0.1\ \text{ms}\)</span>（课件例）。
 
 ---
 
@@ -168,16 +168,16 @@ d_{\text{nodal}} = d_{\text{proc}} + d_{\text{queue}} + d_{\text{trans}} + d_{\t
 | 分量 | 公式/决定因素 | 量级 |
 |---|---|---|
 | **处理延迟** `d_proc` | 检查比特错误、查转发表 | 通常 < µs |
-| **排队延迟** `d_queue` | 取决于拥塞程度、`La/R` | 可从 0 到很大 |
-| **传输延迟** `d_trans` | `L/R`（包长/链路速率） | 由包长和带宽决定 |
-| **传播延迟** `d_prop` | `d/s`（距离/信号速度） | 由物理距离决定 |
+| **排队延迟** `d_queue` | 取决于拥塞程度、<span class="mchip">\(La/R\)</span> | 可从 0 到很大 |
+| **传输延迟** `d_trans` | <span class="mchip">\(L/R\)</span>（包长/链路速率） | 由包长和带宽决定 |
+| **传播延迟** `d_prop` | <span class="mchip">\(d/s\)</span>（距离/信号速度） | 由物理距离决定 |
 
-- 信号速度 `s ≈ 2×10⁸ m/s`（光纤/铜缆中约 2/3 光速）。
+- 信号速度 <span class="mchip">\(s \approx 2\times10^8\ \text{m/s}\)</span>（光纤/铜缆中约 2/3 光速）。
 - ⚠ **传输延迟 ≠ 传播延迟**：前者是“把比特推上链路”，后者是“信号在介质中跑”。
 
 **例**：L=1000 bytes=8000 bit，R=100 Mbps，d=2000 km，s=2×10⁸ m/s。
-- `d_trans = 8000 / 10⁸ = 80 µs`
-- `d_prop = 2×10⁶ / 2×10⁸ = 10 ms`
+- <span class="mchip">\(d_{\text{trans}} = \tfrac{8000}{10^8} = 80\ \mu\text{s}\)</span>
+- <span class="mchip">\(d_{\text{prop}} = \tfrac{2\times10^6}{2\times10^8} = 10\ \text{ms}\)</span>
 - 总延迟 ≈ **10.08 ms**（传播占主导）。
 
 ### 4.2 流量强度与排队 ★★
@@ -187,12 +187,12 @@ d_{\text{nodal}} = d_{\text{proc}} + d_{\text{queue}} + d_{\text{trans}} + d_{\t
 \]
 
 - `a`：平均到达速率（包/秒）；`L`：包长（bit）；`R`：链路速率（bps）。
-- `La/R ≈ 0`：排队延迟小；
-- `La/R → 1`：排队延迟急剧增大；
+- <span class="mchip">\(\tfrac{La}{R} \approx 0\)</span>：排队延迟小；
+- <span class="mchip">\(\tfrac{La}{R} \to 1\)</span>：排队延迟急剧增大；
 - `La/R > 1`：到达大于服务能力，队列无限增长（实际会丢包）。
 
 **例**：L=1000 bytes=8000 bit，a=100 包/秒，R=1 Mbps：
-`La/R = 8000×100 / 10⁶ = 0.8` → 接近 1，排队延迟会明显。
+<span class="mchip">\(\tfrac{La}{R} = \tfrac{8000\times100}{10^6} = 0.8\)</span> → 接近 1，排队延迟会明显。
 
 ### 4.3 丢包（loss）
 
@@ -293,11 +293,11 @@ d_{\text{nodal}} = d_{\text{proc}} + d_{\text{queue}} + d_{\text{trans}} + d_{\t
 **题**：L=1500 bytes，R=1 Gbps，链路长 3000 km，s=2×10⁸ m/s，处理延迟 10 µs，排队延迟忽略。求节点延迟。
 
 **解**：
-- `L = 1500×8 = 12000 bit`
-- `d_trans = 12000 / 10⁹ = 12 µs`
-- `d_prop = 3×10⁶ / 2×10⁸ = 15 ms`
-- `d_proc = 10 µs`
-- `d ≈ 10 µs + 12 µs + 15 ms = 15.022 ms`
+- <span class="mchip">\(L = 1500\times8 = 12000\ \text{bit}\)</span>
+- <span class="mchip">\(d_{\text{trans}} = \tfrac{12000}{10^9} = 12\ \mu\text{s}\)</span>
+- <span class="mchip">\(d_{\text{prop}} = \tfrac{3\times10^6}{2\times10^8} = 15\ \text{ms}\)</span>
+- <span class="mchip">\(d_{\text{proc}} = 10\ \mu\text{s}\)</span>
+- <span class="mchip">\(d \approx 10\ \mu\text{s} + 12\ \mu\text{s} + 15\ \text{ms} = 15.022\ \text{ms}\)</span>
 
 **得分点**：单位换算（bytes→bits，km→m，ms/µs）；传播延迟占主导。
 
@@ -306,8 +306,8 @@ d_{\text{nodal}} = d_{\text{proc}} + d_{\text{queue}} + d_{\text{trans}} + d_{\t
 **题**：包长 10 Kbit，链路速率 100 Mbps，经过 2 段链路（1 个路由器），忽略处理/排队。求端到端传输延迟。
 
 **解**：
-- 每段 `L/R = 10⁴ / 10⁸ = 0.1 ms`
-- 存储转发两段：`2L/R = 0.2 ms`
+- 每段 <span class="mchip">\(\tfrac{L}{R} = \tfrac{10^4}{10^8} = 0.1\ \text{ms}\)</span>
+- 存储转发两段：<span class="mchip">\(\tfrac{2L}{R} = 0.2\ \text{ms}\)</span>
 
 **得分点**：路由器必须收完整包再转发；三段链路则是 `3L/R`。
 
@@ -316,7 +316,7 @@ d_{\text{nodal}} = d_{\text{proc}} + d_{\text{queue}} + d_{\text{trans}} + d_{\t
 **题**：1 Gb/s 链路，用户活跃时 100 Mb/s，活跃概率 10%。电路交换最多几个用户？分组交换为什么能支持 35 个？
 
 **解**：
-- 电路：`1 Gb/s / 100 Mb/s = 10` 个用户（每人预留）。
+- 电路：<span class="mchip">\(\tfrac{1\ \text{Gb/s}}{100\ \text{Mb/s}} = 10\)</span> 个用户（每人预留）。
 - 分组：35 个用户，同时活跃数 `X~B(35,0.1)`；`P(X>10) < 0.0004`，即绝大多数时间不超过链路容量。
 - 结论：统计复用提高利用率，但拥塞时会有排队/丢包。
 
@@ -325,8 +325,8 @@ d_{\text{nodal}} = d_{\text{proc}} + d_{\text{queue}} + d_{\text{trans}} + d_{\t
 **题**：服务器上行 10 Mbps，客户端下行 100 Mbps，骨干 1 Gbps，10 条连接公平共享骨干。求单条连接吞吐。
 
 **解**：
-- 瓶颈 = `min(10 Mbps, 100 Mbps, 1 Gbps/10 = 100 Mbps)` = **10 Mbps**。
-- 若骨干只有 50 Mbps，则 `min(10, 100, 5) = 5 Mbps`。
+- 瓶颈 = <span class="mchip">\(\min(10\ \text{Mbps}, 100\ \text{Mbps}, \tfrac{1\ \text{Gbps}}{10} = 100\ \text{Mbps})\)</span> = **10 Mbps**。
+- 若骨干只有 50 Mbps，则 <span class="mchip">\(\min(10, 100, 5) = 5\ \text{Mbps}\)</span>。
 
 ### 例 5：封装（8 分）
 
@@ -347,7 +347,7 @@ d_{\text{nodal}} = d_{\text{proc}} + d_{\text{queue}} + d_{\text{trans}} + d_{\t
 **题**：包长 1000 bytes，到达率 200 包/秒，链路 10 Mbps。求流量强度，并判断排队情况。
 
 **解**：
-- `L = 8000 bit`；`La/R = 8000×200 / 10⁷ = 1.6`。
+- <span class="mchip">\(L = 8000\ \text{bit}\)</span>；<span class="mchip">\(\tfrac{La}{R} = \tfrac{8000\times200}{10^7} = 1.6\)</span>。
 - `> 1`：到达速率超过服务速率，队列持续增长 → 严重排队/丢包。
 
 ---
@@ -356,7 +356,7 @@ d_{\text{nodal}} = d_{\text{proc}} + d_{\text{queue}} + d_{\text{trans}} + d_{\t
 
 | 错误 | 正确 |
 |---|---|
-| 传输延迟 = 传播延迟 | 传输是 `L/R`（推比特），传播是 `d/s`（信号跑） |
+| 传输延迟 = 传播延迟 | 传输是 <span class="mchip">\(L/R\)</span>（推比特），传播是 <span class="mchip">\(d/s\)</span>（信号跑） |
 | 带宽越大，传播延迟越小 | 传播延迟只由距离/介质决定，与带宽无关 |
 | 吞吐 = 链路带宽 | 吞吐 = 瓶颈链路速率，可能远小于带宽 |
 | 分组交换总是优于电路交换 | 突发流量更高效；实时/有保证业务电路交换更合适 |
@@ -364,7 +364,7 @@ d_{\text{nodal}} = d_{\text{proc}} + d_{\text{queue}} + d_{\text{trans}} + d_{\t
 | 路由器处理到应用层 | 路由器只到网络层；交换机到链路层 |
 | 五层 = OSI 七层 | 五层是 Internet 模型；OSI 有表示层/会话层 |
 | 分层越多越好 | 分层有头部/性能开销，是权衡 |
-| `La/R=1` 时延迟稳定 | `→1` 时排队延迟急剧增大，`>1` 队列无限增长 |
+| <span class="mchip">\(\tfrac{La}{R}=1\)</span> 时延迟稳定 | `→1` 时排队延迟急剧增大，`>1` 队列无限增长 |
 | 协议只定义报文格式 | 还包括顺序/时序和收到后的动作 |
 
 ---
@@ -375,7 +375,7 @@ d_{\text{nodal}} = d_{\text{proc}} + d_{\text{queue}} + d_{\text{trans}} + d_{\t
 2. 协议的三要素是什么？用“问时间”类比说明。
 3. 分组交换和电路交换的核心区别？各自优缺点？
 4. 写出节点延迟的四个分量；哪些与包长有关？
-5. `La/R` 趋近 1 时会发生什么？为什么？
+5. <span class="mchip">\(La/R\)</span> 趋近 1 时会发生什么？为什么？
 6. 传输延迟和传播延迟的区别？各自由什么决定？
 7. 五层协议栈各层的 PDU 名称？封装过程？
 8. 路由和转发的区别？
@@ -389,9 +389,9 @@ d_{\text{nodal}} = d_{\text{proc}} + d_{\text{queue}} + d_{\text{trans}} + d_{\t
 1. 主机/端系统、分组交换机（路由器/交换机）、通信链路、网络（网络的网络）。
 2. 报文格式、顺序/时序、收到报文后的动作；人类问时间→回答，网络请求→响应。
 3. 分组：统计复用、适合突发、可能排队/丢包；电路：预留资源、有保证、空闲浪费。
-4. 处理、排队、传输 `L/R`、传播 `d/s`；传输与包长有关，传播与距离/介质有关。
+4. 处理、排队、传输 <span class="mchip">\(L/R\)</span>、传播 <span class="mchip">\(d/s\)</span>；传输与包长有关，传播与距离/介质有关。
 5. 排队延迟急剧增加、缓冲区溢出丢包；到达速率持续超过输出速率。
-6. 传输：把比特推上链路，`L/R`；传播：信号在介质中跑，`d/s`。
+6. 传输：把比特推上链路，<span class="mchip">\(L/R\)</span>；传播：信号在介质中跑，<span class="mchip">\(d/s\)</span>。
 7. 应用 message、传输 segment、网络 datagram、链路 frame、物理 bit；逐层加头。
 8. 路由：全局路径选择（路由协议）；转发：本地把包从输入端口送到输出端口。
 9. 分解复杂系统、模块独立演化、标准化；代价是头部开销、层间信息隐藏。
@@ -410,8 +410,8 @@ d_{\text{nodal}} = d_{\text{proc}} + d_{\text{queue}} + d_{\text{trans}} + d_{\t
 | 电路交换 | 预留资源；FDM/TDM；10 用户例子 |
 | 分组交换 | 统计复用；存储转发；排队/丢包；35 用户例子 |
 | 延迟 | `d_proc + d_queue + d_trans + d_prop` |
-| 传输/传播 | `L/R`；`d/s` |
-| 流量强度 | `La/R`；→1 延迟大，>1 丢包 |
+| 传输/传播 | <span class="mchip">\(L/R\)</span>；<span class="mchip">\(d/s\)</span> |
+| 流量强度 | <span class="mchip">\(La/R\)</span>；→1 延迟大，>1 丢包 |
 | 吞吐 | `min(R_s,R_c,...)`；10 连接 `R/10` |
 | 五层 | 应用/传输/网络/链路/物理 |
 | PDU | message/segment/datagram/frame/bit |

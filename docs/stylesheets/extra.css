@@ -582,3 +582,16 @@ body {
 @media (max-width: 600px) {
   .md-header .lang-text { margin-right: .2rem; padding: .2rem .4rem; }
 }
+
+
+/* inline math chip */
+.mchip {
+  display: inline-block;
+  padding: 0 .28em;
+  border-radius: .22rem;
+  background: var(--md-code-bg-color);
+  color: var(--md-code-fg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  line-height: 1.5;
+}
+.mchip mjx-container { color: inherit !important; }

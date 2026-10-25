@@ -14,7 +14,7 @@
 
 1. **The Internet can be viewed from two perspectives**: nuts and bolts (hosts, switches, links, networks) and services (the infrastructure that provides communication services to applications).
 2. **Data crossing the network = packet switching + layered encapsulation**; each layer adds its own header, and routers process only up to the network layer.
-3. **Performance is determined by delay, loss, and throughput**; the four delay components, `La/R`, and the bottleneck link are the core of the calculation questions.
+3. **Performance is determined by delay, loss, and throughput**; the four delay components, <span class="mchip">\(La/R\)</span>, and the bottleneck link are the core of the calculation questions.
 
 **Common question types in this chapter**
 
@@ -22,7 +22,7 @@
 |---|---|---|
 | Concept | Three elements of a protocol? Four categories of nuts-and-bolts components? | Memorize definitions + give examples |
 | Comparison | Packet switching vs circuit switching | Start from “whether resources are reserved / whether statistical multiplexing is used” |
-| Calculation | The four delays, `La/R`, throughput, store-and-forward | Remember formulas + unit conversion |
+| Calculation | The four delays, <span class="mchip">\(La/R\)</span>, throughput, store-and-forward | Remember formulas + unit conversion |
 | Layering | Five layers / OSI seven layers, encapsulation, PDU | Draw the diagram + explain what each layer does |
 | Short answer | Why layering? Routing vs forwarding? | Answer with “decomposing a complex system / local vs global” |
 
@@ -98,10 +98,10 @@
 
 - The application message is broken into **packets** of length `L` bits.
 - Link transmission rate `R` bps.
-- **Transmission delay**: `L/R`.
+- **Transmission delay**: <span class="mchip">\(L/R\)</span>.
 - Switches **store and forward**: the entire packet must arrive (and be checked) before it can be transmitted on the next link.
 
-**Example**: L=10 Kbit, R=100 Mbps → `L/R = 10^4 / 10^8 = 0.1 ms` (the slide example).
+**Example**: L=10 Kbit, R=100 Mbps → <span class="mchip">\(\tfrac{L}{R} = \tfrac{10^4}{10^8} = 0.1\ \text{ms}\)</span> (the slide example).
 
 ---
 
@@ -168,16 +168,16 @@ d_{\text{nodal}} = d_{\text{proc}} + d_{\text{queue}} + d_{\text{trans}} + d_{\t
 | Component | Formula / determining factor | Magnitude |
 |---|---|---|
 | **Processing delay** `d_proc` | check bit errors, look up the forwarding table | typically < µs |
-| **Queueing delay** `d_queue` | depends on the congestion level, `La/R` | from 0 up to very large |
-| **Transmission delay** `d_trans` | `L/R` (packet length / link rate) | determined by packet length and bandwidth |
-| **Propagation delay** `d_prop` | `d/s` (distance / propagation speed) | determined by physical distance |
+| **Queueing delay** `d_queue` | depends on the congestion level, <span class="mchip">\(La/R\)</span> | from 0 up to very large |
+| **Transmission delay** `d_trans` | <span class="mchip">\(L/R\)</span> (packet length / link rate) | determined by packet length and bandwidth |
+| **Propagation delay** `d_prop` | <span class="mchip">\(d/s\)</span> (distance / propagation speed) | determined by physical distance |
 
-- Propagation speed `s ≈ 2×10⁸ m/s` (about 2/3 the speed of light in fiber / copper).
+- Propagation speed <span class="mchip">\(s \approx 2\times10^8\ \text{m/s}\)</span> (about 2/3 the speed of light in fiber / copper).
 - ⚠ **Transmission delay ≠ propagation delay**: the former is “pushing the bits onto the link”, the latter is “the signal traveling through the medium”.
 
 **Example**: L=1000 bytes=8000 bits, R=100 Mbps, d=2000 km, s=2×10⁸ m/s.
-- `d_trans = 8000 / 10⁸ = 80 µs`
-- `d_prop = 2×10⁶ / 2×10⁸ = 10 ms`
+- <span class="mchip">\(d_{\text{trans}} = \tfrac{8000}{10^8} = 80\ \mu\text{s}\)</span>
+- <span class="mchip">\(d_{\text{prop}} = \tfrac{2\times10^6}{2\times10^8} = 10\ \text{ms}\)</span>
 - total delay ≈ **10.08 ms** (propagation dominates).
 
 ### 4.2 Traffic intensity and queueing ★★
@@ -187,12 +187,12 @@ d_{\text{nodal}} = d_{\text{proc}} + d_{\text{queue}} + d_{\text{trans}} + d_{\t
 \]
 
 - `a`: average packet arrival rate (packets/sec); `L`: packet length (bits); `R`: link bandwidth (bit transmission rate).
-- `La/R ≈ 0`: average queueing delay is small;
-- `La/R → 1`: average queueing delay grows sharply;
+- <span class="mchip">\(\tfrac{La}{R} \approx 0\)</span>: average queueing delay is small;
+- <span class="mchip">\(\tfrac{La}{R} \to 1\)</span>: average queueing delay grows sharply;
 - `La/R > 1`: more “work” arriving than can be serviced, so the queue grows without bound (in practice, packets are lost).
 
 **Example**: L=1000 bytes=8000 bits, a=100 packets/sec, R=1 Mbps:
-`La/R = 8000×100 / 10⁶ = 0.8` → close to 1, queueing delay will be noticeable.
+<span class="mchip">\(\tfrac{La}{R} = \tfrac{8000\times100}{10^6} = 0.8\)</span> → close to 1, queueing delay will be noticeable.
 
 ### 4.3 Packet loss
 
@@ -293,11 +293,11 @@ Physical:     bit stream
 **Question**: L=1500 bytes, R=1 Gbps, link length 3000 km, s=2×10⁸ m/s, processing delay 10 µs, queueing delay negligible. Find the nodal delay.
 
 **Solution**:
-- `L = 1500×8 = 12000 bit`
-- `d_trans = 12000 / 10⁹ = 12 µs`
-- `d_prop = 3×10⁶ / 2×10⁸ = 15 ms`
-- `d_proc = 10 µs`
-- `d ≈ 10 µs + 12 µs + 15 ms = 15.022 ms`
+- <span class="mchip">\(L = 1500\times8 = 12000\ \text{bit}\)</span>
+- <span class="mchip">\(d_{\text{trans}} = \tfrac{12000}{10^9} = 12\ \mu\text{s}\)</span>
+- <span class="mchip">\(d_{\text{prop}} = \tfrac{3\times10^6}{2\times10^8} = 15\ \text{ms}\)</span>
+- <span class="mchip">\(d_{\text{proc}} = 10\ \mu\text{s}\)</span>
+- <span class="mchip">\(d \approx 10\ \mu\text{s} + 12\ \mu\text{s} + 15\ \text{ms} = 15.022\ \text{ms}\)</span>
 
 **Marking points**: unit conversion (bytes→bits, km→m, ms/µs); propagation delay dominates.
 
@@ -306,8 +306,8 @@ Physical:     bit stream
 **Question**: packet length 10 Kbit, link rate 100 Mbps, 2 links (1 router), processing / queueing ignored. Find the end-end transmission delay.
 
 **Solution**:
-- Per link `L/R = 10⁴ / 10⁸ = 0.1 ms`
-- Store-and-forward over two links: `2L/R = 0.2 ms`
+- Per link <span class="mchip">\(\tfrac{L}{R} = \tfrac{10^4}{10^8} = 0.1\ \text{ms}\)</span>
+- Store-and-forward over two links: <span class="mchip">\(\tfrac{2L}{R} = 0.2\ \text{ms}\)</span>
 
 **Marking points**: the router must receive the entire packet before forwarding; with three links it would be `3L/R`.
 
@@ -316,7 +316,7 @@ Physical:     bit stream
 **Question**: 1 Gb/s link, 100 Mb/s when a user is active, active 10% of the time. How many users can circuit switching support at most? Why can packet switching support 35?
 
 **Solution**:
-- Circuit: `1 Gb/s / 100 Mb/s = 10` users (reserved per user).
+- Circuit: <span class="mchip">\(\tfrac{1\ \text{Gb/s}}{100\ \text{Mb/s}} = 10\)</span> users (reserved per user).
 - Packet: with 35 users, the number active at the same time is `X~B(35,0.1)`; `P(X>10) < 0.0004`, i.e., the link capacity is not exceeded the vast majority of the time.
 - Conclusion: statistical multiplexing improves utilization, but under congestion there is queueing / loss.
 
@@ -325,8 +325,8 @@ Physical:     bit stream
 **Question**: server upstream 10 Mbps, client downstream 100 Mbps, backbone 1 Gbps, 10 connections fairly sharing the backbone. Find the throughput of a single connection.
 
 **Solution**:
-- Bottleneck = `min(10 Mbps, 100 Mbps, 1 Gbps/10 = 100 Mbps)` = **10 Mbps**.
-- If the backbone were only 50 Mbps, then `min(10, 100, 5) = 5 Mbps`.
+- Bottleneck = <span class="mchip">\(\min(10\ \text{Mbps}, 100\ \text{Mbps}, \tfrac{1\ \text{Gbps}}{10} = 100\ \text{Mbps})\)</span> = **10 Mbps**.
+- If the backbone were only 50 Mbps, then <span class="mchip">\(\min(10, 100, 5) = 5\ \text{Mbps}\)</span>.
 
 ### Example 5: Encapsulation (8 points)
 
@@ -347,7 +347,7 @@ Physical:     bit stream
 **Question**: packet length 1000 bytes, arrival rate 200 packets/sec, link 10 Mbps. Find the traffic intensity and judge the queueing situation.
 
 **Solution**:
-- `L = 8000 bit`; `La/R = 8000×200 / 10⁷ = 1.6`.
+- <span class="mchip">\(L = 8000\ \text{bit}\)</span>; <span class="mchip">\(\tfrac{La}{R} = \tfrac{8000\times200}{10^7} = 1.6\)</span>.
 - `> 1`: the arrival rate exceeds the service rate, so the queue keeps growing → severe queueing / loss.
 
 ---
@@ -356,7 +356,7 @@ Physical:     bit stream
 
 | Wrong statement | Correct understanding |
 |---|---|
-| Transmission delay = propagation delay | transmission is `L/R` (pushing the bits), propagation is `d/s` (the signal traveling) |
+| Transmission delay = propagation delay | transmission is <span class="mchip">\(L/R\)</span> (pushing the bits), propagation is <span class="mchip">\(d/s\)</span> (the signal traveling) |
 | Larger bandwidth means smaller propagation delay | propagation delay depends only on distance / medium, not on bandwidth |
 | Throughput = link bandwidth | throughput = rate of the bottleneck link, which may be far less than the bandwidth |
 | Packet switching is always better than circuit switching | it is more efficient for bursty traffic; circuit switching is more suitable for real-time / guaranteed services |
@@ -364,7 +364,7 @@ Physical:     bit stream
 | Routers process up to the application layer | routers go only up to the network layer; switches up to the link layer |
 | Five layers = OSI seven layers | the five layers are the Internet model; OSI has a presentation layer / session layer |
 | More layers is always better | layering costs header / performance overhead; it is a tradeoff |
-| Delay is stable when `La/R=1` | as `→1` queueing delay grows sharply; at `>1` the queue grows without bound |
+| Delay is stable when <span class="mchip">\(\tfrac{La}{R}=1\)</span> | as `→1` queueing delay grows sharply; at `>1` the queue grows without bound |
 | A protocol only defines the message format | it also defines the order / timing and the actions taken on receipt |
 
 ---
@@ -375,7 +375,7 @@ Physical:     bit stream
 2. What are the three elements of a protocol? Explain with the “asking the time” analogy.
 3. What is the core difference between packet switching and circuit switching? What are the pros and cons of each?
 4. Write out the four components of nodal delay; which of them depend on packet length?
-5. What happens as `La/R` approaches 1? Why?
+5. What happens as <span class="mchip">\(La/R\)</span> approaches 1? Why?
 6. What is the difference between transmission delay and propagation delay? What determines each?
 7. What are the PDU names at each layer of the five-layer protocol stack? How does encapsulation work?
 8. What is the difference between routing and forwarding?
@@ -389,9 +389,9 @@ Physical:     bit stream
 1. Hosts / end systems, packet switches (routers / switches), communication links, networks (a network of networks).
 2. Message format, order / timing, and the actions taken after receiving a message; a human asks the time → an answer, a network request → a response.
 3. Packet: statistical multiplexing, good for bursty traffic, possible queueing / loss; circuit: reserved resources, guarantees, wasted when idle.
-4. Processing, queueing, transmission `L/R`, propagation `d/s`; transmission depends on packet length, propagation depends on distance / medium.
+4. Processing, queueing, transmission <span class="mchip">\(L/R\)</span>, propagation <span class="mchip">\(d/s\)</span>; transmission depends on packet length, propagation depends on distance / medium.
 5. Queueing delay grows sharply and buffer overflow causes packet loss; the arrival rate keeps exceeding the output rate.
-6. Transmission: pushing the bits onto the link, `L/R`; propagation: the signal traveling through the medium, `d/s`.
+6. Transmission: pushing the bits onto the link, <span class="mchip">\(L/R\)</span>; propagation: the signal traveling through the medium, <span class="mchip">\(d/s\)</span>.
 7. Application message, transport segment, network datagram, link frame, physical bit; each layer adds its header.
 8. Routing: global path selection (routing algorithms); forwarding: locally moving packets from the input link to the output link.
 9. Decomposing a complex system, independent evolution of modules, standardization; the cost is header overhead and information hiding between layers.
@@ -410,8 +410,8 @@ Physical:     bit stream
 | Circuit switching | reserved resources; FDM/TDM; the 10-user example |
 | Packet switching | statistical multiplexing; store-and-forward; queueing / loss; the 35-user example |
 | Delay | `d_proc + d_queue + d_trans + d_prop` |
-| Transmission / propagation | `L/R`; `d/s` |
-| Traffic intensity | `La/R`; →1 means large delay, >1 means loss |
+| Transmission / propagation | <span class="mchip">\(L/R\)</span>; <span class="mchip">\(d/s\)</span> |
+| Traffic intensity | <span class="mchip">\(La/R\)</span>; →1 means large delay, >1 means loss |
 | Throughput | `min(R_s,R_c,...)`; 10 connections `R/10` |
 | Five layers | application / transport / network / link / physical |
 | PDU | message/segment/datagram/frame/bit |

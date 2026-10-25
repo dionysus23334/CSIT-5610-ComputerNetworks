@@ -42,7 +42,7 @@
 | Type | Chapter | Key formula |
 |---|---|---|
 | The four sources of delay | 1 | `d = d_proc + d_queue + L/R + d/s` |
-| Traffic intensity / queueing | 1 | `La/R` |
+| Traffic intensity / queueing | 1 | <span class="mchip">\(La/R\)</span> |
 | Throughput / bottleneck | 1 | `min(R_s,R_c,...)` |
 | Non-persistent HTTP | 2 | `2 RTT + L/R` |
 | Persistent HTTP | 2 | 1 RTT to initiate the TCP connection; with pipelining, as little as 1 RTT in total |
@@ -55,7 +55,7 @@
 
 ## One-sentence review per chapter
 
-1. **Chapter 1**: the Internet = hosts + switches + links + networks; data travels by “packet switching + layered encapsulation”; performance is about the four sources of delay, `La/R`, and bottleneck throughput.
+1. **Chapter 1**: the Internet = hosts + switches + links + networks; data travels by “packet switching + layered encapsulation”; performance is about the four sources of delay, <span class="mchip">\(La/R\)</span>, and bottleneck throughput.
 2. **Chapter 2**: application-layer protocols define message format and ordering; HTTP is stateless and relies on cookies/caches to make up for it; DNS is a hierarchical database; P2P scales through peer upload bandwidth.
 3. **Chapter 3**: the transport layer is process-to-process; reliable transfer = ACKs + sequence numbers + timers; TCP adds flow control/congestion control on top of reliability; AIMD/slow start are the core.
 

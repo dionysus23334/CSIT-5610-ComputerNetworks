@@ -145,8 +145,8 @@ U_{\text{sender}} = \frac{L/R}{RTT + L/R}
 \]
 
 **例**（课件）：1 Gbps 链路，单向传播 15 ms（RTT=30 ms），8000 bit 包。
-- `L/R = 8000/10⁹ = 8 µs = 0.008 ms`
-- `U = 0.008 / (30 + 0.008) ≈ 0.00027`
+- <span class="mchip">\(\tfrac{L}{R} = \tfrac{8000}{10^9} = 8\ \mu\text{s} = 0.008\ \text{ms}\)</span>
+- <span class="mchip">\(U = \tfrac{0.008}{30+0.008} \approx 0.00027\)</span>
 - 即发送方只有 **0.027%** 时间在发数据。
 
 **解决**：流水线（pipelining）——允许多个未确认包同时在途，利用率提高 N 倍。
@@ -296,7 +296,7 @@ N \le 2^{k-1}
 
 - 目的：防止发送方淹没接收方缓冲区。
 - 接收方在头部 **rwnd（receive window）** 通告空闲空间。
-- 发送方保证：`未确认数据 ≤ rwnd`。
+- 发送方保证：<span class="mchip">\(\text{未确认数据} \le rwnd\)</span>。
 - **与拥塞控制的区别**：
   - 流量控制：接收方限制（端到端）。
   - 拥塞控制：网络限制（全局）。
@@ -407,8 +407,8 @@ N \le 2^{k-1}
 \text{avg throughput} \approx \frac{0.75W}{RTT}
 \]
 
-- W 为丢包时的窗口大小；平均窗口约 `3/4 W`。
-- 丢包率 L 时（Mathis）：`throughput ≈ 1.22·MSS / (RTT·√L)`。
+- W 为丢包时的窗口大小；平均窗口约 <span class="mchip">\(\tfrac{3}{4}W\)</span>。
+- 丢包率 L 时（Mathis）：<span class="mchip">\(\text{throughput} \approx \tfrac{1.22\cdot\text{MSS}}{RTT\cdot\sqrt{L}}\)</span>。
 - 高带宽长延迟网络需要大窗口；丢包率必须极低。
 
 ---
@@ -431,9 +431,9 @@ N \le 2^{k-1}
 **题**：1 Gbps 链路，单向传播 15 ms，8000 bit 包。求 stop-and-wait 的发送方利用率。
 
 **解**：
-- `L/R = 8000/10⁹ = 8 µs = 0.008 ms`
-- `RTT = 30 ms`
-- `U = 0.008 / (30 + 0.008) ≈ 0.00027`（0.027%）
+- <span class="mchip">\(\tfrac{L}{R} = \tfrac{8000}{10^9} = 8\ \mu\text{s} = 0.008\ \text{ms}\)</span>
+- <span class="mchip">\(RTT = 30\ \text{ms}\)</span>
+- <span class="mchip">\(U = \tfrac{0.008}{30+0.008} \approx 0.00027\)</span>（0.027%）
 - 结论：需要流水线提高利用率。
 
 ### 例 2：GBN 重传（10 分）
@@ -478,7 +478,7 @@ N \le 2^{k-1}
 **题**：W=64 KB，RTT=100 ms。估算平均吞吐。
 
 **解**：
-- `0.75×64 KB / 0.1 s = 480 KB/s ≈ 3.84 Mbps`。
+- <span class="mchip">\(\tfrac{0.75\times64\ \text{KB}}{0.1\ \text{s}} = 480\ \text{KB/s} \approx 3.84\ \text{Mbps}\)</span>。
 - 若丢包率高，实际更低；高带宽长延迟需要更大 W。
 
 ---
@@ -525,7 +525,7 @@ N \le 2^{k-1}
 1. 网络层主机到主机，传输层进程到进程；mux/demux 把段交给正确 socket。
 2. 源/目的端口、长度、校验和；伪头部+UDP 段；16 位反码和，保护弱。
 3. ACK/NAK 可能损坏；rdt2.1 加序号，rdt2.2 用 ACK+期望序号。
-4. 定时器超时重传；`U=(L/R)/(RTT+L/R)`。
+4. 定时器超时重传；<span class="mchip">\(U=\tfrac{L/R}{RTT+L/R}\)</span>。
 5. GBN 累积 ACK、一个定时器、重传整个窗口、接收方不缓存；SR 单独 ACK、每包定时器、只重传丢失、缓存失序。
 6. 20 字节；Seq 是段首字节编号，ACK 是期望的下一个字节。
 7. 指数加权移动平均；α 平滑 SampleRTT，β 平滑偏差；Timeout=EstimatedRTT+4DevRTT。
@@ -552,10 +552,10 @@ N \le 2^{k-1}
 | GBN | 累积 ACK；一个定时器；重传窗口 |
 | SR | 单独 ACK；每包定时器；缓存；N≤2^(k-1) |
 | TCP 头 | 20 字节；Seq/ACK/窗口/标志 |
-| RTT | `0.875·Est + 0.125·Sample`；`Timeout=Est+4Dev` |
+| RTT | <span class="mchip">\(0.875\cdot\text{Est} + 0.125\cdot\text{Sample}\)</span>；<span class="mchip">\(\text{Timeout}=\text{Est}+4\text{Dev}\)</span> |
 | 快速重传 | 3 个重复 ACK |
 | 流量控制 | rwnd；接收方缓冲 |
 | 拥塞控制 | cwnd；AIMD；慢启动；CUBIC |
 | 三次握手 | SYN / SYN-ACK / ACK |
-| 吞吐 | `0.75·W/RTT` |
+| 吞吐 | <span class="mchip">\(0.75\cdot\tfrac{W}{RTT}\)</span> |
 | QUIC | UDP；流级多路复用；0/1-RTT |

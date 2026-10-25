@@ -54,8 +54,8 @@
 
 | 指标 | 定义 | 关键公式/因素 |
 |---|---|---|
-| **Delay** | 数据从源到目的耗时 | `d = d_proc + d_queue + d_trans + d_prop` |
-| **Loss** | 排队溢出/比特错误导致丢包 | 队列有限 + 流量强度 `La/R` |
+| **Delay** | 数据从源到目的耗时 | <span class="mchip">\(d = d_{\text{proc}} + d_{\text{queue}} + d_{\text{trans}} + d_{\text{prop}}\)</span> |
+| **Loss** | 排队溢出/比特错误导致丢包 | 队列有限 + 流量强度 <span class="mchip">\(La/R\)</span> |
 | **Throughput** | 单位时间真正传过的比特 | 瓶颈链路 `min(R_s, R_c)` |
 
 ### 1.4 两条“状态机”主线
@@ -123,7 +123,7 @@
 **分组交换（packet switching）★**
 
 - 数据切成分组，独立传输；**统计复用**（statistical multiplexing）。
-- **存储转发**：`端到端延迟 ≈ 2L/R`（两段链路、无排队）。
+- **存储转发**：<span class="mchip">\(\text{端到端延迟} \approx \tfrac{2L}{R}\)</span>（两段链路、无排队）。
 - **排队（queueing）**：到达速率 > 输出速率时，分组在缓冲区排队；缓冲区满 → **丢包**。
 - 优点：适合突发流量、带宽利用率高；缺点：排队延迟、丢包、需要拥塞控制。
 
@@ -156,9 +156,9 @@ d_{\text{nodal}} = d_{\text{proc}} + d_{\text{queue}} + d_{\text{trans}} + d_{\t
 | 分量 | 公式/含义 |
 |---|---|
 | 处理延迟 `d_proc` | 检查头部、决定输出端口；通常很小 |
-| 排队延迟 `d_queue` | 取决于流量强度；用 `La/R` 估计 |
-| 传输延迟 `d_trans` | `L/R`（把比特推上链路的时间） |
-| 传播延迟 `d_prop` | `d/s`（物理距离/信号速度） |
+| 排队延迟 `d_queue` | 取决于流量强度；用 <span class="mchip">\(La/R\)</span> 估计 |
+| 传输延迟 `d_trans` | <span class="mchip">\(L/R\)</span>（把比特推上链路的时间） |
+| 传播延迟 `d_prop` | <span class="mchip">\(d/s\)</span>（物理距离/信号速度） |
 
 **流量强度（traffic intensity）★**
 
@@ -167,7 +167,7 @@ d_{\text{nodal}} = d_{\text{proc}} + d_{\text{queue}} + d_{\text{trans}} + d_{\t
 \]
 
 - `a`：平均到达速率（包/秒）；`L`：包长；`R`：链路速率。
-- `La/R ≈ 0`：排队延迟小；`→ 1`：延迟急剧增大；`> 1`：队列无限增长（实际会丢包）。
+- <span class="mchip">\(\tfrac{La}{R} \approx 0\)</span>：排队延迟小；`→ 1`：延迟急剧增大；`> 1`：队列无限增长（实际会丢包）。
 - ⚠ **传输延迟 vs 传播延迟**：前者是“把包推出去”，后者是“信号在介质中跑”。
 
 **丢包（loss）**
@@ -365,8 +365,8 @@ d_{\text{nodal}} = d_{\text{proc}} + d_{\text{queue}} + d_{\text{trans}} + d_{\t
 
 **文件分发时间 ★**
 
-- 客户端-服务器：`D_cs = max{N F / u_s, F / d_min}`
-- P2P：`D_p2p = max{F / u_s, F / d_min, N F / (u_s + Σ u_i)}`
+- 客户端-服务器：<span class="mchip">\(D_{\text{cs}} = \max\left\{\tfrac{NF}{u_s},\ \tfrac{F}{d_{\min}}\right\}\)</span>
+- P2P：<span class="mchip">\(D_{\text{p2p}} = \max\left\{\tfrac{F}{u_s},\ \tfrac{F}{d_{\min}},\ \tfrac{NF}{u_s+\sum u_i}\right\}\)</span>
 - 其中 `F` 文件大小、`N` peer 数、`u_s` 服务器上传、`u_i` peer 上传、`d_min` 最慢下载。
 - 结论：P2P 随 N 增长可扩展；C-S 受服务器带宽限制。
 
@@ -617,7 +617,7 @@ U_{\text{sender}} = \frac{L/R}{RTT + L/R}
 | A | B | 关键区别 |
 |---|---|---|
 | 分组交换 | 电路交换 | 统计复用/无保证 vs 预留资源/有保证 |
-| 传输延迟 `L/R` | 传播延迟 `d/s` | 推比特 vs 信号跑 |
+| 传输延迟 <span class="mchip">\(L/R\)</span> | 传播延迟 <span class="mchip">\(d/s\)</span> | 推比特 vs 信号跑 |
 | 路由 routing | 转发 forwarding | 全局路径决策 vs 本地端口转发 |
 | TCP | UDP | 可靠/有序/流控/拥塞控制 vs 轻量/无连接 |
 | 流量控制 | 拥塞控制 | 接收方缓冲 vs 网络容量 |
@@ -634,19 +634,19 @@ U_{\text{sender}} = \frac{L/R}{RTT + L/R}
 
 | 项目 | 公式/数值 |
 |---|---|
-| 节点延迟 | `d = d_proc + d_queue + d_trans + d_prop` |
-| 传输延迟 | `L/R` |
-| 传播延迟 | `d/s` |
-| 流量强度 | `La/R` |
+| 节点延迟 | <span class="mchip">\(d = d_{\text{proc}} + d_{\text{queue}} + d_{\text{trans}} + d_{\text{prop}}\)</span> |
+| 传输延迟 | <span class="mchip">\(L/R\)</span> |
+| 传播延迟 | <span class="mchip">\(d/s\)</span> |
+| 流量强度 | <span class="mchip">\(La/R\)</span> |
 | 吞吐 | `min(R_s, R_c, ...)` |
 | 非持久 HTTP | 每对象约 `2 RTT + L/R` |
 | 持久 HTTP | 建连 1 RTT，之后每对象 `1 RTT + L/R` |
 | C-S 分发时间 | `max{NF/u_s, F/d_min}` |
 | P2P 分发时间 | `max{F/u_s, F/d_min, NF/(u_s+Σu_i)}` |
 | stop-and-wait 利用率 | `(L/R)/(RTT + L/R)` |
-| TCP RTT 估计 | `EstimatedRTT = 0.875·EstimatedRTT + 0.125·SampleRTT` |
-| TCP 超时 | `EstimatedRTT + 4·DevRTT` |
-| TCP 吞吐（近似） | `0.75·W/RTT` |
+| TCP RTT 估计 | <span class="mchip">\(\text{EstimatedRTT} = 0.875\cdot\text{EstimatedRTT} + 0.125\cdot\text{SampleRTT}\)</span> |
+| TCP 超时 | <span class="mchip">\(\text{EstimatedRTT} + 4\cdot\text{DevRTT}\)</span> |
+| TCP 吞吐（近似） | <span class="mchip">\(0.75\cdot\tfrac{W}{RTT}\)</span> |
 | UDP 头部 | 8 字节 |
 | TCP 头部 | 最小 20 字节 |
 | 端口 | HTTP 80、DNS 53、SMTP 25、POP3 110、IMAP 143 |
@@ -664,7 +664,7 @@ U_{\text{sender}} = \frac{L/R}{RTT + L/R}
 2. 协议的三要素是什么？用“问时间”类比说明。
 3. 分组交换和电路交换的核心区别？各自优缺点？
 4. 写出节点延迟的四个分量；哪些与包长有关？
-5. `La/R` 趋近 1 时会发生什么？为什么？
+5. <span class="mchip">\(La/R\)</span> 趋近 1 时会发生什么？为什么？
 6. 传输延迟和传播延迟的区别？各自由什么决定？
 7. 五层协议栈各层的 PDU 名称？封装过程？
 8. 路由和转发的区别？
@@ -705,9 +705,9 @@ U_{\text{sender}} = \frac{L/R}{RTT + L/R}
 1. 主机/端系统、分组交换机（路由器/交换机）、通信链路、网络（网络的网络）。
 2. 报文格式、顺序/时序、收到报文后的动作；人类问时间→回答，网络请求→响应。
 3. 分组：统计复用、适合突发、可能排队/丢包；电路：预留资源、有保证、空闲浪费。
-4. 处理、排队、传输 `L/R`、传播 `d/s`；传输与包长有关，传播与距离/介质有关。
+4. 处理、排队、传输 <span class="mchip">\(L/R\)</span>、传播 <span class="mchip">\(d/s\)</span>；传输与包长有关，传播与距离/介质有关。
 5. 排队延迟急剧增加、缓冲区溢出丢包；到达速率持续超过输出速率。
-6. 传输：把比特推上链路，`L/R`；传播：信号在介质中跑，`d/s`。
+6. 传输：把比特推上链路，<span class="mchip">\(L/R\)</span>；传播：信号在介质中跑，<span class="mchip">\(d/s\)</span>。
 7. 应用 message、传输 segment、网络 datagram、链路 frame、物理 bit；逐层加头。
 8. 路由：全局路径选择（路由协议）；转发：本地把包从输入端口送到输出端口。
 9. C-S：always-on 服务器、易管理、服务器瓶颈；P2P：可扩展、难管理、激励问题。
@@ -725,7 +725,7 @@ U_{\text{sender}} = \frac{L/R}{RTT + L/R}
 21. 网络层主机到主机，传输层进程到进程；mux/demux 把段交给正确 socket。
 22. 源/目的端口、长度、校验和；伪头部+UDP 段；16 位反码和，保护弱。
 23. ACK/NAK 可能损坏；rdt2.1 加序号，rdt2.2 用 ACK+期望序号。
-24. 定时器超时重传；`U=(L/R)/(RTT+L/R)`。
+24. 定时器超时重传；<span class="mchip">\(U=\tfrac{L/R}{RTT+L/R}\)</span>。
 25. GBN 累积 ACK、一个定时器、重传整个窗口、接收方不缓存；SR 单独 ACK、每包定时器、只重传丢失、缓存失序。
 26. 20 字节；Seq 是段首字节编号，ACK 是期望的下一个字节。
 27. 指数加权移动平均；α 平滑 SampleRTT，β 平滑偏差；Timeout=EstimatedRTT+4DevRTT。

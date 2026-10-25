@@ -145,8 +145,8 @@ U_{\text{sender}} = \frac{L/R}{RTT + L/R}
 \]
 
 **Example** (slides): 1 Gbps link, 15 ms one-way propagation (RTT=30 ms), 8000-bit packet.
-- `L/R = 8000/10⁹ = 8 µs = 0.008 ms`
-- `U = 0.008 / (30 + 0.008) ≈ 0.00027`
+- <span class="mchip">\(\tfrac{L}{R} = \tfrac{8000}{10^9} = 8\ \mu\text{s} = 0.008\ \text{ms}\)</span>
+- <span class="mchip">\(U = \tfrac{0.008}{30+0.008} \approx 0.00027\)</span>
 - That is, the sender is sending data only **0.027%** of the time.
 
 **Fix**: pipelining — allow multiple unacknowledged packets to be in flight at once; utilization increases by a factor of N.
@@ -296,7 +296,7 @@ Events:
 
 - Goal: prevent the sender from overflowing the receiver's buffer.
 - The receiver advertises free space in the **rwnd (receive window)** field of the header.
-- The sender guarantees: `unACKed data ≤ rwnd`.
+- The sender guarantees: <span class="mchip">\(\text{unACKed data} \le rwnd\)</span>.
 - **Difference from congestion control**:
   - Flow control: receiver-imposed limit (end-to-end).
   - Congestion control: network-imposed limit (global).
@@ -407,8 +407,8 @@ client → server: ACK, ack=y+1
 \text{avg throughput} \approx \frac{0.75W}{RTT}
 \]
 
-- W is the window size at loss; the average window is about `3/4 W`.
-- With loss rate L (Mathis): `throughput ≈ 1.22·MSS / (RTT·√L)`.
+- W is the window size at loss; the average window is about <span class="mchip">\(\tfrac{3}{4}W\)</span>.
+- With loss rate L (Mathis): <span class="mchip">\(\text{throughput} \approx \tfrac{1.22\cdot\text{MSS}}{RTT\cdot\sqrt{L}}\)</span>.
 - High-bandwidth long-delay networks need a large window; the loss rate must be extremely low.
 
 ---
@@ -431,9 +431,9 @@ client → server: ACK, ack=y+1
 **Question**: 1 Gbps link, 15 ms one-way propagation, 8000-bit packet. Find the sender utilization of stop-and-wait.
 
 **Solution**:
-- `L/R = 8000/10⁹ = 8 µs = 0.008 ms`
-- `RTT = 30 ms`
-- `U = 0.008 / (30 + 0.008) ≈ 0.00027` (0.027%)
+- <span class="mchip">\(\tfrac{L}{R} = \tfrac{8000}{10^9} = 8\ \mu\text{s} = 0.008\ \text{ms}\)</span>
+- <span class="mchip">\(RTT = 30\ \text{ms}\)</span>
+- <span class="mchip">\(U = \tfrac{0.008}{30+0.008} \approx 0.00027\)</span> (0.027%)
 - Conclusion: pipelining is needed to improve utilization.
 
 ### Example 2: GBN retransmission (10 points)
@@ -478,7 +478,7 @@ client → server: ACK, ack=y+1
 **Question**: W=64 KB, RTT=100 ms. Estimate the average throughput.
 
 **Solution**:
-- `0.75×64 KB / 0.1 s = 480 KB/s ≈ 3.84 Mbps`.
+- <span class="mchip">\(\tfrac{0.75\times64\ \text{KB}}{0.1\ \text{s}} = 480\ \text{KB/s} \approx 3.84\ \text{Mbps}\)</span>.
 - If the loss rate is high, the actual value is lower; high bandwidth and long delay need a larger W.
 
 ---
@@ -525,7 +525,7 @@ client → server: ACK, ack=y+1
 1. The network layer is host-to-host, the transport layer is process-to-process; mux/demux delivers segments to the correct socket.
 2. Source/dest port, length, checksum; pseudo-header + UDP segment; 16-bit one's complement sum, weak protection.
 3. ACK/NAK may be corrupted; rdt2.1 adds sequence numbers, rdt2.2 uses ACK + expected seq #.
-4. Retransmit on timer timeout; `U=(L/R)/(RTT+L/R)`.
+4. Retransmit on timer timeout; <span class="mchip">\(U=\tfrac{L/R}{RTT+L/R}\)</span>.
 5. GBN: cumulative ACK, one timer, retransmits the whole window, the receiver does not buffer; SR: individual ACK, per-packet timer, retransmits only the lost packet, buffers out-of-order packets.
 6. 20 bytes; Seq is the number of the segment's first byte, ACK is the next byte expected.
 7. Exponential weighted moving average; α smooths SampleRTT, β smooths the deviation; Timeout=EstimatedRTT+4DevRTT.
@@ -552,10 +552,10 @@ client → server: ACK, ack=y+1
 | GBN | cumulative ACK; one timer; retransmit window |
 | SR | individual ACK; per-packet timer; buffering; N≤2^(k-1) |
 | TCP header | 20 bytes; Seq/ACK/window/flags |
-| RTT | `0.875·Est + 0.125·Sample`; `Timeout=Est+4Dev` |
+| RTT | <span class="mchip">\(0.875\cdot\text{Est} + 0.125\cdot\text{Sample}\)</span>; <span class="mchip">\(\text{Timeout}=\text{Est}+4\text{Dev}\)</span> |
 | Fast retransmit | 3 duplicate ACKs |
 | Flow control | rwnd; receiver buffer |
 | Congestion control | cwnd; AIMD; slow start; CUBIC |
 | Three-way handshake | SYN / SYN-ACK / ACK |
-| Throughput | `0.75·W/RTT` |
+| Throughput | <span class="mchip">\(0.75\cdot\tfrac{W}{RTT}\)</span> |
 | QUIC | UDP; stream-level multiplexing; 0/1-RTT |

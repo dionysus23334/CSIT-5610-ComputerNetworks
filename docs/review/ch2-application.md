@@ -100,7 +100,7 @@
 
 1. 建立 TCP：1 RTT；
 2. 发送 HTTP 请求 + 接收响应首字节：1 RTT；
-3. 传输对象：`L/R`。
+3. 传输对象：<span class="mchip">\(L/R\)</span>。
 → 每对象 `2 RTT + L/R`。
 
 **持久 HTTP**：
@@ -183,7 +183,7 @@ Content-Type: text/html\r\n
 **缓存计算例**（课件）：
 
 - 接入链路 1.54 Mbps，RTT 2 s，对象 100 Kbit，请求率 15/s。
-- 平均数据率 `15×100K = 1.5 Mbps` → 利用率 `1.5/1.54 ≈ 0.97` → 排队延迟“minutes”。
+- 平均数据率 <span class="mchip">\(15\times100\text{K} = 1.5\ \text{Mbps}\)</span> → 利用率 <span class="mchip">\(\tfrac{1.5}{1.54}\approx0.97\)</span> → 排队延迟“minutes”。
 - 方案 1：升级到 154 Mbps → 利用率 0.0097，延迟 ~2 s + ms，但昂贵。
 - 方案 2：加缓存，命中率 0.4 → 只有 60% 请求走接入链路 → 平均 0.9 Mbps → 利用率 0.58，延迟 ~2 s + ms，便宜。
 - 结论：**缓存通常比升级带宽更划算**。
@@ -349,7 +349,7 @@ Content-Type: text/html\r\n
 D_{\text{cs}} = \max\left\{\frac{NF}{u_s},\ \frac{F}{d_{\min}}\right\}
 \]
 
-- 服务器必须上传 N 份：`N·F/u_s`；
+- 服务器必须上传 N 份：<span class="mchip">\(\tfrac{NF}{u_s}\)</span>；
 - 最慢客户端下载：`F/d_min`。
 
 **P2P**
@@ -360,7 +360,7 @@ D_{\text{p2p}} = \max\left\{\frac{F}{u_s},\ \frac{F}{d_{\min}},\ \frac{NF}{u_s +
 
 - 服务器至少上传一份：`F/u_s`；
 - 最慢客户端：`F/d_min`；
-- 所有 peer 总上传能力：`u_s + Σu_i`，要分发 `N·F` 比特。
+- 所有 peer 总上传能力：<span class="mchip">\(u_s + \sum u_i\)</span>，要分发 <span class="mchip">\(NF\)</span> 比特。
 
 **结论**：C-S 随 N 线性增长；P2P 的分母随 N 增长，因此**可扩展**。
 
@@ -473,7 +473,7 @@ sock.recv(1024)
 **题**：RTT=100 ms，10 个对象，每个对象传输时间 1 ms。分别求非持久 HTTP、持久 HTTP（无流水线）、持久 HTTP（流水线）的总时间（忽略 DNS）。
 
 **解**：
-- 非持久：`10 × (2×100 + 1) = 2010 ms`。
+- 非持久：<span class="mchip">\(10\times(2\times100+1) = 2010\ \text{ms}\)</span>。
 - 持久无流水线：建连 100 ms + 10 × (100 + 1) = **1110 ms**。
 - 持久流水线：建连 100 ms + 请求/首字节 100 ms + 10×1 ms ≈ **210 ms**。
 - 结论：持久 + 流水线大幅减少 RTT 开销。
@@ -483,8 +483,8 @@ sock.recv(1024)
 **题**：接入链路 1.54 Mbps，对象 100 Kbit，请求率 15/s，RTT 2 s。求无缓存利用率；若缓存命中率 0.4，求利用率。
 
 **解**：
-- 平均数据率 `15×100 Kbit = 1.5 Mbps`；利用率 `1.5/1.54 ≈ 0.97` → 高排队延迟。
-- 缓存命中 0.4 → 只有 60% 走链路 → `0.6×1.5 = 0.9 Mbps`；利用率 `0.9/1.54 ≈ 0.58` → 延迟显著下降。
+- 平均数据率 <span class="mchip">\(15\times100\ \text{Kbit} = 1.5\ \text{Mbps}\)</span>；利用率 <span class="mchip">\(\tfrac{1.5}{1.54}\approx0.97\)</span> → 高排队延迟。
+- 缓存命中 0.4 → 只有 60% 走链路 → <span class="mchip">\(0.6\times1.5 = 0.9\ \text{Mbps}\)</span>；利用率 <span class="mchip">\(\tfrac{0.9}{1.54}\approx0.58\)</span> → 延迟显著下降。
 - 结论：缓存比升级带宽更经济。
 
 ### 例 3：DNS 查询（10 分）
@@ -503,9 +503,9 @@ sock.recv(1024)
 **题**：F=1 GB，u_s=10 Mbps，N=10，每个 peer u_i=1 Mbps，d_min=10 Mbps。求 C-S 与 P2P 的分发时间。
 
 **解**：
-- `F = 8 Gbit = 8000 Mbit`。
-- C-S：`max{10×8000/10, 8000/10} = max{8000, 800} = 8000 s`。
-- P2P：`max{8000/10=800, 800, 10×8000/(10+10)=4000} = 4000 s`。
+- <span class="mchip">\(F = 8\ \text{Gbit} = 8000\ \text{Mbit}\)</span>。
+- C-S：<span class="mchip">\(\max\{10\times8000/10,\ 8000/10\} = \max\{8000,800\} = 8000\ \text{s}\)</span>。
+- P2P：<span class="mchip">\(\max\{8000/10=800,\ 800,\ 10\times8000/(10+10)=4000\} = 4000\ \text{s}\)</span>。
 - P2P 约为 C-S 的一半；N 越大优势越明显。
 
 ### 例 5：Socket 顺序（8 分）

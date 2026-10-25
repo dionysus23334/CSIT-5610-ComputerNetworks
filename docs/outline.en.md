@@ -54,8 +54,8 @@ browser --HTTP--> TCP connection (three-way handshake) --IP--> routers forward h
 
 | Metric | Definition | Key formula / factor |
 |---|---|---|
-| **Delay** | time for data to travel from source to destination | `d = d_proc + d_queue + d_trans + d_prop` |
-| **Loss** | packet loss caused by queue overflow / bit errors | finite queue + traffic intensity `La/R` |
+| **Delay** | time for data to travel from source to destination | <span class="mchip">\(d = d_{\text{proc}} + d_{\text{queue}} + d_{\text{trans}} + d_{\text{prop}}\)</span> |
+| **Loss** | packet loss caused by queue overflow / bit errors | finite queue + traffic intensity <span class="mchip">\(La/R\)</span> |
 | **Throughput** | bits actually transferred per unit time | bottleneck link `min(R_s, R_c)` |
 
 ### 1.4 The two "state machine" threads
@@ -123,7 +123,7 @@ browser --HTTP--> TCP connection (three-way handshake) --IP--> routers forward h
 **Packet switching ★**
 
 - Data is cut into packets that are transmitted independently; **statistical multiplexing**.
-- **Store-and-forward**: `end-end delay ≈ 2L/R` (two links, no queueing).
+- **Store-and-forward**: <span class="mchip">\(\text{end-end delay} \approx \tfrac{2L}{R}\)</span> (two links, no queueing).
 - **Queueing**: when the arrival rate > the output rate, packets queue in the buffer; a full buffer → **packet loss**.
 - Pros: great for bursty traffic, high bandwidth utilization; cons: queueing delay, packet loss, needs congestion control.
 
@@ -156,9 +156,9 @@ d_{\text{nodal}} = d_{\text{proc}} + d_{\text{queue}} + d_{\text{trans}} + d_{\t
 | Component | Formula / meaning |
 |---|---|
 | Processing delay `d_proc` | check the header, determine the output link; typically very small |
-| Queueing delay `d_queue` | depends on the traffic intensity; estimated by `La/R` |
-| Transmission delay `d_trans` | `L/R` (the time to push the bits onto the link) |
-| Propagation delay `d_prop` | `d/s` (physical distance / propagation speed) |
+| Queueing delay `d_queue` | depends on the traffic intensity; estimated by <span class="mchip">\(La/R\)</span> |
+| Transmission delay `d_trans` | <span class="mchip">\(L/R\)</span> (the time to push the bits onto the link) |
+| Propagation delay `d_prop` | <span class="mchip">\(d/s\)</span> (physical distance / propagation speed) |
 
 **Traffic intensity ★**
 
@@ -167,7 +167,7 @@ d_{\text{nodal}} = d_{\text{proc}} + d_{\text{queue}} + d_{\text{trans}} + d_{\t
 \]
 
 - `a`: average arrival rate (packets/sec); `L`: packet length; `R`: link transmission rate.
-- `La/R ≈ 0`: queueing delay is small; `→ 1`: delay grows sharply; `> 1`: the queue grows without bound (in practice packets are lost).
+- <span class="mchip">\(\tfrac{La}{R} \approx 0\)</span>: queueing delay is small; `→ 1`: delay grows sharply; `> 1`: the queue grows without bound (in practice packets are lost).
 - ⚠ **Transmission delay vs. propagation delay**: the former is "pushing the packet out", the latter is "the signal running through the medium".
 
 **Packet loss**
@@ -365,8 +365,8 @@ local DNS server (local/resolver, usually provided by the ISP / organization)
 
 **File distribution time ★**
 
-- Client-server: `D_cs = max{N F / u_s, F / d_min}`
-- P2P: `D_p2p = max{F / u_s, F / d_min, N F / (u_s + Σ u_i)}`
+- Client-server: <span class="mchip">\(D_{\text{cs}} = \max\left\{\tfrac{NF}{u_s},\ \tfrac{F}{d_{\min}}\right\}\)</span>
+- P2P: <span class="mchip">\(D_{\text{p2p}} = \max\left\{\tfrac{F}{u_s},\ \tfrac{F}{d_{\min}},\ \tfrac{NF}{u_s+\sum u_i}\right\}\)</span>
 - where `F` is the file size, `N` the number of peers, `u_s` the server upload capacity, `u_i` peer i's upload capacity, `d_min` the slowest download rate.
 - Conclusion: P2P scales as N grows; C-S is limited by the server's bandwidth.
 
@@ -617,7 +617,7 @@ options          | data
 | A | B | Key difference |
 |---|---|---|
 | Packet switching | Circuit switching | Statistical multiplexing/no guarantees vs reserved resources/guarantees |
-| Transmission delay `L/R` | Propagation delay `d/s` | Push bits onto the link vs signal travels through the medium |
+| Transmission delay <span class="mchip">\(L/R\)</span> | Propagation delay <span class="mchip">\(d/s\)</span> | Push bits onto the link vs signal travels through the medium |
 | Routing | Forwarding | Global path decision vs local input-port-to-output-port forwarding |
 | TCP | UDP | Reliable/ordered/flow control/congestion control vs lightweight/connectionless |
 | Flow control | Congestion control | Receiver buffer vs network capacity |
@@ -634,19 +634,19 @@ options          | data
 
 | Item | Formula/value |
 |---|---|
-| Nodal delay | `d = d_proc + d_queue + d_trans + d_prop` |
-| Transmission delay | `L/R` |
-| Propagation delay | `d/s` |
-| Traffic intensity | `La/R` |
+| Nodal delay | <span class="mchip">\(d = d_{\text{proc}} + d_{\text{queue}} + d_{\text{trans}} + d_{\text{prop}}\)</span> |
+| Transmission delay | <span class="mchip">\(L/R\)</span> |
+| Propagation delay | <span class="mchip">\(d/s\)</span> |
+| Traffic intensity | <span class="mchip">\(La/R\)</span> |
 | Throughput | `min(R_s, R_c, ...)` |
 | Non-persistent HTTP | about `2 RTT + L/R` per object |
 | Persistent HTTP | 1 RTT for connection setup, then `1 RTT + L/R` per object |
 | C-S distribution time | `max{NF/u_s, F/d_min}` |
 | P2P distribution time | `max{F/u_s, F/d_min, NF/(u_s+Σu_i)}` |
 | stop-and-wait utilization | `(L/R)/(RTT + L/R)` |
-| TCP RTT estimation | `EstimatedRTT = 0.875·EstimatedRTT + 0.125·SampleRTT` |
-| TCP timeout | `EstimatedRTT + 4·DevRTT` |
-| TCP throughput (approximate) | `0.75·W/RTT` |
+| TCP RTT estimation | <span class="mchip">\(\text{EstimatedRTT} = 0.875\cdot\text{EstimatedRTT} + 0.125\cdot\text{SampleRTT}\)</span> |
+| TCP timeout | <span class="mchip">\(\text{EstimatedRTT} + 4\cdot\text{DevRTT}\)</span> |
+| TCP throughput (approximate) | <span class="mchip">\(0.75\cdot\tfrac{W}{RTT}\)</span> |
 | UDP header | 8 bytes |
 | TCP header | minimum 20 bytes |
 | Ports | HTTP 80, DNS 53, SMTP 25, POP3 110, IMAP 143 |
@@ -664,7 +664,7 @@ options          | data
 2. What are the three elements of a protocol? Illustrate them with the "asking the time" analogy.
 3. What is the core difference between packet switching and circuit switching? Their pros and cons?
 4. Write down the four components of nodal delay; which ones depend on packet length?
-5. What happens as `La/R` approaches 1? Why?
+5. What happens as <span class="mchip">\(La/R\)</span> approaches 1? Why?
 6. What is the difference between transmission delay and propagation delay? What determines each?
 7. What are the PDU names at each layer of the five-layer protocol stack? How does encapsulation work?
 8. What is the difference between routing and forwarding?
@@ -705,9 +705,9 @@ options          | data
 1. Hosts/end systems, packet switches (routers/switches), communication links, networks (network of networks).
 2. Message format, order/timing, actions taken after receiving a message; a human asks the time → answer, a network request → response.
 3. Packet: statistical multiplexing, good for bursts, may queue/lose packets; circuit: reserved resources, guarantees, wasted when idle.
-4. Processing, queueing, transmission `L/R`, propagation `d/s`; transmission depends on packet length, propagation on distance/medium.
+4. Processing, queueing, transmission <span class="mchip">\(L/R\)</span>, propagation <span class="mchip">\(d/s\)</span>; transmission depends on packet length, propagation on distance/medium.
 5. Queueing delay grows sharply, buffer overflow loses packets; the arrival rate keeps exceeding the output rate.
-6. Transmission: push bits onto the link, `L/R`; propagation: the signal travels through the medium, `d/s`.
+6. Transmission: push bits onto the link, <span class="mchip">\(L/R\)</span>; propagation: the signal travels through the medium, <span class="mchip">\(d/s\)</span>.
 7. Application message, transport segment, network datagram, link frame, physical bit; add a header at each layer.
 8. Routing: global path selection (routing protocols); forwarding: local action that moves packets from the input port to the output port.
 9. C-S: always-on server, easy to manage, server bottleneck; P2P: scalable, hard to manage, incentive problem.
@@ -725,7 +725,7 @@ options          | data
 21. Network layer: host-to-host, transport layer: process-to-process; mux/demux delivers segments to the correct socket.
 22. Source/dest port, length, checksum; pseudo-header + UDP segment; 16-bit one's complement sum, weak protection.
 23. The ACK/NAK may be corrupted; rdt2.1 adds sequence numbers, rdt2.2 uses ACK + expected sequence number.
-24. A timer retransmits on timeout; `U=(L/R)/(RTT+L/R)`.
+24. A timer retransmits on timeout; <span class="mchip">\(U=\tfrac{L/R}{RTT+L/R}\)</span>.
 25. GBN: cumulative ACK, one timer, retransmits the entire window, no receiver buffering; SR: individual ACK, a timer per packet, retransmits only the lost packet, buffers out-of-order packets.
 26. 20 bytes; Seq is the byte stream number of the first byte in the segment, ACK is the next byte expected.
 27. Exponential weighted moving average; α smooths SampleRTT, β smooths the deviation; Timeout=EstimatedRTT+4DevRTT.

@@ -100,7 +100,7 @@
 
 1. initiate TCP connection: one RTT;
 2. send the HTTP request and receive the first few bytes of the HTTP response: one RTT;
-3. object transmission time: `L/R`.
+3. object transmission time: <span class="mchip">\(L/R\)</span>.
 → per object `2 RTT + L/R`.
 
 **Persistent HTTP**:
@@ -183,7 +183,7 @@ Content-Type: text/html\r\n
 **Caching example (slides)**:
 
 - access link 1.54 Mbps, RTT 2 s, object 100 Kbit, request rate 15/s.
-- average data rate `15×100K = 1.5 Mbps` → utilization `1.5/1.54 ≈ 0.97` → queueing delay of “minutes”.
+- average data rate <span class="mchip">\(15\times100\text{K} = 1.5\ \text{Mbps}\)</span> → utilization <span class="mchip">\(\tfrac{1.5}{1.54}\approx0.97\)</span> → queueing delay of “minutes”.
 - Option 1: upgrade to 154 Mbps → utilization 0.0097, delay ~2 s + ms, but expensive.
 - Option 2: install a cache, hit rate 0.4 → only 60% of requests go over the access link → average 0.9 Mbps → utilization 0.58, delay ~2 s + ms, cheap.
 - Conclusion: **caching is usually cheaper than upgrading bandwidth**.
@@ -349,7 +349,7 @@ Format: `(name, value, type, ttl)`.
 D_{\text{cs}} = \max\left\{\frac{NF}{u_s},\ \frac{F}{d_{\min}}\right\}
 \]
 
-- the server must upload N copies: `N·F/u_s`;
+- the server must upload N copies: <span class="mchip">\(\tfrac{NF}{u_s}\)</span>;
 - the slowest client's download: `F/d_min`.
 
 **P2P**
@@ -360,7 +360,7 @@ D_{\text{p2p}} = \max\left\{\frac{F}{u_s},\ \frac{F}{d_{\min}},\ \frac{NF}{u_s +
 
 - the server must upload at least one copy: `F/u_s`;
 - the slowest client: `F/d_min`;
-- the total upload capacity of all peers: `u_s + Σu_i`, and `N·F` bits must be distributed.
+- the total upload capacity of all peers: <span class="mchip">\(u_s + \sum u_i\)</span>, and <span class="mchip">\(NF\)</span> bits must be distributed.
 
 **Conclusion**: C-S grows linearly in N; the denominator for P2P grows with N, so P2P is **scalable**.
 
@@ -473,7 +473,7 @@ sock.recv(1024)
 **Question**: RTT=100 ms, 10 objects, transmission time 1 ms per object. Find the total time for non-persistent HTTP, persistent HTTP (without pipelining) and persistent HTTP (with pipelining) (ignore DNS).
 
 **Solution**:
-- Non-persistent: `10 × (2×100 + 1) = 2010 ms`.
+- Non-persistent: <span class="mchip">\(10\times(2\times100+1) = 2010\ \text{ms}\)</span>.
 - Persistent without pipelining: 100 ms to set up the connection + 10 × (100 + 1) = **1110 ms**.
 - Persistent with pipelining: 100 ms to set up the connection + 100 ms for request / first bytes + 10×1 ms ≈ **210 ms**.
 - Conclusion: persistent + pipelining greatly reduces RTT overhead.
@@ -483,8 +483,8 @@ sock.recv(1024)
 **Question**: access link 1.54 Mbps, object 100 Kbit, request rate 15/s, RTT 2 s. Find the utilization without a cache; if the cache hit rate is 0.4, find the utilization.
 
 **Solution**:
-- average data rate `15×100 Kbit = 1.5 Mbps`; utilization `1.5/1.54 ≈ 0.97` → high queueing delay.
-- cache hit 0.4 → only 60% go over the link → `0.6×1.5 = 0.9 Mbps`; utilization `0.9/1.54 ≈ 0.58` → delay drops significantly.
+- average data rate <span class="mchip">\(15\times100\ \text{Kbit} = 1.5\ \text{Mbps}\)</span>; utilization <span class="mchip">\(\tfrac{1.5}{1.54}\approx0.97\)</span> → high queueing delay.
+- cache hit 0.4 → only 60% go over the link → <span class="mchip">\(0.6\times1.5 = 0.9\ \text{Mbps}\)</span>; utilization <span class="mchip">\(\tfrac{0.9}{1.54}\approx0.58\)</span> → delay drops significantly.
 - Conclusion: caching is more economical than upgrading bandwidth.
 
 ### Example 3: DNS query (10 points)
@@ -503,9 +503,9 @@ sock.recv(1024)
 **Question**: F=1 GB, u_s=10 Mbps, N=10, u_i=1 Mbps for each peer, d_min=10 Mbps. Find the distribution time for C-S and for P2P.
 
 **Solution**:
-- `F = 8 Gbit = 8000 Mbit`.
-- C-S: `max{10×8000/10, 8000/10} = max{8000, 800} = 8000 s`.
-- P2P: `max{8000/10=800, 800, 10×8000/(10+10)=4000} = 4000 s`.
+- <span class="mchip">\(F = 8\ \text{Gbit} = 8000\ \text{Mbit}\)</span>.
+- C-S: <span class="mchip">\(\max\{10\times8000/10,\ 8000/10\} = \max\{8000,800\} = 8000\ \text{s}\)</span>.
+- P2P: <span class="mchip">\(\max\{8000/10=800,\ 800,\ 10\times8000/(10+10)=4000\} = 4000\ \text{s}\)</span>.
 - P2P takes about half of C-S; the advantage grows with N.
 
 ### Example 5: Socket call order (8 points)
