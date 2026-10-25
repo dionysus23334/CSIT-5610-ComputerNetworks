@@ -491,12 +491,12 @@ const GLOSSARY_EN = {
     if (!root || root.dataset.glossaryDone || !root.querySelector('h1, p')) return;
     root.dataset.glossaryDone = '1';
 
-    var skip = {CODE:1, PRE:1, H1:1, H2:1, H3:1, H4:1, H5:1, H6:1, A:1, TD:1, TH:1, SCRIPT:1, STYLE:1};
+    var skip = {CODE:1, PRE:1, H1:1, H2:1, H3:1, H4:1, H5:1, H6:1, A:1, TD:1, TH:1, SCRIPT:1, STYLE:1, 'MJX-CONTAINER':1};
     var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
       acceptNode: function (node) {
         var p = node.parentElement;
         while (p && p !== root) {
-          if (skip[p.tagName]) return NodeFilter.FILTER_REJECT;
+          if (skip[p.tagName] || (p.classList && p.classList.contains('arithmatex'))) return NodeFilter.FILTER_REJECT;
           p = p.parentElement;
         }
         return NodeFilter.FILTER_ACCEPT;
@@ -520,8 +520,8 @@ const GLOSSARY_EN = {
         var start = m.index, end = start + term.length;
         var before = text.slice(0, start);
         var after = text.slice(end);
-        if (/^[（(]/.test(after)) continue;
-        if (/[（(]$/.test(before)) continue;
+        if (/^\s*[（(]/.test(after)) continue;
+        if (/[（(]\s*$/.test(before)) continue;
         if (after.charAt(0) === '-') continue;
         var info = dict[term];
         var open = lang.indexOf('zh') === 0 ? '（' : ' (';
