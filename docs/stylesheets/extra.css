@@ -595,3 +595,96 @@ body {
   line-height: 1.5;
 }
 .mchip mjx-container { color: inherit !important; }
+
+/* Responsive header search: inline from 600px to 960px.
+   Material's default switches to an icon-only modal below 960px. */
+@media screen and (min-width: 37.5em) and (max-width: 59.984375em) {
+  .md-header__button[for="__search"] {
+    display: none;
+  }
+
+  .md-search {
+    width: clamp(8rem, 24vw, 11.7rem);
+    padding: .35rem 0;
+    margin-left: .25rem;
+    flex: 0 0 auto;
+  }
+
+  .md-search__overlay {
+    display: none;
+  }
+
+  .md-search__inner {
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    width: 100%;
+    height: auto;
+    opacity: 1;
+    overflow: visible;
+    transform: none;
+    transition: none;
+    z-index: auto;
+  }
+
+  .md-search__form {
+    width: 100%;
+    height: 1.9rem;
+  }
+
+  .md-search__input {
+    width: 100%;
+    height: 100%;
+    padding-left: 2.2rem;
+    padding-right: 2rem;
+    font-size: .8rem;
+  }
+
+  .md-search__icon[for="__search"] {
+    display: block;
+    left: .55rem;
+    top: .35rem;
+    pointer-events: none;
+  }
+
+  .md-search__icon[for="__search"] svg:first-child {
+    display: block;
+  }
+
+  .md-search__icon[for="__search"] svg:last-child {
+    display: none;
+  }
+
+  .md-search__options {
+    right: .35rem;
+    top: .25rem;
+  }
+
+  .md-search__output {
+    top: 100%;
+    bottom: auto;
+    left: 0;
+    width: 100%;
+    height: auto;
+    max-height: min(70vh, 30rem);
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .15s;
+    background: var(--bg);
+    z-index: 10;
+  }
+
+  .md-search:focus-within .md-search__output {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .md-search__scrollwrap {
+    height: auto;
+    max-height: min(70vh, 30rem);
+    width: 100%;
+  }
+}
