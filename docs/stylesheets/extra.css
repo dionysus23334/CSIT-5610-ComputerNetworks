@@ -688,3 +688,24 @@ body {
     width: 100%;
   }
 }
+
+/* Mobile search overlay: the header's backdrop-filter makes fixed
+   descendants use the header as their containing block. Force the
+   search dialog to the viewport so results have a visible height. */
+@media screen and (max-width: 37.49em) {
+  [data-md-toggle="search"]:checked ~ .md-header .md-search__inner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    overflow: visible;
+  }
+
+  [data-md-toggle="search"]:checked ~ .md-header .md-search__output {
+    top: 3rem;
+    bottom: 0;
+    height: auto;
+  }
+}
