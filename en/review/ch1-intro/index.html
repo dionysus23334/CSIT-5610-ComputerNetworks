@@ -1,0 +1,2395 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="HKUST CSIT5610 Computer Networks — review notes">
+      
+      
+        <meta name="author" content="dionysus23334">
+      
+      
+        <link rel="canonical" href="https://dionysus23334.github.io/CSIT-5610-ComputerNetworks/en/en/review/ch1-intro/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../ch2-application/">
+      
+      
+        
+          <link rel="alternate" href="../../../review/ch1-intro/" hreflang="zh">
+        
+          <link rel="alternate" href="./" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Chapter 1 · Introduction - CSIT5610 Computer Networks Review Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-1-introduction-review-notes" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../" title="CSIT5610 Computer Networks Review Notes" class="md-header__button md-logo" aria-label="CSIT5610 Computer Networks Review Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CSIT5610 Computer Networks Review Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter 1 · Introduction
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../../review/ch1-intro/" hreflang="zh" class="md-select__link">
+              中文
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dionysus23334/CSIT-5610-ComputerNetworks" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dionysus23334/CSIT-5610-ComputerNetworks
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../" title="CSIT5610 Computer Networks Review Notes" class="md-nav__button md-logo" aria-label="CSIT5610 Computer Networks Review Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    CSIT5610 Computer Networks Review Notes
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dionysus23334/CSIT-5610-ComputerNetworks" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dionysus23334/CSIT-5610-ComputerNetworks
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://dionysus23334.github.io/study-blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ← Study archive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../outline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapters
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapters
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    All chapters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 1 · Introduction
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 1 · Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0-chapter-thread-memorize-these-three-sentences-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0. Chapter thread (memorize these three sentences first)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-is-the-internet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. What is the Internet
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. What is the Internet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-the-nuts-and-bolts-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 The “nuts and bolts” view ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-the-services-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 The “services” view
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Protocol ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-network-edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Network edge
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Network edge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-access-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Access networks ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-physical-media" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Physical media ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-how-a-host-sends-packets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 How a host sends packets
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-network-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Network core
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Network core">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-forwarding-vs-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Forwarding vs routing ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-packet-switching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Packet switching ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-circuit-switching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Circuit switching ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-packet-switching-vs-circuit-switching-the-classic-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Packet switching vs circuit switching: the classic example ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-internet-structure-a-network-of-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 Internet structure: a “network of networks”
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-performance-delay-loss-throughput" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Performance: delay, loss, throughput
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Performance: delay, loss, throughput">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-the-four-sources-of-delay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 The four sources of delay ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-traffic-intensity-and-queueing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Traffic intensity and queueing ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-packet-loss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Packet loss
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-throughput" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Throughput ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-traceroute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 traceroute
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-layering-and-the-protocol-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Layering and the protocol stack
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Layering and the protocol stack">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-why-layering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Why layering ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-the-five-layer-model-vs-the-seven-layer-osi-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 The five-layer model vs the seven-layer OSI model ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-encapsulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Encapsulation ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-end-end-vs-hop-by-hop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 End-end vs hop-by-hop
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-network-security-and-history-for-awareness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Network security and history (for awareness)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Network security and history (for awareness)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-common-threats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Common threats
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-historical-phases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Historical phases
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-worked-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Worked examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Worked examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-the-four-sources-of-delay-10-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 1: The four sources of delay (10 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2-store-and-forward-8-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 2: Store-and-forward (8 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-3-packet-switching-vs-circuit-switching-10-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 3: Packet switching vs circuit switching (10 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-4-throughput-6-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 4: Throughput (6 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-5-encapsulation-8-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 5: Encapsulation (8 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-6-traffic-intensity-6-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 6: Traffic intensity (6 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-common-mistakes-where-marks-are-most-easily-lost" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Common mistakes (where marks are most easily lost)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-self-test-do-it-first-then-check-the-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Self-test (do it first, then check the answers)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Self-test (do it first, then check the answers)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Answers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-pre-exam-quick-reference-card" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Pre-exam quick-reference card
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch2-application/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 2 · Application Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch3-transport/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 3 · Transport Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0-chapter-thread-memorize-these-three-sentences-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0. Chapter thread (memorize these three sentences first)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-is-the-internet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. What is the Internet
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. What is the Internet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-the-nuts-and-bolts-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 The “nuts and bolts” view ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-the-services-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 The “services” view
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Protocol ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-network-edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Network edge
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Network edge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-access-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Access networks ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-physical-media" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Physical media ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-how-a-host-sends-packets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 How a host sends packets
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-network-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Network core
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Network core">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-forwarding-vs-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Forwarding vs routing ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-packet-switching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Packet switching ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-circuit-switching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Circuit switching ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-packet-switching-vs-circuit-switching-the-classic-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Packet switching vs circuit switching: the classic example ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-internet-structure-a-network-of-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 Internet structure: a “network of networks”
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-performance-delay-loss-throughput" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Performance: delay, loss, throughput
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Performance: delay, loss, throughput">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-the-four-sources-of-delay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 The four sources of delay ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-traffic-intensity-and-queueing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Traffic intensity and queueing ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-packet-loss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Packet loss
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-throughput" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Throughput ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-traceroute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 traceroute
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-layering-and-the-protocol-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Layering and the protocol stack
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Layering and the protocol stack">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-why-layering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Why layering ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-the-five-layer-model-vs-the-seven-layer-osi-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 The five-layer model vs the seven-layer OSI model ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-encapsulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Encapsulation ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-end-end-vs-hop-by-hop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 End-end vs hop-by-hop
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-network-security-and-history-for-awareness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Network security and history (for awareness)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Network security and history (for awareness)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-common-threats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Common threats
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-historical-phases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Historical phases
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-worked-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Worked examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Worked examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-the-four-sources-of-delay-10-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 1: The four sources of delay (10 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2-store-and-forward-8-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 2: Store-and-forward (8 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-3-packet-switching-vs-circuit-switching-10-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 3: Packet switching vs circuit switching (10 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-4-throughput-6-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 4: Throughput (6 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-5-encapsulation-8-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 5: Encapsulation (8 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-6-traffic-intensity-6-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 6: Traffic intensity (6 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-common-mistakes-where-marks-are-most-easily-lost" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Common mistakes (where marks are most easily lost)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-self-test-do-it-first-then-check-the-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Self-test (do it first, then check the answers)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Self-test (do it first, then check the answers)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Answers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-pre-exam-quick-reference-card" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Pre-exam quick-reference card
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="chapter-1-introduction-review-notes">Chapter 1 · Introduction · Review Notes<a class="headerlink" href="#chapter-1-introduction-review-notes" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Matching slides</strong>: <code>ch1-8.pdf</code> (Kurose &amp; Ross, Chapter 1 Introduction, 8th ed.)</p>
+<p><strong>Suggested time</strong>: first pass 70 minutes + worked examples 30 minutes + self-test 30 minutes</p>
+<p><strong>Companion</strong>: Outline §2</p>
+<p><strong>Weight of this chapter</strong>: concept questions, delay/throughput calculations, layering and encapsulation are high-frequency exam points; packet switching vs circuit switching is a classic short-answer question.</p>
+</blockquote>
+<hr />
+<h2 id="0-chapter-thread-memorize-these-three-sentences-first">0. Chapter thread (memorize these three sentences first)<a class="headerlink" href="#0-chapter-thread-memorize-these-three-sentences-first" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>The Internet can be viewed from two perspectives</strong>: nuts and bolts (hosts, switches, links, networks) and services (the infrastructure that provides communication services to applications).</li>
+<li><strong>Data crossing the network = packet switching + layered encapsulation</strong>; each layer adds its own header, and routers process only up to the network layer.</li>
+<li><strong>Performance is determined by delay, loss, and throughput</strong>; the four delay components, <span class="mchip"><span class="arithmatex">\(La/R\)</span></span>, and the bottleneck link are the core of the calculation questions.</li>
+</ol>
+<p><strong>Common question types in this chapter</strong></p>
+<table>
+<thead>
+<tr>
+<th>Question type</th>
+<th>Typical phrasing</th>
+<th>What to prepare</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Concept</td>
+<td>Three elements of a protocol? Four categories of nuts-and-bolts components?</td>
+<td>Memorize definitions + give examples</td>
+</tr>
+<tr>
+<td>Comparison</td>
+<td>Packet switching vs circuit switching</td>
+<td>Start from “whether resources are reserved / whether statistical multiplexing is used”</td>
+</tr>
+<tr>
+<td>Calculation</td>
+<td>The four delays, <span class="mchip"><span class="arithmatex">\(La/R\)</span></span>, throughput, store-and-forward</td>
+<td>Remember formulas + unit conversion</td>
+</tr>
+<tr>
+<td>Layering</td>
+<td>Five layers / OSI seven layers, encapsulation, PDU</td>
+<td>Draw the diagram + explain what each layer does</td>
+</tr>
+<tr>
+<td>Short answer</td>
+<td>Why layering? Routing vs forwarding?</td>
+<td>Answer with “decomposing a complex system / local vs global”</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="1-what-is-the-internet">1. What is the Internet<a class="headerlink" href="#1-what-is-the-internet" title="Permanent link">&para;</a></h2>
+<h3 id="11-the-nuts-and-bolts-view">1.1 The “nuts and bolts” view ★<a class="headerlink" href="#11-the-nuts-and-bolts-view" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Role</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Host / end system</strong></td>
+<td>Runs network applications</td>
+<td>PC, phone, server, IoT</td>
+</tr>
+<tr>
+<td><strong>Packet switch</strong></td>
+<td>Forwards packets</td>
+<td>router, switch</td>
+</tr>
+<tr>
+<td><strong>Communication link</strong></td>
+<td>Transmits bits</td>
+<td>fiber, copper, radio, satellite</td>
+</tr>
+<tr>
+<td><strong>Network</strong></td>
+<td>Collection of devices, routers, links</td>
+<td>home network, campus network, ISP network</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The Internet = <strong>network of networks</strong>.</li>
+<li>Link rate = <strong>bandwidth / transmission rate</strong> (bps).</li>
+<li>Packet = chunk of data; switches use <strong>store-and-forward</strong>.</li>
+</ul>
+<h3 id="12-the-services-view">1.2 The “services” view<a class="headerlink" href="#12-the-services-view" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The Internet is the infrastructure that <strong>provides communication services to applications</strong>.</li>
+<li>It provides a <strong>Socket API</strong>: applications hand their data to the network.</li>
+<li>Services include: reliable transfer, best-effort delivery, secure transmission, and so on (provided by combinations of different protocols).</li>
+</ul>
+<h3 id="13-protocol">1.3 Protocol ★<a class="headerlink" href="#13-protocol" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>Protocol definition</strong>: ① message format; ② the order of messages sent and received; ③ the actions taken when a message is sent or received.</p>
+</blockquote>
+<ul>
+<li>Human protocol: ask “what's the time?” → the other person answers; network protocol: TCP connection request → SYN-ACK.</li>
+<li>The three elements can be summarized as: <strong>syntax, semantics, timing</strong>.</li>
+</ul>
+<p><strong>Why protocols are needed</strong>: both sides must agree on “how things are represented, who speaks first, and what to do on receipt”, otherwise they cannot communicate.</p>
+<hr />
+<h2 id="2-network-edge">2. Network edge<a class="headerlink" href="#2-network-edge" title="Permanent link">&para;</a></h2>
+<h3 id="21-access-networks">2.1 Access networks ★<a class="headerlink" href="#21-access-networks" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Structure / medium</th>
+<th>Rate / characteristics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cable (HFC)</strong></td>
+<td>coaxial cable + fiber to the cable headend; shared</td>
+<td>up to 40 Mbps–1.2 Gbps downstream; 30–100 Mbps upstream</td>
+</tr>
+<tr>
+<td><strong>DSL</strong></td>
+<td>telephone twisted pair to the DSLAM / central office; dedicated</td>
+<td>24–52 Mbps downstream; 3.5–16 Mbps upstream</td>
+</tr>
+<tr>
+<td><strong>Home network</strong></td>
+<td>cable/DSL modem + WiFi AP + router</td>
+<td>WiFi 54/450 Mbps; wired 1 Gbps</td>
+</tr>
+<tr>
+<td><strong>Wireless WLAN</strong></td>
+<td>802.11b/g/n, base station / access point</td>
+<td>11/54/450 Mbps; shared, subject to interference</td>
+</tr>
+<tr>
+<td><strong>Cellular</strong></td>
+<td>4G/5G base station</td>
+<td>10’s of Mbps (higher with 5G); wide coverage</td>
+</tr>
+<tr>
+<td><strong>Enterprise</strong></td>
+<td>Ethernet switch + router</td>
+<td>100 Mbps / 1 / 10 Gbps; WiFi AP</td>
+</tr>
+<tr>
+<td><strong>Data center</strong></td>
+<td>high-bandwidth switches connect large numbers of servers</td>
+<td>10s–100s Gbps</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>The slides do not cover FTTH; as a supplement: fiber to the home, high rate and low loss, but high deployment cost.</p>
+</blockquote>
+<p><strong>Shared vs dedicated</strong>:</p>
+<ul>
+<li>Cable and WiFi are <strong>shared</strong> media; multiple users compete for them;</li>
+<li>DSL is a <strong>dedicated</strong> line to the central office;</li>
+<li>Enterprise networks usually have wired access to the desktop and WiFi coverage.</li>
+</ul>
+<h3 id="22-physical-media">2.2 Physical media ★<a class="headerlink" href="#22-physical-media" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Twisted pair (UTP)</strong></td>
+<td>cheap, easy to install; rate varies with category / distance</td>
+</tr>
+<tr>
+<td><strong>Coaxial cable</strong></td>
+<td>cable TV / broadband; shared</td>
+</tr>
+<tr>
+<td><strong>Fiber optic cable</strong></td>
+<td>high speed, low error rate, immune to electromagnetic noise, long distance</td>
+</tr>
+<tr>
+<td><strong>Wireless radio</strong></td>
+<td>wireless, mobile; affected by environment / interference / distance</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Guided media</strong>: signals propagate in solid media.</li>
+<li><strong>Unguided media</strong>: signals propagate freely, e.g., radio.</li>
+</ul>
+<h3 id="23-how-a-host-sends-packets">2.3 How a host sends packets<a class="headerlink" href="#23-how-a-host-sends-packets" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The application message is broken into <strong>packets</strong> of length <code>L</code> bits.</li>
+<li>Link transmission rate <code>R</code> bps.</li>
+<li><strong>Transmission delay</strong>: <span class="mchip"><span class="arithmatex">\(L/R\)</span></span>.</li>
+<li>Switches <strong>store and forward</strong>: the entire packet must arrive (and be checked) before it can be transmitted on the next link.</li>
+</ul>
+<p><strong>Example</strong>: L=10 Kbit, R=100 Mbps → <span class="mchip"><span class="arithmatex">\(\tfrac{L}{R} = \tfrac{10^4}{10^8} = 0.1\ \text{ms}\)</span></span> (the slide example).</p>
+<hr />
+<h2 id="3-network-core">3. Network core<a class="headerlink" href="#3-network-core" title="Permanent link">&para;</a></h2>
+<h3 id="31-forwarding-vs-routing">3.1 Forwarding vs routing ★<a class="headerlink" href="#31-forwarding-vs-routing" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Scope</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Forwarding</strong></td>
+<td>local, per packet</td>
+<td>move arriving packets from the router's input link to the appropriate output link, based on the local forwarding table</td>
+</tr>
+<tr>
+<td><strong>Routing</strong></td>
+<td>global, paths</td>
+<td>run routing algorithms to determine the source-destination paths taken by packets</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Analogy: forwarding is “reading the sign at an intersection to pick a direction”; routing is “planning the whole route in advance”.</p>
+</blockquote>
+<h3 id="32-packet-switching">3.2 Packet switching ★★<a class="headerlink" href="#32-packet-switching" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Data is split into packets that travel independently; <strong>statistical multiplexing</strong> (sharing bandwidth on demand).</li>
+<li><strong>Store-and-forward</strong>: receive the entire packet before forwarding.</li>
+<li><strong>Queueing</strong>: arrival rate (in bps) &gt; output rate → packets queue in the buffer; buffer full → <strong>packet loss</strong>.</li>
+<li>Advantages: great for <strong>bursty</strong> data, high bandwidth utilization, no call setup.</li>
+<li>Disadvantages: queueing delay, packet loss, and the need for reliable data transfer / congestion control.</li>
+</ul>
+<p><strong>Store-and-forward delay over two links</strong> (no queueing or processing):</p>
+<div class="arithmatex">\[
+d = \frac{2L}{R}
+\]</div>
+<h3 id="33-circuit-switching">3.3 Circuit switching ★★<a class="headerlink" href="#33-circuit-switching" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>End-end resources (bandwidth / slots) are reserved</strong> when the call is set up, and dedicated for the duration of the call.</li>
+<li><strong>FDM</strong>: frequency division multiplexing, different frequency bands;</li>
+<li><strong>TDM</strong>: time division multiplexing, periodic time slots.</li>
+<li>Advantages: bandwidth / delay guarantees, good for real-time voice.</li>
+<li>Disadvantages: wasted when idle, slow call setup, low resource utilization.</li>
+</ul>
+<h3 id="34-packet-switching-vs-circuit-switching-the-classic-example">3.4 Packet switching vs circuit switching: the classic example ★★<a class="headerlink" href="#34-packet-switching-vs-circuit-switching-the-classic-example" title="Permanent link">&para;</a></h3>
+<p><strong>Scenario</strong>: 1 Gb/s link; each user sends 100 Mb/s when “active”; active 10% of the time.</p>
+<ul>
+<li><strong>Circuit switching</strong>: 100 Mb/s reserved per call → at most <strong>10</strong> users.</li>
+<li><strong>Packet switching</strong>: with 35 users, the probability that more than 10 are active at the same time is <strong>&lt; 0.0004</strong> → no congestion most of the time.</li>
+<li>Conclusion: <strong>packet switching is more efficient for bursty data</strong>; but packet switching gives no hard guarantees, and delay / loss rise under congestion.</li>
+</ul>
+<blockquote>
+<p>How this is calculated: binomial distribution, <code>P(X &gt; 10)</code> with <code>X ~ B(35, 0.1)</code>; the slides only ask you to understand the conclusion.</p>
+</blockquote>
+<h3 id="35-internet-structure-a-network-of-networks">3.5 Internet structure: a “network of networks”<a class="headerlink" href="#35-internet-structure-a-network-of-networks" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Access ISP → regional ISP → <strong>tier-1 ISP</strong>;</li>
+<li><strong>IXP</strong> (Internet Exchange Point) lets ISPs interconnect;</li>
+<li><strong>Content provider networks</strong> (Google, Netflix, Akamai) run their own CDN / backbone to bring content close to end users;</li>
+<li>Business relationships: transit (paid transmission), peering (peering link), multi-homing.</li>
+</ul>
+<hr />
+<h2 id="4-performance-delay-loss-throughput">4. Performance: delay, loss, throughput<a class="headerlink" href="#4-performance-delay-loss-throughput" title="Permanent link">&para;</a></h2>
+<h3 id="41-the-four-sources-of-delay">4.1 The four sources of delay ★★<a class="headerlink" href="#41-the-four-sources-of-delay" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+d_{\text{nodal}} = d_{\text{proc}} + d_{\text{queue}} + d_{\text{trans}} + d_{\text{prop}}
+\]</div>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Formula / determining factor</th>
+<th>Magnitude</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Processing delay</strong> <code>d_proc</code></td>
+<td>check bit errors, look up the forwarding table</td>
+<td>typically &lt; µs</td>
+</tr>
+<tr>
+<td><strong>Queueing delay</strong> <code>d_queue</code></td>
+<td>depends on the congestion level, <span class="mchip"><span class="arithmatex">\(La/R\)</span></span></td>
+<td>from 0 up to very large</td>
+</tr>
+<tr>
+<td><strong>Transmission delay</strong> <code>d_trans</code></td>
+<td><span class="mchip"><span class="arithmatex">\(L/R\)</span></span> (packet length / link rate)</td>
+<td>determined by packet length and bandwidth</td>
+</tr>
+<tr>
+<td><strong>Propagation delay</strong> <code>d_prop</code></td>
+<td><span class="mchip"><span class="arithmatex">\(d/s\)</span></span> (distance / propagation speed)</td>
+<td>determined by physical distance</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Propagation speed <span class="mchip"><span class="arithmatex">\(s \approx 2\times10^8\ \text{m/s}\)</span></span> (about 2/3 the speed of light in fiber / copper).</li>
+<li>⚠ <strong>Transmission delay ≠ propagation delay</strong>: the former is “pushing the bits onto the link”, the latter is “the signal traveling through the medium”.</li>
+</ul>
+<p><strong>Example</strong>: L=1000 bytes=8000 bits, R=100 Mbps, d=2000 km, s=2×10⁸ m/s.
+- <span class="mchip"><span class="arithmatex">\(d_{\text{trans}} = \tfrac{8000}{10^8} = 80\ \mu\text{s}\)</span></span>
+- <span class="mchip"><span class="arithmatex">\(d_{\text{prop}} = \tfrac{2\times10^6}{2\times10^8} = 10\ \text{ms}\)</span></span>
+- total delay ≈ <strong>10.08 ms</strong> (propagation dominates).</p>
+<h3 id="42-traffic-intensity-and-queueing">4.2 Traffic intensity and queueing ★★<a class="headerlink" href="#42-traffic-intensity-and-queueing" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+\text{traffic intensity} = \frac{La}{R}
+\]</div>
+<ul>
+<li><code>a</code>: average packet arrival rate (packets/sec); <code>L</code>: packet length (bits); <code>R</code>: link bandwidth (bit transmission rate).</li>
+<li><span class="mchip"><span class="arithmatex">\(\tfrac{La}{R} \approx 0\)</span></span>: average queueing delay is small;</li>
+<li><span class="mchip"><span class="arithmatex">\(\tfrac{La}{R} \to 1\)</span></span>: average queueing delay grows sharply;</li>
+<li><code>La/R &gt; 1</code>: more “work” arriving than can be serviced, so the queue grows without bound (in practice, packets are lost).</li>
+</ul>
+<p><strong>Example</strong>: L=1000 bytes=8000 bits, a=100 packets/sec, R=1 Mbps:
+<span class="mchip"><span class="arithmatex">\(\tfrac{La}{R} = \tfrac{8000\times100}{10^6} = 0.8\)</span></span> → close to 1, queueing delay will be noticeable.</p>
+<h3 id="43-packet-loss">4.3 Packet loss<a class="headerlink" href="#43-packet-loss" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Router buffers are finite; if the arrival rate to the link keeps exceeding the output rate → the buffer fills up → later packets are dropped.</li>
+<li>A lost packet may be retransmitted, which makes congestion even worse.</li>
+<li>Symptoms: application timeouts, lower throughput, delay jitter.</li>
+</ul>
+<h3 id="44-throughput">4.4 Throughput ★★<a class="headerlink" href="#44-throughput" title="Permanent link">&para;</a></h3>
+<ul>
+<li>End-end throughput = the rate of the <strong>bottleneck link</strong>:</li>
+</ul>
+<div class="arithmatex">\[
+\text{throughput} = \min(R_s, R_c, \ldots)
+\]</div>
+<ul>
+<li>If 10 connections (fairly) share backbone <code>R</code>, each connection's throughput ≈ <code>min(R_s, R_c, R/10)</code>.</li>
+<li>The bottleneck is usually the access link (<code>R_s</code> or <code>R_c</code>), not the core backbone.</li>
+</ul>
+<p><strong>Example</strong>: server upstream 2 Mbps, client downstream 10 Mbps, backbone 100 Mbps → throughput = <strong>2 Mbps</strong>.</p>
+<h3 id="45-traceroute">4.5 traceroute<a class="headerlink" href="#45-traceroute" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Send probes with TTL=1, 2, 3, ...; each router returns an ICMP time-exceeded message; measure the RTT hop by hop.</li>
+<li>You can see the path, the delay of each hop, and loss / routing changes.</li>
+</ul>
+<hr />
+<h2 id="5-layering-and-the-protocol-stack">5. Layering and the protocol stack<a class="headerlink" href="#5-layering-and-the-protocol-stack" title="Permanent link">&para;</a></h2>
+<h3 id="51-why-layering">5.1 Why layering ★<a class="headerlink" href="#51-why-layering" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Decompose a complex system into manageable modules;</li>
+<li>Each layer relies only on the services provided by the layer below, so a layer's implementation can evolve independently;</li>
+<li>Easier standardization, interoperability, and teaching.</li>
+</ul>
+<p><strong>Cost</strong>: header overhead, information hiding between layers, and difficulty of cross-layer optimization.</p>
+<h3 id="52-the-five-layer-model-vs-the-seven-layer-osi-model">5.2 The five-layer model vs the seven-layer OSI model ★★<a class="headerlink" href="#52-the-five-layer-model-vs-the-seven-layer-osi-model" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Internet five layers</th>
+<th>OSI seven layers</th>
+<th>Function</th>
+<th>PDU</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Application</td>
+<td>Application / Presentation / Session</td>
+<td>application semantics, representation, sessions</td>
+<td>message</td>
+</tr>
+<tr>
+<td>Transport</td>
+<td>Transport</td>
+<td>process-to-process</td>
+<td>segment</td>
+</tr>
+<tr>
+<td>Network</td>
+<td>Network</td>
+<td>host-to-host, routing</td>
+<td>datagram</td>
+</tr>
+<tr>
+<td>Link</td>
+<td>Data Link</td>
+<td>neighboring nodes, framing</td>
+<td>frame</td>
+</tr>
+<tr>
+<td>Physical</td>
+<td>Physical</td>
+<td>bit transmission</td>
+<td>bit</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>OSI's Presentation / Session are handled by the application layer itself in the Internet.</li>
+<li>The five layers are the model commonly used in teaching and engineering; OSI is the reference model.</li>
+</ul>
+<h3 id="53-encapsulation">5.3 Encapsulation ★★<a class="headerlink" href="#53-encapsulation" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Application:  M
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Transport:    [H_t | M]                 segment
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Network:      [H_n | H_t | M]           datagram
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Link:         [H_l | H_n | H_t | M]     frame
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Physical:     bit stream
+</code></pre></div>
+<ul>
+<li>Each layer adds its own header; the receiver decapsulates layer by layer.</li>
+<li>Routers process up to the network layer; link-layer switches process up to the link layer.</li>
+<li>Headers are “contracts between layers”: addresses, protocol numbers, length, checksums, and so on.</li>
+</ul>
+<h3 id="54-end-end-vs-hop-by-hop">5.4 End-end vs hop-by-hop<a class="headerlink" href="#54-end-end-vs-hop-by-hop" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Transport layer: <strong>end-end</strong> (process-to-process), implemented only at the two ends.</li>
+<li>Network layer: hop-by-hop routing; every router takes part.</li>
+<li>Link layer: hop-by-hop (neighboring nodes).</li>
+</ul>
+<hr />
+<h2 id="6-network-security-and-history-for-awareness">6. Network security and history (for awareness)<a class="headerlink" href="#6-network-security-and-history-for-awareness" title="Permanent link">&para;</a></h2>
+<h3 id="61-common-threats">6.1 Common threats<a class="headerlink" href="#61-common-threats" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Threat</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Malware</strong></td>
+<td>viruses, worms, Trojan horses, botnets</td>
+</tr>
+<tr>
+<td><strong>DoS/DDoS</strong></td>
+<td>a flood of traffic / requests exhausts resources</td>
+</tr>
+<tr>
+<td><strong>Sniffing</strong></td>
+<td>packet capture on shared media / wireless</td>
+</tr>
+<tr>
+<td><strong>Spoofing</strong></td>
+<td>forge the source IP / MAC</td>
+</tr>
+</tbody>
+</table>
+<h3 id="62-historical-phases">6.2 Historical phases<a class="headerlink" href="#62-historical-phases" title="Permanent link">&para;</a></h3>
+<ul>
+<li>1961–1972: early packet-switching principles, ARPANET;</li>
+<li>1972–1980: internetworking, the beginnings of TCP/IP;</li>
+<li>1980–1990: protocol standardization, DNS, NSFNET;</li>
+<li>1990s: commercialization, the Web, browsers;</li>
+<li>2005–: mobility, cloud, SDN, CDN, IoT.</li>
+</ul>
+<hr />
+<h2 id="7-worked-examples">7. Worked examples<a class="headerlink" href="#7-worked-examples" title="Permanent link">&para;</a></h2>
+<h3 id="example-1-the-four-sources-of-delay-10-points">Example 1: The four sources of delay (10 points)<a class="headerlink" href="#example-1-the-four-sources-of-delay-10-points" title="Permanent link">&para;</a></h3>
+<p><strong>Question</strong>: L=1500 bytes, R=1 Gbps, link length 3000 km, s=2×10⁸ m/s, processing delay 10 µs, queueing delay negligible. Find the nodal delay.</p>
+<p><strong>Solution</strong>:
+- <span class="mchip"><span class="arithmatex">\(L = 1500\times8 = 12000\ \text{bit}\)</span></span>
+- <span class="mchip"><span class="arithmatex">\(d_{\text{trans}} = \tfrac{12000}{10^9} = 12\ \mu\text{s}\)</span></span>
+- <span class="mchip"><span class="arithmatex">\(d_{\text{prop}} = \tfrac{3\times10^6}{2\times10^8} = 15\ \text{ms}\)</span></span>
+- <span class="mchip"><span class="arithmatex">\(d_{\text{proc}} = 10\ \mu\text{s}\)</span></span>
+- <span class="mchip"><span class="arithmatex">\(d \approx 10\ \mu\text{s} + 12\ \mu\text{s} + 15\ \text{ms} = 15.022\ \text{ms}\)</span></span></p>
+<p><strong>Marking points</strong>: unit conversion (bytes→bits, km→m, ms/µs); propagation delay dominates.</p>
+<h3 id="example-2-store-and-forward-8-points">Example 2: Store-and-forward (8 points)<a class="headerlink" href="#example-2-store-and-forward-8-points" title="Permanent link">&para;</a></h3>
+<p><strong>Question</strong>: packet length 10 Kbit, link rate 100 Mbps, 2 links (1 router), processing / queueing ignored. Find the end-end transmission delay.</p>
+<p><strong>Solution</strong>:
+- Per link <span class="mchip"><span class="arithmatex">\(\tfrac{L}{R} = \tfrac{10^4}{10^8} = 0.1\ \text{ms}\)</span></span>
+- Store-and-forward over two links: <span class="mchip"><span class="arithmatex">\(\tfrac{2L}{R} = 0.2\ \text{ms}\)</span></span></p>
+<p><strong>Marking points</strong>: the router must receive the entire packet before forwarding; with three links it would be <code>3L/R</code>.</p>
+<h3 id="example-3-packet-switching-vs-circuit-switching-10-points">Example 3: Packet switching vs circuit switching (10 points)<a class="headerlink" href="#example-3-packet-switching-vs-circuit-switching-10-points" title="Permanent link">&para;</a></h3>
+<p><strong>Question</strong>: 1 Gb/s link, 100 Mb/s when a user is active, active 10% of the time. How many users can circuit switching support at most? Why can packet switching support 35?</p>
+<p><strong>Solution</strong>:
+- Circuit: <span class="mchip"><span class="arithmatex">\(\tfrac{1\ \text{Gb/s}}{100\ \text{Mb/s}} = 10\)</span></span> users (reserved per user).
+- Packet: with 35 users, the number active at the same time is <code>X~B(35,0.1)</code>; <code>P(X&gt;10) &lt; 0.0004</code>, i.e., the link capacity is not exceeded the vast majority of the time.
+- Conclusion: statistical multiplexing improves utilization, but under congestion there is queueing / loss.</p>
+<h3 id="example-4-throughput-6-points">Example 4: Throughput (6 points)<a class="headerlink" href="#example-4-throughput-6-points" title="Permanent link">&para;</a></h3>
+<p><strong>Question</strong>: server upstream 10 Mbps, client downstream 100 Mbps, backbone 1 Gbps, 10 connections fairly sharing the backbone. Find the throughput of a single connection.</p>
+<p><strong>Solution</strong>:
+- Bottleneck = <span class="mchip"><span class="arithmatex">\(\min(10\ \text{Mbps}, 100\ \text{Mbps}, \tfrac{1\ \text{Gbps}}{10} = 100\ \text{Mbps})\)</span></span> = <strong>10 Mbps</strong>.
+- If the backbone were only 50 Mbps, then <span class="mchip"><span class="arithmatex">\(\min(10, 100, 5) = 5\ \text{Mbps}\)</span></span>.</p>
+<h3 id="example-5-encapsulation-8-points">Example 5: Encapsulation (8 points)<a class="headerlink" href="#example-5-encapsulation-8-points" title="Permanent link">&para;</a></h3>
+<p><strong>Question</strong>: describe the encapsulation / decapsulation process for an application message going from host A to host B across one router.</p>
+<p><strong>Solution</strong>:
+1. The application on A generates message M;
+2. The transport layer adds <code>H_t</code> → segment;
+3. The network layer adds <code>H_n</code> → datagram;
+4. The link layer adds <code>H_l</code> → frame; the physical layer sends it;
+5. The router receives the frame, decapsulates it up to the network layer, looks up the forwarding table, and re-encapsulates it into a frame for the next link;
+6. B decapsulates layer by layer and finally hands M to the application.</p>
+<p><strong>Marking points</strong>: the header added by each layer, the router going only up to the network layer, B decapsulating layer by layer.</p>
+<h3 id="example-6-traffic-intensity-6-points">Example 6: Traffic intensity (6 points)<a class="headerlink" href="#example-6-traffic-intensity-6-points" title="Permanent link">&para;</a></h3>
+<p><strong>Question</strong>: packet length 1000 bytes, arrival rate 200 packets/sec, link 10 Mbps. Find the traffic intensity and judge the queueing situation.</p>
+<p><strong>Solution</strong>:
+- <span class="mchip"><span class="arithmatex">\(L = 8000\ \text{bit}\)</span></span>; <span class="mchip"><span class="arithmatex">\(\tfrac{La}{R} = \tfrac{8000\times200}{10^7} = 1.6\)</span></span>.
+- <code>&gt; 1</code>: the arrival rate exceeds the service rate, so the queue keeps growing → severe queueing / loss.</p>
+<hr />
+<h2 id="8-common-mistakes-where-marks-are-most-easily-lost">8. Common mistakes (where marks are most easily lost)<a class="headerlink" href="#8-common-mistakes-where-marks-are-most-easily-lost" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Wrong statement</th>
+<th>Correct understanding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transmission delay = propagation delay</td>
+<td>transmission is <span class="mchip"><span class="arithmatex">\(L/R\)</span></span> (pushing the bits), propagation is <span class="mchip"><span class="arithmatex">\(d/s\)</span></span> (the signal traveling)</td>
+</tr>
+<tr>
+<td>Larger bandwidth means smaller propagation delay</td>
+<td>propagation delay depends only on distance / medium, not on bandwidth</td>
+</tr>
+<tr>
+<td>Throughput = link bandwidth</td>
+<td>throughput = rate of the bottleneck link, which may be far less than the bandwidth</td>
+</tr>
+<tr>
+<td>Packet switching is always better than circuit switching</td>
+<td>it is more efficient for bursty traffic; circuit switching is more suitable for real-time / guaranteed services</td>
+</tr>
+<tr>
+<td>Circuit switching “has no delay”</td>
+<td>it has propagation / transmission delay; it just has no queueing / congestion</td>
+</tr>
+<tr>
+<td>Routers process up to the application layer</td>
+<td>routers go only up to the network layer; switches up to the link layer</td>
+</tr>
+<tr>
+<td>Five layers = OSI seven layers</td>
+<td>the five layers are the Internet model; OSI has a presentation layer / session layer</td>
+</tr>
+<tr>
+<td>More layers is always better</td>
+<td>layering costs header / performance overhead; it is a tradeoff</td>
+</tr>
+<tr>
+<td>Delay is stable when <span class="mchip"><span class="arithmatex">\(\tfrac{La}{R}=1\)</span></span></td>
+<td>as <code>→1</code> queueing delay grows sharply; at <code>&gt;1</code> the queue grows without bound</td>
+</tr>
+<tr>
+<td>A protocol only defines the message format</td>
+<td>it also defines the order / timing and the actions taken on receipt</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="9-self-test-do-it-first-then-check-the-answers">9. Self-test (do it first, then check the answers)<a class="headerlink" href="#9-self-test-do-it-first-then-check-the-answers" title="Permanent link">&para;</a></h2>
+<ol>
+<li>From the “nuts and bolts” view, what four categories of components make up the Internet?</li>
+<li>What are the three elements of a protocol? Explain with the “asking the time” analogy.</li>
+<li>What is the core difference between packet switching and circuit switching? What are the pros and cons of each?</li>
+<li>Write out the four components of nodal delay; which of them depend on packet length?</li>
+<li>What happens as <span class="mchip"><span class="arithmatex">\(La/R\)</span></span> approaches 1? Why?</li>
+<li>What is the difference between transmission delay and propagation delay? What determines each?</li>
+<li>What are the PDU names at each layer of the five-layer protocol stack? How does encapsulation work?</li>
+<li>What is the difference between routing and forwarding?</li>
+<li>Why layering? What does it cost?</li>
+<li>What is the difference between FDM and TDM in circuit switching?</li>
+<li>What determines end-end throughput? How do you compute it when 10 connections share the backbone?</li>
+<li>How does traceroute work?</li>
+</ol>
+<h3 id="answers">Answers<a class="headerlink" href="#answers" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Hosts / end systems, packet switches (routers / switches), communication links, networks (a network of networks).</li>
+<li>Message format, order / timing, and the actions taken after receiving a message; a human asks the time → an answer, a network request → a response.</li>
+<li>Packet: statistical multiplexing, good for bursty traffic, possible queueing / loss; circuit: reserved resources, guarantees, wasted when idle.</li>
+<li>Processing, queueing, transmission <span class="mchip"><span class="arithmatex">\(L/R\)</span></span>, propagation <span class="mchip"><span class="arithmatex">\(d/s\)</span></span>; transmission depends on packet length, propagation depends on distance / medium.</li>
+<li>Queueing delay grows sharply and buffer overflow causes packet loss; the arrival rate keeps exceeding the output rate.</li>
+<li>Transmission: pushing the bits onto the link, <span class="mchip"><span class="arithmatex">\(L/R\)</span></span>; propagation: the signal traveling through the medium, <span class="mchip"><span class="arithmatex">\(d/s\)</span></span>.</li>
+<li>Application message, transport segment, network datagram, link frame, physical bit; each layer adds its header.</li>
+<li>Routing: global path selection (routing algorithms); forwarding: locally moving packets from the input link to the output link.</li>
+<li>Decomposing a complex system, independent evolution of modules, standardization; the cost is header overhead and information hiding between layers.</li>
+<li>FDM divides frequency into bands; TDM divides time into slots; both reserve resources.</li>
+<li>The bottleneck link <code>min(R_s,R_c,...)</code>; with 10 connections fairly sharing backbone R, each gets <code>min(R_s,R_c,R/10)</code>.</li>
+<li>Send probes with increasing TTL, each router returns an ICMP time-exceeded message, and measure the RTT hop by hop.</li>
+</ol>
+<hr />
+<h2 id="10-pre-exam-quick-reference-card">10. Pre-exam quick-reference card<a class="headerlink" href="#10-pre-exam-quick-reference-card" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Point</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Four categories of components</td>
+<td>hosts, packet switches, links, networks</td>
+</tr>
+<tr>
+<td>Three elements of a protocol</td>
+<td>format, order, action</td>
+</tr>
+<tr>
+<td>Circuit switching</td>
+<td>reserved resources; FDM/TDM; the 10-user example</td>
+</tr>
+<tr>
+<td>Packet switching</td>
+<td>statistical multiplexing; store-and-forward; queueing / loss; the 35-user example</td>
+</tr>
+<tr>
+<td>Delay</td>
+<td><code>d_proc + d_queue + d_trans + d_prop</code></td>
+</tr>
+<tr>
+<td>Transmission / propagation</td>
+<td><span class="mchip"><span class="arithmatex">\(L/R\)</span></span>; <span class="mchip"><span class="arithmatex">\(d/s\)</span></span></td>
+</tr>
+<tr>
+<td>Traffic intensity</td>
+<td><span class="mchip"><span class="arithmatex">\(La/R\)</span></span>; →1 means large delay, &gt;1 means loss</td>
+</tr>
+<tr>
+<td>Throughput</td>
+<td><code>min(R_s,R_c,...)</code>; 10 connections <code>R/10</code></td>
+</tr>
+<tr>
+<td>Five layers</td>
+<td>application / transport / network / link / physical</td>
+</tr>
+<tr>
+<td>PDU</td>
+<td>message/segment/datagram/frame/bit</td>
+</tr>
+<tr>
+<td>Encapsulation</td>
+<td>each layer adds a header; routers up to the network layer</td>
+</tr>
+<tr>
+<td>Routing vs forwarding</td>
+<td>global path vs local port</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: All chapters">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                All chapters
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../ch2-application/" class="md-footer__link md-footer__link--next" aria-label="Next: Chapter 2 · Application Layer">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Chapter 2 · Application Layer
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Personal study notes · Unofficial · Course materials remain the property of the instructor.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tracking", "navigation.sections", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../javascripts/table-wrap.js"></script>
+      
+        <script src="../../../javascripts/lang-switch.js"></script>
+      
+        <script src="../../../javascripts/glossary.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

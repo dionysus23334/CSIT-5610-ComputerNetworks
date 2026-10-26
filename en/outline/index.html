@@ -1,0 +1,2633 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="HKUST CSIT5610 Computer Networks — review notes">
+      
+      
+        <meta name="author" content="dionysus23334">
+      
+      
+        <link rel="canonical" href="https://dionysus23334.github.io/CSIT-5610-ComputerNetworks/en/en/outline/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../glossary/">
+      
+      
+        
+          <link rel="alternate" href="../../outline/" hreflang="zh">
+        
+          <link rel="alternate" href="./" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Outline - CSIT5610 Computer Networks Review Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#csit5610-computer-networks-knowledge-outline" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../" title="CSIT5610 Computer Networks Review Notes" class="md-header__button md-logo" aria-label="CSIT5610 Computer Networks Review Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CSIT5610 Computer Networks Review Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Outline
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../outline/" hreflang="zh" class="md-select__link">
+              中文
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dionysus23334/CSIT-5610-ComputerNetworks" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dionysus23334/CSIT-5610-ComputerNetworks
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../" title="CSIT5610 Computer Networks Review Notes" class="md-nav__button md-logo" aria-label="CSIT5610 Computer Networks Review Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    CSIT5610 Computer Networks Review Notes
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dionysus23334/CSIT-5610-ComputerNetworks" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dionysus23334/CSIT-5610-ComputerNetworks
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://dionysus23334.github.io/study-blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ← Study archive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outline
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0-where-the-three-chapters-sit-in-the-course" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0. Where the three chapters sit in the course
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-global-knowledge-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Global knowledge map
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Global knowledge map">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-the-five-layer-protocol-stack-the-backbone-of-this-course" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 The five-layer protocol stack (the backbone of this course)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-the-path-of-one-web-access-tying-the-three-chapters-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 The path of one Web access (tying the three chapters together)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-the-three-performance-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 The three performance metrics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-the-two-state-machine-threads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 The two "state machine" threads
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-chapter-1-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Chapter 1: Introduction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Chapter 1: Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-what-is-the-internet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 What is the Internet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-the-network-edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 The network edge
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-the-network-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 The network core
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-performance-delay-loss-throughput" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Performance: delay, loss, throughput
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-layering-and-protocol-stacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Layering and protocol stacks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-network-security-and-history-awareness-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 Network security and history (awareness only)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-chapter-2-application-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Chapter 2: Application Layer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Chapter 2: Application Layer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-principles-of-network-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Principles of network applications
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-web-and-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Web and HTTP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-e-mail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 E-mail
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 DNS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-p2p-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 P2P applications
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-video-streaming-and-cdns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 Video streaming and CDNs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-socket-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7 Socket programming
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-chapter-3-transport-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Chapter 3: Transport Layer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Chapter 3: Transport Layer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-transport-layer-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Transport-layer services
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 UDP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-reliable-data-transfer-rdt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Reliable data transfer (rdt) ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-pipelined-protocols-gbn-and-sr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Pipelined protocols: GBN and SR ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 TCP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-congestion-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 Congestion control
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#47-quic-for-awareness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.7 QUIC (for awareness)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-side-by-side-comparisons-high-frequency-short-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Side-by-side comparisons (high-frequency short answers)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-formulas-and-numbers-to-memorize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Formulas and numbers to memorize
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-self-test-do-it-first-then-check-the-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Self-test (do it first, then check the answers)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Self-test (do it first, then check the answers)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chapter-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chapter-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chapter-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 3
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#answers-key-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Answers (key points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapters
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapters
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    All chapters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../review/ch1-intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 1 · Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../review/ch2-application/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 2 · Application Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../review/ch3-transport/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 3 · Transport Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0-where-the-three-chapters-sit-in-the-course" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0. Where the three chapters sit in the course
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-global-knowledge-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Global knowledge map
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Global knowledge map">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-the-five-layer-protocol-stack-the-backbone-of-this-course" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 The five-layer protocol stack (the backbone of this course)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-the-path-of-one-web-access-tying-the-three-chapters-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 The path of one Web access (tying the three chapters together)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-the-three-performance-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 The three performance metrics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-the-two-state-machine-threads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 The two "state machine" threads
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-chapter-1-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Chapter 1: Introduction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Chapter 1: Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-what-is-the-internet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 What is the Internet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-the-network-edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 The network edge
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-the-network-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 The network core
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-performance-delay-loss-throughput" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Performance: delay, loss, throughput
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-layering-and-protocol-stacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Layering and protocol stacks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-network-security-and-history-awareness-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 Network security and history (awareness only)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-chapter-2-application-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Chapter 2: Application Layer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Chapter 2: Application Layer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-principles-of-network-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Principles of network applications
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-web-and-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Web and HTTP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-e-mail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 E-mail
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 DNS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-p2p-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 P2P applications
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-video-streaming-and-cdns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 Video streaming and CDNs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-socket-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7 Socket programming
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-chapter-3-transport-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Chapter 3: Transport Layer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Chapter 3: Transport Layer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-transport-layer-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Transport-layer services
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 UDP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-reliable-data-transfer-rdt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Reliable data transfer (rdt) ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-pipelined-protocols-gbn-and-sr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Pipelined protocols: GBN and SR ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 TCP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-congestion-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 Congestion control
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#47-quic-for-awareness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.7 QUIC (for awareness)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-side-by-side-comparisons-high-frequency-short-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Side-by-side comparisons (high-frequency short answers)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-formulas-and-numbers-to-memorize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Formulas and numbers to memorize
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-self-test-do-it-first-then-check-the-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Self-test (do it first, then check the answers)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Self-test (do it first, then check the answers)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chapter-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chapter-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chapter-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 3
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#answers-key-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Answers (key points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="csit5610-computer-networks-knowledge-outline">CSIT5610 Computer Networks · Knowledge Outline<a class="headerlink" href="#csit5610-computer-networks-knowledge-outline" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Scope</strong>: Chapters 1–3 (Kurose &amp; Ross, <em>Computer Networking: A Top-Down Approach</em>, 8th ed.)
+Chapter 1 Introduction, Chapter 2 Application Layer, Chapter 3 Transport Layer.</p>
+<p><strong>How to use</strong>: first read §1 for the global map → go through the knowledge tree in §2–§4 chapter by chapter → use the side-by-side comparisons in §5 and the formula quick reference in §6 → finally do the self-test in §7.</p>
+<p><strong>Markers</strong>: ★ core exam point; ⚔ attack / problem; 🔧 mechanism / solution; ⚠ easily confused.</p>
+</blockquote>
+<hr />
+<h2 id="0-where-the-three-chapters-sit-in-the-course">0. Where the three chapters sit in the course<a class="headerlink" href="#0-where-the-three-chapters-sit-in-the-course" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Chapter</th>
+<th>Topic</th>
+<th>Core question</th>
+<th>After studying you can answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Introduction</td>
+<td>What is the Internet made of? How does data travel? Why layering?</td>
+<td>end-end paths, the four delays, packet vs. circuit, the five-layer model</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Application Layer</td>
+<td>How are network applications designed, how do protocols work?</td>
+<td>HTTP/DNS/SMTP flows, caching, P2P, CDN, sockets</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Transport Layer</td>
+<td>How do processes transfer data reliably / efficiently?</td>
+<td>UDP/TCP, rdt, GBN/SR, flow control, congestion control</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The main thread in one sentence</strong>:</p>
+<ol>
+<li><strong>Layering</strong>: each layer relies only on the services provided by the layer below, and offers an abstraction upward; understanding the header means understanding the contract between layers.</li>
+<li><strong>Protocol = rules</strong>: message format, field meaning, send/receive actions, timing; the vast majority of network problems can be reduced to "the state machine / fields of some layer went wrong".</li>
+<li><strong>Performance = delay + loss + throughput</strong>; reliability = acknowledgment + retransmission + sequence number; efficiency = pipelining + window + congestion control.</li>
+</ol>
+<hr />
+<h2 id="1-global-knowledge-map">1. Global knowledge map<a class="headerlink" href="#1-global-knowledge-map" title="Permanent link">&para;</a></h2>
+<h3 id="11-the-five-layer-protocol-stack-the-backbone-of-this-course">1.1 The five-layer protocol stack (the backbone of this course)<a class="headerlink" href="#11-the-five-layer-protocol-stack-the-backbone-of-this-course" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Application   HTTP, SMTP, DNS, ...           message
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Transport     TCP, UDP                       segment
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Network       IP, routing protocols          datagram
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Link          Ethernet, 802.11, PPP          frame
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Physical      copper / fiber / radio         bit
+</code></pre></div>
+<ul>
+<li>Encapsulation: application data gets a header at each layer on the way down; routers process only up to the network layer, switches up to the link layer.</li>
+<li>Addressing: the application layer uses domain names / URLs; the transport layer uses <strong>port numbers</strong>; the network layer uses <strong>IP</strong>; the link layer uses <strong>MAC</strong>.</li>
+<li>End-to-end vs. hop-by-hop: the transport layer is end-to-end; the network and link layers are hop-by-hop.</li>
+</ul>
+<h3 id="12-the-path-of-one-web-access-tying-the-three-chapters-together">1.2 The path of one Web access (tying the three chapters together)<a class="headerlink" href="#12-the-path-of-one-web-access-tying-the-three-chapters-together" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>browser --HTTP--&gt; TCP connection (three-way handshake) --IP--&gt; routers forward hop by hop --&gt; server
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>   DNS resolves the domain name first (UDP 53)
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>   TCP provides reliability, in-order delivery, flow control, congestion control
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>   HTTP is a stateless application protocol; cookies add state
+</code></pre></div>
+<h3 id="13-the-three-performance-metrics">1.3 The three performance metrics<a class="headerlink" href="#13-the-three-performance-metrics" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Definition</th>
+<th>Key formula / factor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Delay</strong></td>
+<td>time for data to travel from source to destination</td>
+<td><span class="mchip"><span class="arithmatex">\(d = d_{\text{proc}} + d_{\text{queue}} + d_{\text{trans}} + d_{\text{prop}}\)</span></span></td>
+</tr>
+<tr>
+<td><strong>Loss</strong></td>
+<td>packet loss caused by queue overflow / bit errors</td>
+<td>finite queue + traffic intensity <span class="mchip"><span class="arithmatex">\(La/R\)</span></span></td>
+</tr>
+<tr>
+<td><strong>Throughput</strong></td>
+<td>bits actually transferred per unit time</td>
+<td>bottleneck link <code>min(R_s, R_c)</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="14-the-two-state-machine-threads">1.4 The two "state machine" threads<a class="headerlink" href="#14-the-two-state-machine-threads" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Reliable transfer</strong>: the sender waits for an ACK and retransmits on timeout; the receiver uses sequence numbers / ACKs to handle duplicates and out-of-order data.</li>
+<li><strong>Connection management</strong>: TCP three-way handshake / four-way teardown; the state (LISTEN/SYN_SENT/ESTABLISHED/...) determines which packets can be accepted.</li>
+</ul>
+<hr />
+<h2 id="2-chapter-1-introduction">2. Chapter 1: Introduction<a class="headerlink" href="#2-chapter-1-introduction" title="Permanent link">&para;</a></h2>
+<h3 id="21-what-is-the-internet">2.1 What is the Internet<a class="headerlink" href="#21-what-is-the-internet" title="Permanent link">&para;</a></h3>
+<p><strong>The "nuts and bolts" view</strong></p>
+<ul>
+<li><strong>Hosts / end systems</strong>: PCs, phones, servers, IoT devices, running network applications.</li>
+<li><strong>Packet switches</strong>: routers and switches, forwarding packets.</li>
+<li><strong>Communication links</strong>: fiber, copper, radio, satellite; <strong>bandwidth / transmission rate</strong>.</li>
+<li><strong>Network</strong>: a collection of devices, routers, links, managed by an organization.</li>
+<li>The Internet = a "network of networks".</li>
+</ul>
+<p><strong>The "services" view</strong></p>
+<ul>
+<li>Infrastructure that provides <strong>communication services</strong> to applications.</li>
+<li>Provides an <strong>API (socket API)</strong> that lets applications hand data to the network.</li>
+<li>Protocols: the rules agreed on by the two communicating parties.</li>
+</ul>
+<p><strong>Protocol ★</strong></p>
+<blockquote>
+<p>Protocol definition: ① message format (format); ② the order / timing of messages (order); ③ the actions taken when a message is sent or received (action).</p>
+</blockquote>
+<ul>
+<li>Human protocol analogy: asking "what's the time?" → the reply; network protocol analogy: TCP connection request → response.</li>
+<li>The three elements of a protocol: <strong>syntax, semantics, timing</strong> (the slides phrase them as format / order / actions).</li>
+</ul>
+<h3 id="22-the-network-edge">2.2 The network edge<a class="headerlink" href="#22-the-network-edge" title="Permanent link">&para;</a></h3>
+<p><strong>Access networks</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Medium / structure</th>
+<th>Characteristics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cable (HFC)</strong></td>
+<td>coax cable + fiber hybrid; shared up to the headend</td>
+<td>high downstream rate; shared medium, needs allocation</td>
+</tr>
+<tr>
+<td><strong>DSL</strong></td>
+<td>telephone twisted pair to the DSLAM / CO</td>
+<td>dedicated line; rate falls off with distance</td>
+</tr>
+<tr>
+<td><strong>Wireless (WiFi/5G)</strong></td>
+<td>shared wireless access</td>
+<td>shared, subject to interference, mobility</td>
+</tr>
+<tr>
+<td><strong>Enterprise network</strong></td>
+<td>Ethernet + switches + routers</td>
+<td>high bandwidth, hierarchical access</td>
+</tr>
+<tr>
+<td><strong>Data center</strong></td>
+<td>racks / switches / load balancing</td>
+<td>high bandwidth, low latency, east-west traffic</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Physical media</strong></p>
+<ul>
+<li><strong>Guided media</strong>: twisted pair (UTP), coaxial cable, fiber (high speed, low error rate, immune to electromagnetic interference).</li>
+<li><strong>Unguided media</strong>: radio (WiFi, cellular, satellite); affected by the environment, distance, interference.</li>
+</ul>
+<p><strong>How a host sends packets</strong></p>
+<ul>
+<li>The host breaks data into <strong>packets</strong>; the link transmission rate is <code>R</code> (bps).</li>
+<li>To send one <code>L</code>-bit packet, <strong>transmission time = L/R</strong>.</li>
+<li>Packet switches use <strong>store-and-forward</strong>: receive the whole packet, check it, then forward.</li>
+</ul>
+<h3 id="23-the-network-core">2.3 The network core<a class="headerlink" href="#23-the-network-core" title="Permanent link">&para;</a></h3>
+<p><strong>Two key network-core functions</strong></p>
+<ul>
+<li><strong>Forwarding</strong>: move arriving packets from the router's input link to the appropriate output link (local action, fast).</li>
+<li><strong>Routing</strong>: determine the source-to-destination paths taken by packets (global action, runs routing algorithms).</li>
+</ul>
+<p><strong>Packet switching ★</strong></p>
+<ul>
+<li>Data is cut into packets that are transmitted independently; <strong>statistical multiplexing</strong>.</li>
+<li><strong>Store-and-forward</strong>: <span class="mchip"><span class="arithmatex">\(\text{end-end delay} \approx \tfrac{2L}{R}\)</span></span> (two links, no queueing).</li>
+<li><strong>Queueing</strong>: when the arrival rate &gt; the output rate, packets queue in the buffer; a full buffer → <strong>packet loss</strong>.</li>
+<li>Pros: great for bursty traffic, high bandwidth utilization; cons: queueing delay, packet loss, needs congestion control.</li>
+</ul>
+<p><strong>Circuit switching ★</strong></p>
+<ul>
+<li>Setting up a call <strong>reserves</strong> end-end resources (bandwidth / time slots); the call has them exclusively while it lasts.</li>
+<li><strong>FDM</strong>: frequency division multiplexing; <strong>TDM</strong>: time division multiplexing.</li>
+<li>Pros: bandwidth / delay guarantees; cons: wasted when idle, slow connection setup.</li>
+</ul>
+<p><strong>Packet switching vs. circuit switching (the classic example)</strong></p>
+<ul>
+<li>A 1 Gb/s link; a user needs 100 Mb/s when active and is active 10% of the time.</li>
+<li>Circuit switching: at most <strong>10</strong> users (100 Mb/s reserved for each).</li>
+<li>Packet switching: with 35 users, the probability that more than 10 are active at the same time is tiny → more users are supported.</li>
+<li>Conclusion: <strong>packet switching is more efficient for bursty traffic</strong>; but packet switching provides no hard guarantees.</li>
+</ul>
+<p><strong>Internet structure: a "network of networks"</strong></p>
+<ul>
+<li>Access ISP → regional ISP → Tier-1 ISP; IXPs interconnect them; content providers (Google/Netflix/Akamai) run their own networks, as close to users as possible.</li>
+<li>Business relationships such as multi-homing, peering, transit.</li>
+</ul>
+<h3 id="24-performance-delay-loss-throughput">2.4 Performance: delay, loss, throughput<a class="headerlink" href="#24-performance-delay-loss-throughput" title="Permanent link">&para;</a></h3>
+<p><strong>Four sources of delay ★★</strong></p>
+<div class="arithmatex">\[
+d_{\text{nodal}} = d_{\text{proc}} + d_{\text{queue}} + d_{\text{trans}} + d_{\text{prop}}
+\]</div>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Formula / meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Processing delay <code>d_proc</code></td>
+<td>check the header, determine the output link; typically very small</td>
+</tr>
+<tr>
+<td>Queueing delay <code>d_queue</code></td>
+<td>depends on the traffic intensity; estimated by <span class="mchip"><span class="arithmatex">\(La/R\)</span></span></td>
+</tr>
+<tr>
+<td>Transmission delay <code>d_trans</code></td>
+<td><span class="mchip"><span class="arithmatex">\(L/R\)</span></span> (the time to push the bits onto the link)</td>
+</tr>
+<tr>
+<td>Propagation delay <code>d_prop</code></td>
+<td><span class="mchip"><span class="arithmatex">\(d/s\)</span></span> (physical distance / propagation speed)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Traffic intensity ★</strong></p>
+<div class="arithmatex">\[
+\text{traffic intensity} = \frac{La}{R}
+\]</div>
+<ul>
+<li><code>a</code>: average arrival rate (packets/sec); <code>L</code>: packet length; <code>R</code>: link transmission rate.</li>
+<li><span class="mchip"><span class="arithmatex">\(\tfrac{La}{R} \approx 0\)</span></span>: queueing delay is small; <code>→ 1</code>: delay grows sharply; <code>&gt; 1</code>: the queue grows without bound (in practice packets are lost).</li>
+<li>⚠ <strong>Transmission delay vs. propagation delay</strong>: the former is "pushing the packet out", the latter is "the signal running through the medium".</li>
+</ul>
+<p><strong>Packet loss</strong></p>
+<ul>
+<li>The queue buffer is finite; if the arrival rate keeps exceeding the output rate → the buffer fills up → later packets are dropped.</li>
+<li>Loss may show up as "retransmission", "timeout", "throughput drop".</li>
+</ul>
+<p><strong>Throughput ★</strong></p>
+<ul>
+<li>End-end throughput = the rate of the <strong>bottleneck link</strong> on the path: <code>min(R_s, R_c, ...)</code>; when 10 connections fairly share a backbone <code>R</code>, each gets about <code>min(R_s, R_c, R/10)</code>.</li>
+<li>When the link rates are similar, throughput ≈ link rate; a single narrow link becomes the bottleneck.</li>
+</ul>
+<p><strong>traceroute</strong></p>
+<ul>
+<li>Uses an increasing TTL + ICMP time-exceeded to measure the RTT hop by hop; you can see the path and how the delay changes.</li>
+</ul>
+<h3 id="25-layering-and-protocol-stacks">2.5 Layering and protocol stacks<a class="headerlink" href="#25-layering-and-protocol-stacks" title="Permanent link">&para;</a></h3>
+<p><strong>Why layering</strong></p>
+<ul>
+<li>Decomposition of a complex system; modules evolve independently; the upper layer relies only on the lower layer's interface.</li>
+<li>Drawbacks: per-layer header overhead, information may be hidden (e.g., cross-layer optimization is hard).</li>
+</ul>
+<p><strong>Internet five layers vs. OSI seven layers</strong></p>
+<table>
+<thead>
+<tr>
+<th>Internet five layers</th>
+<th>OSI seven layers</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Application</td>
+<td>Application / Presentation / Session</td>
+<td>application semantics, representation, sessions</td>
+</tr>
+<tr>
+<td>Transport</td>
+<td>Transport</td>
+<td>process-to-process</td>
+</tr>
+<tr>
+<td>Network</td>
+<td>Network</td>
+<td>host-to-host, routing</td>
+</tr>
+<tr>
+<td>Link</td>
+<td>Data Link</td>
+<td>neighboring nodes, framing</td>
+</tr>
+<tr>
+<td>Physical</td>
+<td>Physical</td>
+<td>bit transmission</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>In the Internet stack, OSI's Presentation/Session are handled by the application layer itself.</li>
+</ul>
+<p><strong>Encapsulation ★</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>application:  message
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>transport:    [H_t | message]              segment
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>network:      [H_n | H_t | message]        datagram
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>link:         [H_l | H_n | H_t | message]  frame
+</code></pre></div>
+<ul>
+<li>Each layer reads / writes only its own header; the receiver decapsulates layer by layer.</li>
+<li>Routers decapsulate up to the network layer; link-layer switches up to the link layer.</li>
+</ul>
+<h3 id="26-network-security-and-history-awareness-only">2.6 Network security and history (awareness only)<a class="headerlink" href="#26-network-security-and-history-awareness-only" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Malware</strong>: viruses, worms, Trojans, botnets.</li>
+<li><strong>DoS/DDoS</strong>: exhaust resources with a flood of traffic / requests.</li>
+<li><strong>Sniffing</strong>: capture packets on a shared medium / over wireless.</li>
+<li><strong>Spoofing</strong>: forge the source IP / MAC.</li>
+<li>Historical phases: 1961–1972 packet switching; 1972–1980 internetworking; 1980–1990 protocol standardization; 1990s commercialization / Web; 2005– mobility / cloud / SDN.</li>
+</ul>
+<hr />
+<h2 id="3-chapter-2-application-layer">3. Chapter 2: Application Layer<a class="headerlink" href="#3-chapter-2-application-layer" title="Permanent link">&para;</a></h2>
+<h3 id="31-principles-of-network-applications">3.1 Principles of network applications<a class="headerlink" href="#31-principles-of-network-applications" title="Permanent link">&para;</a></h3>
+<p><strong>Two architectures</strong></p>
+<table>
+<thead>
+<tr>
+<th>Architecture</th>
+<th>Characteristics</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Client-Server</strong></td>
+<td>always-on server, permanent address, scaled with data centers; clients initiate requests</td>
+<td>Web, email, DNS</td>
+</tr>
+<tr>
+<td><strong>P2P</strong></td>
+<td>no always-on server; peers both request and provide service; self scalability</td>
+<td>BitTorrent, blockchain</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processes and sockets</strong></p>
+<ul>
+<li><strong>Process</strong>: a program running within a host; within the same host a process ID is used, across hosts <strong>IP + port number</strong> identifies it.</li>
+<li><strong>Socket</strong>: the door between the application process and the transport layer; the application hands the message to the socket, and the transport layer sends it.</li>
+<li>An application-layer protocol must define: <strong>types of messages, syntax, semantics, timing</strong>.</li>
+</ul>
+<p><strong>What transport service does an app need?</strong></p>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Description</th>
+<th>Typical application</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data integrity</td>
+<td>no loss / no errors</td>
+<td>file transfer, Web, email</td>
+</tr>
+<tr>
+<td>Timing</td>
+<td>low delay</td>
+<td>real-time audio/video, games</td>
+</tr>
+<tr>
+<td>Throughput</td>
+<td>minimum bandwidth</td>
+<td>streaming video</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>encryption / authentication</td>
+<td>login, payment</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Internet transport services</strong></p>
+<ul>
+<li><strong>TCP</strong>: reliable, in-order, flow control, congestion control, connection-oriented; provides no timing or bandwidth guarantee.</li>
+<li><strong>UDP</strong>: unreliable, connectionless, low overhead; does not guarantee order / integrity.</li>
+<li><strong>TLS</strong>: provides encryption, authentication, integrity on top of TCP; applications use it through TLS libraries (HTTPS).</li>
+</ul>
+<h3 id="32-web-and-http">3.2 Web and HTTP<a class="headerlink" href="#32-web-and-http" title="Permanent link">&para;</a></h3>
+<p><strong>HTTP basics</strong></p>
+<ul>
+<li>Hypertext transfer protocol; <strong>request / response</strong> model; <strong>stateless</strong> (no history kept).</li>
+<li>Default port <strong>80</strong>; uses TCP.</li>
+<li>Two connection types:</li>
+<li><strong>Non-persistent (HTTP/1.0)</strong>: one TCP connection per object;</li>
+<li><strong>Persistent (HTTP/1.1)</strong>: one connection carries multiple objects.</li>
+</ul>
+<p><strong>Response time (RTT) ★</strong></p>
+<ul>
+<li><strong>RTT</strong>: the time for a small packet to travel from client to server and back.</li>
+<li>Non-persistent HTTP: about <strong>2 RTT + transmission time</strong> per object (1 RTT to set up the connection + 1 RTT for request/response).</li>
+<li>Persistent HTTP: the connection is set up once; without pipelining about <strong>1 RTT + transmission time</strong> per object, with pipelining all objects can arrive one after another after roughly <strong>1 RTT</strong>.</li>
+</ul>
+<p><strong>HTTP messages</strong></p>
+<ul>
+<li>Request line: <code>GET /index.html HTTP/1.1</code>; header lines: Host, User-Agent, Accept, Connection, Cookie, etc.; blank line; entity body.</li>
+<li>Methods: GET, POST, HEAD, PUT, DELETE.</li>
+<li>Response: status line + header lines + entity body; status codes:</li>
+<li>200 OK; 301 Moved Permanently; 304 Not Modified;</li>
+<li>400 Bad Request; 403 Forbidden; 404 Not Found; 505 HTTP Version Not Supported.</li>
+</ul>
+<p><strong>Cookie ★</strong></p>
+<ul>
+<li>HTTP is stateless → cookies are used to maintain state.</li>
+<li>The server responds with <code>Set-Cookie</code>; the browser stores it and sends <code>Cookie</code> in later requests; the server uses a back-end database to associate the user.</li>
+<li>Uses: shopping carts, sessions, personalization, tracking.</li>
+<li>Privacy issue: cross-site tracking; cookies are not an authentication mechanism.</li>
+</ul>
+<p><strong>Web cache / proxy ★</strong></p>
+<ul>
+<li>Cache hit: return the object directly, reducing response time, lowering access-link bandwidth use, and relieving the origin server.</li>
+<li><strong>Conditional GET</strong>: <code>If-Modified-Since</code>; if the object is not modified the server returns <strong>304 Not Modified</strong> (no entity body).</li>
+<li>Cache consistency: <code>Cache-Control</code>, expiration time, validation.</li>
+</ul>
+<p><strong>HTTP/2 and HTTP/3</strong></p>
+<ul>
+<li>HTTP/1.1: HOL blocking, header redundancy.</li>
+<li><strong>HTTP/2</strong>: binary framing, multiplexing (multiple concurrent streams over one TCP connection), header compression (HPACK); still affected by TCP-layer HOL blocking.</li>
+<li><strong>HTTP/3</strong>: built on <strong>QUIC (UDP)</strong>, stream-level multiplexing that avoids TCP HOL blocking; 0/1-RTT connection setup; encryption built in.</li>
+</ul>
+<h3 id="33-e-mail">3.3 E-mail<a class="headerlink" href="#33-e-mail" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Components: user agent (UA), mail servers, SMTP, mail access protocols.</li>
+<li><strong>SMTP</strong>: push, from the sender's UA → sender's mail server → receiver's mail server; TCP port <strong>25</strong>; commands / responses are ASCII.</li>
+<li><strong>Mail access</strong>: POP3 (110), IMAP (143), HTTP webmail; pull.</li>
+<li>Message format: header lines (From/To/Subject/Date) + blank line + body; MIME supports attachments / non-ASCII.</li>
+<li>SMTP vs. HTTP: SMTP pushes, HTTP pulls; both use ASCII command / response interaction, but SMTP requires the message to be 7-bit ASCII.</li>
+</ul>
+<h3 id="34-dns">3.4 DNS<a class="headerlink" href="#34-dns" title="Permanent link">&para;</a></h3>
+<p><strong>Services</strong></p>
+<ul>
+<li>Hostname → IP address; host aliasing; mail server aliasing; load distribution.</li>
+<li>A distributed, hierarchical database; UDP port <strong>53</strong> (TCP also possible).</li>
+<li>Why not centralize: single point of failure, traffic volume, distance, maintenance.</li>
+</ul>
+<p><strong>Hierarchy ★</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>root DNS servers (root)
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>  → top-level domain TLD (.com, .org, .cn)
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    → authoritative DNS servers (authoritative)
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>local DNS server (local/resolver, usually provided by the ISP / organization)
+</code></pre></div>
+<ul>
+<li>Root servers: 13 logical clusters worldwide, each replicated many times (~200 servers in the US).</li>
+<li>TLD: responsible for .com/.org etc.</li>
+<li>Authoritative: holds the records for the specific domain names.</li>
+<li>Local DNS: proxies queries, caches.</li>
+</ul>
+<p><strong>Name resolution ★</strong></p>
+<ul>
+<li><strong>Iterative query</strong>: the local DNS asks the root, the TLD, then the authoritative server in turn, driving the process itself.</li>
+<li><strong>Recursive query</strong>: the local DNS completes the whole query on behalf of the host (the root usually does not recurse).</li>
+<li>In practice: host → local DNS is recursive; local DNS → root/TLD/authoritative is usually iterative.</li>
+</ul>
+<p><strong>Caching</strong></p>
+<ul>
+<li>Any level can cache; TTL controls expiration.</li>
+<li>Pros: lower delay, less load on the root/TLD servers; cons: expired records may be inconsistent.</li>
+</ul>
+<p><strong>Resource records (RR)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>hostname → IPv4 address</td>
+</tr>
+<tr>
+<td>AAAA</td>
+<td>hostname → IPv6 address</td>
+</tr>
+<tr>
+<td>NS</td>
+<td>the authoritative DNS server of the domain</td>
+</tr>
+<tr>
+<td>CNAME</td>
+<td>alias name → canonical name</td>
+</tr>
+<tr>
+<td>MX</td>
+<td>mail server</td>
+</tr>
+</tbody>
+</table>
+<p><strong>DNS messages</strong></p>
+<ul>
+<li>Header: ID, flags, # questions, # answer RRs, # authority RRs, # additional RRs; the four sections questions / answers / authority / additional.</li>
+<li>Query and reply have the same format.</li>
+</ul>
+<p><strong>DNS security</strong></p>
+<ul>
+<li>DDoS (against the root/TLD/authoritative servers); cache poisoning; forged replies.</li>
+<li>Defenses: DNSSEC (signatures / chain of trust), randomized ID/port, 0x20 encoding, rate limiting.</li>
+</ul>
+<h3 id="35-p2p-applications">3.5 P2P applications<a class="headerlink" href="#35-p2p-applications" title="Permanent link">&para;</a></h3>
+<p><strong>File distribution time ★</strong></p>
+<ul>
+<li>Client-server: <span class="mchip"><span class="arithmatex">\(D_{\text{cs}} = \max\left\{\tfrac{NF}{u_s},\ \tfrac{F}{d_{\min}}\right\}\)</span></span></li>
+<li>P2P: <span class="mchip"><span class="arithmatex">\(D_{\text{p2p}} = \max\left\{\tfrac{F}{u_s},\ \tfrac{F}{d_{\min}},\ \tfrac{NF}{u_s+\sum u_i}\right\}\)</span></span></li>
+<li>where <code>F</code> is the file size, <code>N</code> the number of peers, <code>u_s</code> the server upload capacity, <code>u_i</code> peer i's upload capacity, <code>d_min</code> the slowest download rate.</li>
+<li>Conclusion: P2P scales as N grows; C-S is limited by the server's bandwidth.</li>
+</ul>
+<p><strong>BitTorrent</strong></p>
+<ul>
+<li>The file is divided into chunks (usually 256 KB); the tracker provides a list of peers; peers exchange chunks.</li>
+<li><strong>tit-for-tat</strong>: prefer peers with a high upload rate; periodically "optimistically unchoke" a new peer to give it a chance.</li>
+<li>Incentive: the free-riding problem.</li>
+</ul>
+<h3 id="36-video-streaming-and-cdns">3.6 Video streaming and CDNs<a class="headerlink" href="#36-video-streaming-and-cdns" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Video: a sequence of frames; CBR/VBR; compression (spatial / temporal redundancy).</li>
+<li>Streaming challenges: the continuous playout constraint, network jitter, changing bandwidth.</li>
+<li><strong>Playout buffer</strong>: buffer ahead, absorbing jitter; the cost is startup delay.</li>
+<li><strong>DASH</strong>: cut the video into chunks at different coding rates; the client adapts its choice to the bandwidth.</li>
+<li><strong>CDN</strong>: deploy copies of content at edge nodes; DNS / HTTP redirects the client to the nearest node; lower delay, less backbone traffic.</li>
+<li><strong>OTT</strong>: the content provider bypasses traditional operators and builds its own CDN / network.</li>
+</ul>
+<h3 id="37-socket-programming">3.7 Socket programming<a class="headerlink" href="#37-socket-programming" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>UDP</strong>: <code>socket(AF_INET, SOCK_DGRAM)</code>; <code>sendto/recvfrom</code>; connectionless; datagram boundaries preserved.</li>
+<li><strong>TCP</strong>: <code>socket(AF_INET, SOCK_STREAM)</code>; <code>listen/accept</code>; <code>connect</code>; <code>send/recv</code>; byte stream, no boundaries.</li>
+<li>Server: create the welcoming socket → accept a new connection → handle it; client: create the socket → connect → send/receive.</li>
+<li>Ports: a fixed port on the server; an ephemeral port on the client.</li>
+</ul>
+<hr />
+<h2 id="4-chapter-3-transport-layer">4. Chapter 3: Transport Layer<a class="headerlink" href="#4-chapter-3-transport-layer" title="Permanent link">&para;</a></h2>
+<h3 id="41-transport-layer-services">4.1 Transport-layer services<a class="headerlink" href="#41-transport-layer-services" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Provides logical communication between <strong>processes</strong> running on different hosts; the network layer is host-to-host, the transport layer is process-to-process.</li>
+<li>Sender: breaks application data into segments, adds a header, passes them to the network layer; receiver: reassembles them, passes them up to the socket.</li>
+<li><strong>Multiplexing/demultiplexing (mux/demux) ★</strong>:</li>
+<li>The sender handles data from multiple sockets and adds the transport-layer header;</li>
+<li>The receiver uses header info to deliver received segments to the correct socket.</li>
+<li><strong>UDP</strong>: identifies a socket by <code>&lt;dest IP, dest port&gt;</code>;</li>
+<li><strong>TCP</strong>: identifies a connection by the 4-tuple <code>&lt;source IP, source port, dest IP, dest port&gt;</code>.</li>
+</ul>
+<h3 id="42-udp">4.2 UDP<a class="headerlink" href="#42-udp" title="Permanent link">&para;</a></h3>
+<p><strong>Characteristics</strong></p>
+<ul>
+<li>Connectionless, unreliable, no flow control/congestion control; small overhead, low delay.</li>
+<li>Suited to: DNS, DHCP, SNMP, streaming multimedia, games, and as the substrate for QUIC.</li>
+</ul>
+<p><strong>Header (8 bytes)</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>source port (16) | dest port (16)
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>length (16)      | checksum (16)
+</code></pre></div>
+<p><strong>Checksum</strong></p>
+<ul>
+<li>Covers the UDP header + data + pseudo-header (source/dest IP, protocol number, UDP length).</li>
+<li>16-bit one's complement sum, then complement it; the receiver verifies.</li>
+<li>Weak protection (16 bits), but it can detect some errors.</li>
+</ul>
+<h3 id="43-reliable-data-transfer-rdt">4.3 Reliable data transfer (rdt) ★★<a class="headerlink" href="#43-reliable-data-transfer-rdt" title="Permanent link">&para;</a></h3>
+<p><strong>Interfaces and assumptions</strong></p>
+<ul>
+<li><code>rdt_send(data)</code>: called from above; <code>udt_send(packet)</code>: hands the packet to the unreliable channel; <code>rdt_rcv(packet)</code>: a packet arrives; <code>deliver_data(data)</code>: delivers data to the upper layer.</li>
+<li>Incrementally strengthen the channel assumptions: reliable → bit errors → packet loss.</li>
+</ul>
+<p><strong>rdt1.0: reliable channel</strong></p>
+<ul>
+<li>Sender: receive data → make packet → send; receiver: receive packet → extract → deliver. No ACK/sequence number needed.</li>
+</ul>
+<p><strong>rdt2.0: channel with bit errors</strong></p>
+<ul>
+<li>Needs: error detection (checksum), ACK/NAK, retransmission.</li>
+<li>The sender sends one packet, then waits for ACK/NAK; NAK or corruption → retransmit.</li>
+<li><strong>Fatal flaw</strong>: the ACK/NAK itself may be corrupted → the sender doesn't know what happened at the receiver.</li>
+</ul>
+<p><strong>rdt2.1: handling garbled ACK/NAKs</strong></p>
+<ul>
+<li>Add a <strong>sequence number 0/1</strong> to each data packet; the sender retransmits the current packet; the receiver uses the sequence number to detect duplicates.</li>
+<li>Twice as many states (wait for ACK0/ACK1).</li>
+</ul>
+<p><strong>rdt2.2: a NAK-free protocol</strong></p>
+<ul>
+<li>ACKs only; the receiver sends an ACK for the last packet received OK, carrying the <strong>next expected sequence number</strong>; a duplicate ACK triggers retransmission.</li>
+</ul>
+<p><strong>rdt3.0: channels with errors and loss</strong></p>
+<ul>
+<li>Add a <strong>timer</strong>: retransmit on timeout; sequence numbers 0/1; handles ACK loss, data loss, and delay.</li>
+<li><strong>stop-and-wait</strong>: send one packet, then wait for the receiver response; simple but inefficient.</li>
+</ul>
+<p><strong>stop-and-wait performance ★</strong></p>
+<div class="arithmatex">\[
+U_{\text{sender}} = \frac{L/R}{RTT + L/R}
+\]</div>
+<ul>
+<li>Example: 1 Gbps link, 15 ms RTT, 1 KB packet → U ≈ 0.00027, extremely low utilization.</li>
+<li>Fix: <strong>pipelining</strong>: allow multiple not-yet-acknowledged packets to be in flight at the same time.</li>
+</ul>
+<h3 id="44-pipelined-protocols-gbn-and-sr">4.4 Pipelined protocols: GBN and SR ★★<a class="headerlink" href="#44-pipelined-protocols-gbn-and-sr" title="Permanent link">&para;</a></h3>
+<p><strong>Go-Back-N (GBN)</strong></p>
+<ul>
+<li>Sender: window of N; sends consecutively; a single timer for the oldest in-flight packet; timeout → retransmit the <strong>entire window</strong>.</li>
+<li>Receiver: accepts only in-order packets; discards out-of-order packets; sends an ACK for the last correctly received packet (cumulative ACK).</li>
+<li>Pro: simple receiver, no need to buffer out-of-order packets; con: one lost packet causes many retransmissions.</li>
+</ul>
+<p><strong>Selective Repeat (SR)</strong></p>
+<ul>
+<li>Sender: window of N; a timer for each unACKed packet; retransmits only the lost packet.</li>
+<li>Receiver: buffers out-of-order packets; individually acknowledges each correctly received packet; delivers in order.</li>
+<li>Window size: <strong>N ≤ 2^(k-1)</strong> (k is the number of sequence number bits), otherwise old and new packets cannot be distinguished.</li>
+<li>Pro: few retransmissions; con: complex receiver, requires buffering.</li>
+</ul>
+<p><strong>GBN vs SR</strong></p>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>GBN</th>
+<th>SR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Receiver buffering</td>
+<td>Not needed</td>
+<td>Needed</td>
+</tr>
+<tr>
+<td>ACK</td>
+<td>Cumulative ACK</td>
+<td>Individual ACK</td>
+</tr>
+<tr>
+<td>Retransmission</td>
+<td>Entire window</td>
+<td>Only the lost packet</td>
+</tr>
+<tr>
+<td>Timer</td>
+<td>One</td>
+<td>One per packet</td>
+</tr>
+<tr>
+<td>Window</td>
+<td>N</td>
+<td>N ≤ 2^(k-1) (about half the sequence number space)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="45-tcp">4.5 TCP<a class="headerlink" href="#45-tcp" title="Permanent link">&para;</a></h3>
+<p><strong>Overview</strong></p>
+<ul>
+<li>Point-to-point, reliable, in-order, full duplex, connection-oriented, flow controlled, congestion controlled.</li>
+<li>The connection is logical; both sides maintain state.</li>
+</ul>
+<p><strong>Segment structure (minimum 20 bytes)</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>source port #    | dest port #
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>sequence number  | acknowledgement number
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>head len|not used|flags|receive window
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>checksum         | urgent data pointer
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>options          | data
+</code></pre></div>
+<ul>
+<li>Flags: SYN, ACK, FIN, RST, PSH, URG.</li>
+<li>Sequence number: byte stream "number" (not a packet number); acknowledgement number: the next byte expected.</li>
+</ul>
+<p><strong>Sequence numbers and ACKs</strong></p>
+<ul>
+<li>The sender numbers every byte; <code>Seq</code> is the byte stream number of the first byte in the segment's data.</li>
+<li>Receiver <code>ACK = sequence number of the next byte expected</code>; cumulative ACK.</li>
+<li>Example: on receiving 0–999, reply ACK 1000.</li>
+</ul>
+<p><strong>RTT estimation and timeout ★</strong></p>
+<div class="arithmatex">\[
+\begin{aligned}
+\text{EstimatedRTT} &amp;= (1-\alpha)\cdot\text{EstimatedRTT} + \alpha\cdot\text{SampleRTT}, &amp; \alpha &amp;= 0.125\\
+\text{DevRTT} &amp;= (1-\beta)\cdot\text{DevRTT} + \beta\cdot|\text{SampleRTT} - \text{EstimatedRTT}|, &amp; \beta &amp;= 0.25\\
+\text{TimeoutInterval} &amp;= \text{EstimatedRTT} + 4\cdot\text{DevRTT}
+\end{aligned}
+\]</div>
+<ul>
+<li>Timeout too long → slow reaction to segment loss; too short → unnecessary retransmissions.</li>
+</ul>
+<p><strong>TCP sender (simplified)</strong></p>
+<ul>
+<li>Data received from application → create segment → start timer → send.</li>
+<li>Timeout → retransmit the not-yet-acked segment with the smallest sequence number, restart the timer.</li>
+<li>ACK received → update the window; if there are still unACKed segments, restart the timer.</li>
+</ul>
+<p><strong>Fast retransmit</strong></p>
+<ul>
+<li>Receipt of <strong>3 duplicate ACKs</strong> → the segment is probably lost, so retransmit immediately instead of waiting for the timeout.</li>
+</ul>
+<p><strong>TCP receiver: ACK generation</strong></p>
+<ul>
+<li>In-order segment received, all data up to it already ACKed → delayed ACK (wait up to 500 ms).</li>
+<li>Out-of-order segment received → immediately send a duplicate ACK, indicating the sequence number expected.</li>
+<li>Segment that fills the gap received → immediate ACK.</li>
+</ul>
+<p><strong>Flow control ★</strong></p>
+<ul>
+<li>Goal: keep the sender from overwhelming the receiver's buffer.</li>
+<li>The receiver advertises free buffer space in the <strong>rwnd (receive window)</strong> field in the header; the sender limits unACKed data to ≤ rwnd.</li>
+<li>Different from congestion control: flow control is a <strong>receiver</strong> limit, congestion control is a <strong>network</strong> limit.</li>
+</ul>
+<p><strong>Connection management ★</strong></p>
+<ul>
+<li><strong>3-way handshake</strong>:</li>
+<li>Client → server: <code>SYN, seq=x</code></li>
+<li>Server → client: <code>SYN-ACK, seq=y, ack=x+1</code></li>
+<li>Client → server: <code>ACK, ack=y+1</code></li>
+<li>Why three: prevents an old duplicate connection request from creating a wrong connection; synchronizes both sides' sequence numbers.</li>
+<li><strong>Closing</strong>: FIN/ACK four-way close; TIME_WAIT waits 2MSL.</li>
+</ul>
+<h3 id="46-congestion-control">4.6 Congestion control<a class="headerlink" href="#46-congestion-control" title="Permanent link">&para;</a></h3>
+<p><strong>Costs of congestion</strong></p>
+<ul>
+<li>Queueing delay increases; packet loss (buffer overflow); retransmissions waste bandwidth; congestion collapse.</li>
+<li>Three scenarios: one router/finite buffers, multiple routers/retransmission, four senders/multi-hop competition.</li>
+</ul>
+<p><strong>Two approaches</strong></p>
+<ul>
+<li><strong>End-end</strong>: end systems infer congestion from observed loss/delay (TCP).</li>
+<li><strong>Network-assisted</strong>: routers provide explicit feedback (ECN, ATM ABR).</li>
+</ul>
+<p><strong>TCP AIMD ★</strong></p>
+<ul>
+<li><strong>Additive increase (AI)</strong>: increase the congestion window by 1 MSS every RTT, <code>cwnd += 1 MSS</code>.</li>
+<li><strong>Multiplicative decrease (MD)</strong>: on loss <code>cwnd = cwnd/2</code> (Tahoe cuts to 1 MSS).</li>
+<li>Sawtooth behavior: probe for bandwidth → loss → cut in half → increase again.</li>
+</ul>
+<p><strong>Slow start</strong></p>
+<ul>
+<li>Initially <code>cwnd = 1 MSS</code>; for every ACK received, <code>cwnd += 1 MSS</code> → double cwnd every RTT (exponential increase).</li>
+<li>On reaching <code>ssthresh</code>, switch to congestion avoidance (linear increase).</li>
+<li>Timeout: <code>ssthresh = cwnd/2</code>, <code>cwnd = 1</code>, re-enter slow start.</li>
+<li>3 duplicate ACKs: fast retransmit/fast recovery (<code>ssthresh = cwnd/2</code>, <code>cwnd = ssthresh</code>, then linear increase).</li>
+</ul>
+<p><strong>TCP CUBIC</strong></p>
+<ul>
+<li>Grows the window as a cubic function (with time as the independent variable), better suited to high-bandwidth, long-delay networks; the Linux default.</li>
+<li>Recovers faster and is more stable than AIMD.</li>
+</ul>
+<p><strong>Delay-based congestion control</strong></p>
+<ul>
+<li>Measures changes in RTT and keeps the pipe "just full," not fuller, without inducing loss (e.g., the Vegas/BBR idea).</li>
+</ul>
+<p><strong>ECN</strong></p>
+<ul>
+<li>Routers mark congestion (instead of dropping); the destination echoes the indication; the sender reduces its rate.</li>
+</ul>
+<p><strong>Fairness</strong></p>
+<ul>
+<li>Goal: K TCP flows share a bottleneck, each gets about <code>R/K</code>.</li>
+<li>AIMD converges to fairness; but different RTTs, UDP, and parallel connections break fairness.</li>
+<li>Fairness is not the only goal: real-time applications may require different treatment.</li>
+</ul>
+<h3 id="47-quic-for-awareness">4.7 QUIC (for awareness)<a class="headerlink" href="#47-quic-for-awareness" title="Permanent link">&para;</a></h3>
+<ul>
+<li>An application-layer protocol on top of UDP; the transport layer for HTTP/3.</li>
+<li>Stream-level multiplexing (no TCP-layer HOL blocking), 0/1-RTT connection establishment, built-in encryption, connection migration.</li>
+<li>Implemented in user space, which makes rapid iteration easy.</li>
+</ul>
+<hr />
+<h2 id="5-side-by-side-comparisons-high-frequency-short-answers">5. Side-by-side comparisons (high-frequency short answers)<a class="headerlink" href="#5-side-by-side-comparisons-high-frequency-short-answers" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>Key difference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Packet switching</td>
+<td>Circuit switching</td>
+<td>Statistical multiplexing/no guarantees vs reserved resources/guarantees</td>
+</tr>
+<tr>
+<td>Transmission delay <span class="mchip"><span class="arithmatex">\(L/R\)</span></span></td>
+<td>Propagation delay <span class="mchip"><span class="arithmatex">\(d/s\)</span></span></td>
+<td>Push bits onto the link vs signal travels through the medium</td>
+</tr>
+<tr>
+<td>Routing</td>
+<td>Forwarding</td>
+<td>Global path decision vs local input-port-to-output-port forwarding</td>
+</tr>
+<tr>
+<td>TCP</td>
+<td>UDP</td>
+<td>Reliable/ordered/flow control/congestion control vs lightweight/connectionless</td>
+</tr>
+<tr>
+<td>Flow control</td>
+<td>Congestion control</td>
+<td>Receiver buffer vs network capacity</td>
+</tr>
+<tr>
+<td>GBN</td>
+<td>SR</td>
+<td>Cumulative ACK/retransmit the entire window vs individual ACK/retransmit only the lost packet</td>
+</tr>
+<tr>
+<td>Non-persistent HTTP</td>
+<td>Persistent HTTP</td>
+<td>2 RTT per object vs 1 RTT per object with connection reuse</td>
+</tr>
+<tr>
+<td>Iterative DNS</td>
+<td>Recursive DNS</td>
+<td>Local DNS server asks itself vs does the lookup all the way for you</td>
+</tr>
+<tr>
+<td>HTTP/1.1</td>
+<td>HTTP/2</td>
+<td>Text-based/HOL blocking vs binary framing/multiplexing</td>
+</tr>
+<tr>
+<td>HTTP/2</td>
+<td>HTTP/3</td>
+<td>TCP HOL blocking vs stream-level multiplexing over QUIC/UDP</td>
+</tr>
+<tr>
+<td>C-S</td>
+<td>P2P</td>
+<td>Server bandwidth bottleneck vs scalable</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-formulas-and-numbers-to-memorize">6. Formulas and numbers to memorize<a class="headerlink" href="#6-formulas-and-numbers-to-memorize" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Formula/value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nodal delay</td>
+<td><span class="mchip"><span class="arithmatex">\(d = d_{\text{proc}} + d_{\text{queue}} + d_{\text{trans}} + d_{\text{prop}}\)</span></span></td>
+</tr>
+<tr>
+<td>Transmission delay</td>
+<td><span class="mchip"><span class="arithmatex">\(L/R\)</span></span></td>
+</tr>
+<tr>
+<td>Propagation delay</td>
+<td><span class="mchip"><span class="arithmatex">\(d/s\)</span></span></td>
+</tr>
+<tr>
+<td>Traffic intensity</td>
+<td><span class="mchip"><span class="arithmatex">\(La/R\)</span></span></td>
+</tr>
+<tr>
+<td>Throughput</td>
+<td><code>min(R_s, R_c, ...)</code></td>
+</tr>
+<tr>
+<td>Non-persistent HTTP</td>
+<td>about <code>2 RTT + L/R</code> per object</td>
+</tr>
+<tr>
+<td>Persistent HTTP</td>
+<td>1 RTT for connection setup, then <code>1 RTT + L/R</code> per object</td>
+</tr>
+<tr>
+<td>C-S distribution time</td>
+<td><code>max{NF/u_s, F/d_min}</code></td>
+</tr>
+<tr>
+<td>P2P distribution time</td>
+<td><code>max{F/u_s, F/d_min, NF/(u_s+Σu_i)}</code></td>
+</tr>
+<tr>
+<td>stop-and-wait utilization</td>
+<td><code>(L/R)/(RTT + L/R)</code></td>
+</tr>
+<tr>
+<td>TCP RTT estimation</td>
+<td><span class="mchip"><span class="arithmatex">\(\text{EstimatedRTT} = 0.875\cdot\text{EstimatedRTT} + 0.125\cdot\text{SampleRTT}\)</span></span></td>
+</tr>
+<tr>
+<td>TCP timeout</td>
+<td><span class="mchip"><span class="arithmatex">\(\text{EstimatedRTT} + 4\cdot\text{DevRTT}\)</span></span></td>
+</tr>
+<tr>
+<td>TCP throughput (approximate)</td>
+<td><span class="mchip"><span class="arithmatex">\(0.75\cdot\tfrac{W}{RTT}\)</span></span></td>
+</tr>
+<tr>
+<td>UDP header</td>
+<td>8 bytes</td>
+</tr>
+<tr>
+<td>TCP header</td>
+<td>minimum 20 bytes</td>
+</tr>
+<tr>
+<td>Ports</td>
+<td>HTTP 80, DNS 53, SMTP 25, POP3 110, IMAP 143</td>
+</tr>
+<tr>
+<td>DNS root</td>
+<td>13 logical root name servers, each with many replicas</td>
+</tr>
+<tr>
+<td>BitTorrent chunk</td>
+<td>256 KB</td>
+</tr>
+<tr>
+<td>GBN/SR window</td>
+<td>GBN: N; SR: N ≤ 2^(k-1) (about half the sequence number space)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-self-test-do-it-first-then-check-the-answers">7. Self-test (do it first, then check the answers)<a class="headerlink" href="#7-self-test-do-it-first-then-check-the-answers" title="Permanent link">&para;</a></h2>
+<h3 id="chapter-1">Chapter 1<a class="headerlink" href="#chapter-1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>From the "nuts and bolts" view, what four types of components make up the Internet?</li>
+<li>What are the three elements of a protocol? Illustrate them with the "asking the time" analogy.</li>
+<li>What is the core difference between packet switching and circuit switching? Their pros and cons?</li>
+<li>Write down the four components of nodal delay; which ones depend on packet length?</li>
+<li>What happens as <span class="mchip"><span class="arithmatex">\(La/R\)</span></span> approaches 1? Why?</li>
+<li>What is the difference between transmission delay and propagation delay? What determines each?</li>
+<li>What are the PDU names at each layer of the five-layer protocol stack? How does encapsulation work?</li>
+<li>What is the difference between routing and forwarding?</li>
+</ol>
+<h3 id="chapter-2">Chapter 2<a class="headerlink" href="#chapter-2" title="Permanent link">&para;</a></h3>
+<ol>
+<li>What is the difference between client-server and P2P? Their pros and cons?</li>
+<li>What identifies a socket? How does demultiplexing identification differ between TCP and UDP?</li>
+<li>How do response times differ between non-persistent HTTP and persistent HTTP? How is RTT defined?</li>
+<li>How do cookies work? What HTTP problem do they solve? What privacy risks do they bring?</li>
+<li>What is the role of a Web cache? How does conditional GET work? What does 304 mean?</li>
+<li>What HTTP/1.1 problems does HTTP/2 solve? What does HTTP/3 solve?</li>
+<li>How does SMTP differ from HTTP? Why does e-mail use push and the Web use pull?</li>
+<li>What is the hierarchy of DNS? What is the difference between iterative and recursive queries?</li>
+<li>What are the common DNS RR types and their meanings? What are the benefits and risks of DNS caching?</li>
+<li>What is the P2P file distribution time formula? Why is P2P scalable?</li>
+<li>How do CDNs reduce delay? How does DASH adapt to bandwidth?</li>
+<li>What are the main differences between UDP and TCP socket programming?</li>
+</ol>
+<h3 id="chapter-3">Chapter 3<a class="headerlink" href="#chapter-3" title="Permanent link">&para;</a></h3>
+<ol>
+<li>What is the difference between the transport layer and the network layer? What is the role of multiplexing/demultiplexing?</li>
+<li>What are the UDP header fields? What does the checksum cover? Why is the protection weak?</li>
+<li>What is the fatal flaw of rdt2.0? How do rdt2.1/2.2 solve it?</li>
+<li>How does rdt3.0 handle packet loss? What is the stop-and-wait utilization formula?</li>
+<li>How do GBN and SR differ in window, ACK, retransmission, and buffering?</li>
+<li>What is the minimum TCP segment header size? What do the sequence number and acknowledgement number mean?</li>
+<li>How does TCP estimate RTT and set the timeout? What roles do α and β play?</li>
+<li>What triggers fast retransmit? Why 3 duplicate ACKs?</li>
+<li>What is the difference between flow control and congestion control? What are rwnd and cwnd?</li>
+<li>What is the process of the TCP 3-way handshake? Why three?</li>
+<li>How do AIMD, slow start, and fast recovery work? What does CUBIC improve?</li>
+<li>What is TCP fairness? What factors break fairness?</li>
+<li>What are QUIC's advantages over TCP?</li>
+</ol>
+<h3 id="answers-key-points">Answers (key points)<a class="headerlink" href="#answers-key-points" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Hosts/end systems, packet switches (routers/switches), communication links, networks (network of networks).</li>
+<li>Message format, order/timing, actions taken after receiving a message; a human asks the time → answer, a network request → response.</li>
+<li>Packet: statistical multiplexing, good for bursts, may queue/lose packets; circuit: reserved resources, guarantees, wasted when idle.</li>
+<li>Processing, queueing, transmission <span class="mchip"><span class="arithmatex">\(L/R\)</span></span>, propagation <span class="mchip"><span class="arithmatex">\(d/s\)</span></span>; transmission depends on packet length, propagation on distance/medium.</li>
+<li>Queueing delay grows sharply, buffer overflow loses packets; the arrival rate keeps exceeding the output rate.</li>
+<li>Transmission: push bits onto the link, <span class="mchip"><span class="arithmatex">\(L/R\)</span></span>; propagation: the signal travels through the medium, <span class="mchip"><span class="arithmatex">\(d/s\)</span></span>.</li>
+<li>Application message, transport segment, network datagram, link frame, physical bit; add a header at each layer.</li>
+<li>Routing: global path selection (routing protocols); forwarding: local action that moves packets from the input port to the output port.</li>
+<li>C-S: always-on server, easy to manage, server bottleneck; P2P: scalable, hard to manage, incentive problem.</li>
+<li>IP + port; UDP uses dest IP + dest port, TCP uses the 4-tuple.</li>
+<li>Non-persistent: 2 RTT per object; persistent: set up the connection once, then 1 RTT per object; RTT is the time for a small packet to travel from client to server and back.</li>
+<li>Set-Cookie/Cookie header + a server-side database; compensates for HTTP being stateless; cross-site tracking.</li>
+<li>Reduces response time/bandwidth/server load; If-Modified-Since; 304 Not Modified.</li>
+<li>HTTP/2: binary framing, multiplexing, header compression, mitigates HOL blocking; HTTP/3: QUIC/UDP, stream-level multiplexing, avoids TCP HOL blocking.</li>
+<li>SMTP pushes, HTTP pulls; e-mail must be delivered to the recipient's mail server, while on the Web the client fetches actively.</li>
+<li>Root → TLD → authoritative → local; iterative means asking yourself, recursive means doing the lookup for you.</li>
+<li>A/AAAA/NS/CNAME/MX; caching reduces delay/load, but entries may go stale or be poisoned.</li>
+<li><code>max{F/u_s, F/d_min, NF/(u_s+Σu_i)}</code>; peer upload bandwidth grows with N.</li>
+<li>Edge replicas, serve from nearby, less backbone traffic; DASH splits content into chunks at multiple rates, and the client picks by bandwidth.</li>
+<li>UDP: connectionless, datagram boundaries, sendto/recvfrom; TCP: connection-oriented, byte stream, listen/accept/connect.</li>
+<li>Network layer: host-to-host, transport layer: process-to-process; mux/demux delivers segments to the correct socket.</li>
+<li>Source/dest port, length, checksum; pseudo-header + UDP segment; 16-bit one's complement sum, weak protection.</li>
+<li>The ACK/NAK may be corrupted; rdt2.1 adds sequence numbers, rdt2.2 uses ACK + expected sequence number.</li>
+<li>A timer retransmits on timeout; <span class="mchip"><span class="arithmatex">\(U=\tfrac{L/R}{RTT+L/R}\)</span></span>.</li>
+<li>GBN: cumulative ACK, one timer, retransmits the entire window, no receiver buffering; SR: individual ACK, a timer per packet, retransmits only the lost packet, buffers out-of-order packets.</li>
+<li>20 bytes; Seq is the byte stream number of the first byte in the segment, ACK is the next byte expected.</li>
+<li>Exponential weighted moving average; α smooths SampleRTT, β smooths the deviation; Timeout=EstimatedRTT+4DevRTT.</li>
+<li>3 duplicate ACKs; they show that later packets arrived but the missing packet did not, so the network probably lost only that one.</li>
+<li>Flow control prevents receiver overflow (rwnd), congestion control prevents network overload (cwnd).</li>
+<li>SYN, SYN-ACK, ACK; synchronizes sequence numbers and prevents old connection requests.</li>
+<li>AI adds 1 MSS per RTT, MD cuts in half on loss; slow start grows exponentially to ssthresh; fast recovery runs after 3 duplicate ACKs; CUBIC uses a cubic function.</li>
+<li>K flows sharing a bottleneck each get about R/K; different RTTs, UDP, and parallel connections break it.</li>
+<li>Implemented over UDP, stream-level multiplexing, 0/1-RTT, built-in encryption, connection migration.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Home">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Home
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../glossary/" class="md-footer__link md-footer__link--next" aria-label="Next: Glossary">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Glossary
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Personal study notes · Unofficial · Course materials remain the property of the instructor.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tracking", "navigation.sections", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/table-wrap.js"></script>
+      
+        <script src="../../javascripts/lang-switch.js"></script>
+      
+        <script src="../../javascripts/glossary.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

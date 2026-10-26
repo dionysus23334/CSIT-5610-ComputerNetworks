@@ -1,0 +1,2819 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="HKUST CSIT5610 Computer Networks — review notes">
+      
+      
+        <meta name="author" content="dionysus23334">
+      
+      
+        <link rel="canonical" href="https://dionysus23334.github.io/CSIT-5610-ComputerNetworks/en/en/review/ch2-application/">
+      
+      
+        <link rel="prev" href="../ch1-intro/">
+      
+      
+        <link rel="next" href="../ch3-transport/">
+      
+      
+        
+          <link rel="alternate" href="../../../review/ch2-application/" hreflang="zh">
+        
+          <link rel="alternate" href="./" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Chapter 2 · Application Layer - CSIT5610 Computer Networks Review Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-2-application-layer-review-notes" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../" title="CSIT5610 Computer Networks Review Notes" class="md-header__button md-logo" aria-label="CSIT5610 Computer Networks Review Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CSIT5610 Computer Networks Review Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter 2 · Application Layer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../../review/ch2-application/" hreflang="zh" class="md-select__link">
+              中文
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dionysus23334/CSIT-5610-ComputerNetworks" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dionysus23334/CSIT-5610-ComputerNetworks
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../" title="CSIT5610 Computer Networks Review Notes" class="md-nav__button md-logo" aria-label="CSIT5610 Computer Networks Review Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    CSIT5610 Computer Networks Review Notes
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dionysus23334/CSIT-5610-ComputerNetworks" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dionysus23334/CSIT-5610-ComputerNetworks
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://dionysus23334.github.io/study-blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ← Study archive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../outline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapters
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapters
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    All chapters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch1-intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 1 · Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 2 · Application Layer
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 2 · Application Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0-chapter-thread-memorize-these-three-sentences-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0. Chapter thread (memorize these three sentences first)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-application-layer-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Application layer principles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Application layer principles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-two-architectures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Two architectures ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-processes-sockets-addressing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Processes, sockets, addressing ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-what-transport-service-does-an-app-need" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 What transport service does an app need? ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-transport-choices-for-common-apps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 Transport choices for common apps
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-web-and-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Web and HTTP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Web and HTTP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-http-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 HTTP basics ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-http-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 HTTP messages ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-cookies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Cookies ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-web-caches-proxy-servers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Web caches (proxy servers) ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-http2-and-http3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 HTTP/2 and HTTP/3 ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-e-mail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. E-mail
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. E-mail">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Components
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-smtp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 SMTP ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-mail-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Mail access
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-mail-message-format-and-mime" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Mail message format and MIME
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-smtp-vs-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 SMTP vs HTTP
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. DNS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. DNS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Services ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-hierarchical-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Hierarchical structure ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-name-resolution-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Name resolution process ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Caching
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-resource-records-rr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Resource records (RR) ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-dns-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 DNS messages
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#47-dns-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.7 DNS security ⚔
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-p2p-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. P2P applications
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. P2P applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-file-distribution-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 File distribution time ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-bittorrent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 BitTorrent ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-video-streaming-and-cdns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Video streaming and CDNs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Video streaming and CDNs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-video-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Video basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-playout-buffering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Playout buffering
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-dash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 DASH
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-cdn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 CDN ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-socket-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Socket programming
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Socket programming">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 UDP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 TCP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-udp-vs-tcp-sockets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 UDP vs TCP sockets
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-worked-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Worked examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Worked examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-http-rtt-10-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 1: HTTP RTT (10 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2-benefit-of-caching-10-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 2: Benefit of caching (10 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-3-dns-query-10-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 3: DNS query (10 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-4-p2p-distribution-10-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 4: P2P distribution (10 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-5-socket-call-order-8-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 5: Socket call order (8 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-common-mistakes-where-marks-are-most-easily-lost" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Common mistakes (where marks are most easily lost)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-self-test-do-it-first-then-check-the-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Self-test (do it first, then check the answers)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Self-test (do it first, then check the answers)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Answers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-pre-exam-quick-reference-card" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Pre-exam quick-reference card
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch3-transport/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 3 · Transport Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0-chapter-thread-memorize-these-three-sentences-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0. Chapter thread (memorize these three sentences first)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-application-layer-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Application layer principles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Application layer principles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-two-architectures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Two architectures ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-processes-sockets-addressing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Processes, sockets, addressing ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-what-transport-service-does-an-app-need" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 What transport service does an app need? ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-transport-choices-for-common-apps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 Transport choices for common apps
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-web-and-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Web and HTTP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Web and HTTP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-http-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 HTTP basics ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-http-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 HTTP messages ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-cookies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Cookies ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-web-caches-proxy-servers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Web caches (proxy servers) ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-http2-and-http3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 HTTP/2 and HTTP/3 ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-e-mail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. E-mail
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. E-mail">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Components
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-smtp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 SMTP ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-mail-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Mail access
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-mail-message-format-and-mime" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Mail message format and MIME
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-smtp-vs-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 SMTP vs HTTP
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. DNS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. DNS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Services ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-hierarchical-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Hierarchical structure ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-name-resolution-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Name resolution process ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Caching
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-resource-records-rr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Resource records (RR) ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-dns-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 DNS messages
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#47-dns-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.7 DNS security ⚔
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-p2p-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. P2P applications
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. P2P applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-file-distribution-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 File distribution time ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-bittorrent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 BitTorrent ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-video-streaming-and-cdns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Video streaming and CDNs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Video streaming and CDNs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-video-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Video basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-playout-buffering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Playout buffering
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-dash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 DASH
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-cdn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 CDN ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-socket-programming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Socket programming
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Socket programming">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 UDP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 TCP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-udp-vs-tcp-sockets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 UDP vs TCP sockets
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-worked-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Worked examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Worked examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-http-rtt-10-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 1: HTTP RTT (10 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2-benefit-of-caching-10-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 2: Benefit of caching (10 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-3-dns-query-10-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 3: DNS query (10 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-4-p2p-distribution-10-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 4: P2P distribution (10 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-5-socket-call-order-8-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 5: Socket call order (8 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-common-mistakes-where-marks-are-most-easily-lost" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Common mistakes (where marks are most easily lost)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-self-test-do-it-first-then-check-the-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Self-test (do it first, then check the answers)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Self-test (do it first, then check the answers)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Answers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-pre-exam-quick-reference-card" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Pre-exam quick-reference card
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="chapter-2-application-layer-review-notes">Chapter 2 · Application Layer · Review Notes<a class="headerlink" href="#chapter-2-application-layer-review-notes" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Matching slides</strong>: <code>ch2-8.pdf</code> (Kurose &amp; Ross, Chapter 2 Application Layer, 8th ed.)</p>
+<p><strong>Suggested time</strong>: first pass 90 minutes + worked examples 40 minutes + self-test 30 minutes</p>
+<p><strong>Companion</strong>: Outline §3</p>
+<p><strong>Weight of this chapter</strong>: HTTP (RTT / caching / HTTP2), DNS (hierarchy / resolution / RR), the P2P distribution formula, and socket programming are high-frequency exam points.</p>
+</blockquote>
+<hr />
+<h2 id="0-chapter-thread-memorize-these-three-sentences-first">0. Chapter thread (memorize these three sentences first)<a class="headerlink" href="#0-chapter-thread-memorize-these-three-sentences-first" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>The application layer runs only on end systems</strong>: a process hands data to the transport layer through its <strong>socket</strong>; an application protocol defines message types, syntax, semantics, and timing.</li>
+<li><strong>HTTP is a stateless request/response protocol</strong>; cookies add state and caches reduce delay; HTTP/2 solves multiplexing of multiple objects, and HTTP/3 uses QUIC to solve TCP head-of-line blocking.</li>
+<li><strong>DNS is a distributed, hierarchical database</strong>: root → TLD → authoritative → local resolver; UDP 53; caching improves performance but entries expire / get poisoned.</li>
+</ol>
+<p><strong>Common question types in this chapter</strong></p>
+<table>
+<thead>
+<tr>
+<th>Question type</th>
+<th>Typical phrasing</th>
+<th>What to prepare</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Calculation</td>
+<td>RTT of non-persistent / persistent HTTP; P2P vs C-S distribution time</td>
+<td>Remember the formulas + draw the timing diagram</td>
+</tr>
+<tr>
+<td>Procedure</td>
+<td>From URL to page display; DNS iterated / recursive query</td>
+<td>Chain it as “resolution → TCP → HTTP”</td>
+</tr>
+<tr>
+<td>Comparison</td>
+<td>HTTP/1.1 vs 2 vs 3; SMTP vs HTTP; C-S vs P2P</td>
+<td>Make a table of the key differences</td>
+</tr>
+<tr>
+<td>Mechanism</td>
+<td>cookies, caches, conditional GET, DASH, CDN</td>
+<td>Explain clearly “what problem it solves”</td>
+</tr>
+<tr>
+<td>Socket</td>
+<td>call order of the UDP/TCP client and server</td>
+<td>Remember <code>socket/bind/listen/accept/connect</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="1-application-layer-principles">1. Application layer principles<a class="headerlink" href="#1-application-layer-principles" title="Permanent link">&para;</a></h2>
+<h3 id="11-two-architectures">1.1 Two architectures ★<a class="headerlink" href="#11-two-architectures" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Architecture</th>
+<th>Characteristics</th>
+<th>Advantages</th>
+<th>Disadvantages</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Client-Server</strong></td>
+<td>server always-on, permanent IP address, client initiates requests</td>
+<td>easy to manage, easy to scale (data centers)</td>
+<td>server bandwidth / single point of bottleneck</td>
+<td>Web, email, DNS</td>
+</tr>
+<tr>
+<td><strong>P2P</strong></td>
+<td>no always-on server; peers both request and provide service</td>
+<td>scalable, low cost</td>
+<td>complex management, churn, incentive problem</td>
+<td>BitTorrent</td>
+</tr>
+</tbody>
+</table>
+<h3 id="12-processes-sockets-addressing">1.2 Processes, sockets, addressing ★<a class="headerlink" href="#12-processes-sockets-addressing" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Process</strong>: program running within a host.</li>
+<li>Same host: process ID; across hosts: <strong>IP address + port number</strong>.</li>
+<li><strong>Socket</strong>: the interface between the application process and the transport layer (an API object).</li>
+<li>The application hands messages to the socket; the transport layer delivers them to the destination socket.</li>
+</ul>
+<p><strong>An application-layer protocol defines</strong>:</p>
+<ol>
+<li>types of messages exchanged (request, response);</li>
+<li>message syntax (fields, format);</li>
+<li>field semantics;</li>
+<li>rules for when and how messages are sent and responded to (timing).</li>
+</ol>
+<h3 id="13-what-transport-service-does-an-app-need">1.3 What transport service does an app need? ★<a class="headerlink" href="#13-what-transport-service-does-an-app-need" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Description</th>
+<th>Typical applications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Data integrity</strong></td>
+<td>no loss / no errors</td>
+<td>file transfer, Web, email</td>
+</tr>
+<tr>
+<td><strong>Timing</strong></td>
+<td>low delay</td>
+<td>real-time audio/video, games</td>
+</tr>
+<tr>
+<td><strong>Throughput</strong></td>
+<td>minimum bandwidth</td>
+<td>streaming video</td>
+</tr>
+<tr>
+<td><strong>Security</strong></td>
+<td>encryption / authentication</td>
+<td>login, payment</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Internet transport services</strong></p>
+<ul>
+<li><strong>TCP</strong>: reliable, in-order, flow control, congestion control, connection-oriented; does not provide timing or minimum throughput guarantee.</li>
+<li><strong>UDP</strong>: unreliable, connectionless, low overhead; does not guarantee order or integrity.</li>
+<li><strong>TLS</strong>: provides encryption, authentication and data integrity on top of TCP; applications use it through TLS libraries (HTTPS).</li>
+</ul>
+<h3 id="14-transport-choices-for-common-apps">1.4 Transport choices for common apps<a class="headerlink" href="#14-transport-choices-for-common-apps" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Application</th>
+<th>Transport</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Web/HTTP</td>
+<td>TCP (or QUIC/UDP)</td>
+<td>needs reliability and in-order delivery</td>
+</tr>
+<tr>
+<td>File transfer</td>
+<td>TCP</td>
+<td>cannot lose data</td>
+</tr>
+<tr>
+<td>Email/SMTP</td>
+<td>TCP</td>
+<td>reliable</td>
+</tr>
+<tr>
+<td>DNS</td>
+<td>UDP (TCP when needed)</td>
+<td>short queries, low delay</td>
+</tr>
+<tr>
+<td>Streaming media</td>
+<td>TCP/UDP (DASH/QUIC)</td>
+<td>adaptive / low delay</td>
+</tr>
+<tr>
+<td>Real-time games / voice</td>
+<td>UDP</td>
+<td>better to lose packets than to wait</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-web-and-http">2. Web and HTTP<a class="headerlink" href="#2-web-and-http" title="Permanent link">&para;</a></h2>
+<h3 id="21-http-basics">2.1 HTTP basics ★<a class="headerlink" href="#21-http-basics" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>HTTP</strong>: hypertext transfer protocol; <strong>request/response</strong> model; <strong>stateless</strong>.</li>
+<li>default port <strong>80</strong>; uses TCP (HTTP/3 uses QUIC/UDP).</li>
+<li>client: browser; server: Web server.</li>
+</ul>
+<p><strong>Two types of connections</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Behavior</th>
+<th>Response time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Non-persistent (HTTP/1.0)</strong></td>
+<td>a new TCP connection per object, closed after use</td>
+<td><strong>2 RTT + file transmission time</strong> per object</td>
+</tr>
+<tr>
+<td><strong>Persistent (HTTP/1.1)</strong></td>
+<td>server leaves the connection open after sending; subsequent requests reuse it</td>
+<td>1 RTT to set up the connection; then 1 RTT per object; with pipelining, “as little as one RTT for all the referenced objects”</td>
+</tr>
+</tbody>
+</table>
+<p><strong>RTT (definition)</strong>: time for a small packet to travel from client to server and back (excluding the time to transmit the large file).</p>
+<p><strong>The RTT account of non-persistent HTTP</strong>:</p>
+<ol>
+<li>initiate TCP connection: one RTT;</li>
+<li>send the HTTP request and receive the first few bytes of the HTTP response: one RTT;</li>
+<li>object transmission time: <span class="mchip"><span class="arithmatex">\(L/R\)</span></span>.
+→ per object <code>2 RTT + L/R</code>.</li>
+</ol>
+<p><strong>Persistent HTTP</strong>:</p>
+<ul>
+<li>server sends <code>Connection: keep-alive</code>;</li>
+<li>the client can send multiple requests back to back;</li>
+<li>without pipelining: one RTT per object; with pipelining: several requests are sent back to back, so all objects can arrive one after another after roughly <strong>one RTT</strong>.</li>
+</ul>
+<h3 id="22-http-messages">2.2 HTTP messages ★<a class="headerlink" href="#22-http-messages" title="Permanent link">&para;</a></h3>
+<p><strong>Request</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="err">GET /index.html HTTP/1.1\r\n</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="err">Host: www.example.com\r\n</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="err">User-Agent: ...\r\n</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="err">Accept: text/html\r\n</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="err">Connection: keep-alive\r\n</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="err">\r\n</span>
+</code></pre></div>
+<ul>
+<li>request line: method, URL, version.</li>
+<li>methods: <strong>GET, POST, HEAD, PUT, DELETE</strong>.</li>
+<li>header lines: Host, User-Agent, Accept, Accept-Language, Connection, Cookie, etc.</li>
+</ul>
+<p><strong>Response</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK\r\n</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="na">Date</span><span class="o">:</span> <span class="l">...\r\n</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="na">Server</span><span class="o">:</span> <span class="l">...\r\n</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="na">Content-Length</span><span class="o">:</span> <span class="l">1234\r\n</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="na">Content-Type</span><span class="o">:</span> <span class="l">text/html\r\n</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="err">\r\n</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>(entity body)
+</code></pre></div>
+<p><strong>Status codes</strong></p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>301</td>
+<td>Moved Permanently (permanent redirect)</td>
+</tr>
+<tr>
+<td>304</td>
+<td>Not Modified (cached copy is up to date)</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+</tr>
+<tr>
+<td>505</td>
+<td>HTTP Version Not Supported</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23-cookies">2.3 Cookies ★★<a class="headerlink" href="#23-cookies" title="Permanent link">&para;</a></h3>
+<p><strong>Question</strong>: HTTP is stateless, so how does the server “remember” the user?</p>
+<p><strong>Mechanism</strong>:</p>
+<ol>
+<li>the server's response carries <code>Set-Cookie: user=alice; ...</code>;</li>
+<li>the browser stores the cookie (per domain / path);</li>
+<li>subsequent requests carry <code>Cookie: user=alice</code>;</li>
+<li>the server uses a back-end database to associate the user state.</li>
+</ol>
+<p><strong>Uses</strong>: shopping carts, sessions, personalization, tracking.</p>
+<p><strong>Risks</strong>: cross-site tracking, privacy; a cookie is “weak authentication” and cannot replace real authentication / authorization.</p>
+<h3 id="24-web-caches-proxy-servers">2.4 Web caches (proxy servers) ★★<a class="headerlink" href="#24-web-caches-proxy-servers" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Cache</strong>: stores responses to recent requests; on a hit it returns the object directly without contacting the origin server.</li>
+<li>Effects: reduce response time, reduce traffic on the access link, reduce the load on the origin server.</li>
+<li>A cache acts as both client and server (proxy).</li>
+</ul>
+<p><strong>Conditional GET</strong></p>
+<ol>
+<li>the cache has the object, but it may be out of date;</li>
+<li>it sends a request with <code>If-Modified-Since: &lt;date&gt;</code>;</li>
+<li>the object has not been modified at the server → <strong>304 Not Modified</strong> (no entity body);</li>
+<li>the cache returns its local copy to the client.</li>
+</ol>
+<p><strong>Cache consistency</strong>: <code>Cache-Control</code>, <code>Expires</code>, ETag/If-None-Match.</p>
+<p><strong>Caching example (slides)</strong>:</p>
+<ul>
+<li>access link 1.54 Mbps, RTT 2 s, object 100 Kbit, request rate 15/s.</li>
+<li>average data rate <span class="mchip"><span class="arithmatex">\(15\times100\text{K} = 1.5\ \text{Mbps}\)</span></span> → utilization <span class="mchip"><span class="arithmatex">\(\tfrac{1.5}{1.54}\approx0.97\)</span></span> → queueing delay of “minutes”.</li>
+<li>Option 1: upgrade to 154 Mbps → utilization 0.0097, delay ~2 s + ms, but expensive.</li>
+<li>Option 2: install a cache, hit rate 0.4 → only 60% of requests go over the access link → average 0.9 Mbps → utilization 0.58, delay ~2 s + ms, cheap.</li>
+<li>Conclusion: <strong>caching is usually cheaper than upgrading bandwidth</strong>.</li>
+</ul>
+<h3 id="25-http2-and-http3">2.5 HTTP/2 and HTTP/3 ★<a class="headerlink" href="#25-http2-and-http3" title="Permanent link">&para;</a></h3>
+<p><strong>Problems with HTTP/1.1</strong></p>
+<ul>
+<li>one request/response at a time per connection (without pipelining);</li>
+<li>multiple objects require multiple connections;</li>
+<li>head-of-line (HOL) blocking: a large object blocks the small objects behind it;</li>
+<li>repeated headers and a redundant text format.</li>
+</ul>
+<p><strong>HTTP/2</strong></p>
+<ul>
+<li><strong>binary framing</strong>: messages are divided into frames;</li>
+<li><strong>multiplexing</strong>: multiple streams concurrently over one TCP connection;</li>
+<li><strong>header compression (HPACK)</strong>;</li>
+<li>still affected by <strong>HOL blocking at the TCP layer</strong> (lose one TCP segment and all streams wait).</li>
+</ul>
+<p><strong>HTTP/3</strong></p>
+<ul>
+<li>based on <strong>QUIC (UDP)</strong>;</li>
+<li>stream-level multiplexing: packet loss on one stream does not affect the other streams;</li>
+<li>0/1-RTT connection setup;</li>
+<li>built-in TLS 1.3 encryption;</li>
+<li>connection migration (phone switching networks).</li>
+</ul>
+<hr />
+<h2 id="3-e-mail">3. E-mail<a class="headerlink" href="#3-e-mail" title="Permanent link">&para;</a></h2>
+<h3 id="31-components">3.1 Components<a class="headerlink" href="#31-components" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>User agent (UA)</strong>: Outlook, phone mail app.</li>
+<li><strong>Mail servers</strong>: sender / receiver servers; maintain the user mailbox and the message queue.</li>
+<li><strong>SMTP</strong>: sends / forwards e-mail messages.</li>
+<li><strong>Mail access protocols</strong>: POP3, IMAP, HTTP (Webmail).</li>
+</ul>
+<h3 id="32-smtp">3.2 SMTP ★<a class="headerlink" href="#32-smtp" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Push</strong>: sender UA → sender mail server → receiver mail server.</li>
+<li>uses <strong>TCP port 25</strong>; commands / responses are ASCII.</li>
+<li>procedure:</li>
+<li>client <code>HELO</code>;</li>
+<li><code>MAIL FROM</code>;</li>
+<li><code>RCPT TO</code>;</li>
+<li><code>DATA</code> → message content → <code>.</code>;</li>
+<li><code>QUIT</code>.</li>
+<li>SMTP is a “server-to-server” protocol; UA-to-server also uses SMTP (submission).</li>
+</ul>
+<h3 id="33-mail-access">3.3 Mail access<a class="headerlink" href="#33-mail-access" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Protocol</th>
+<th>Port</th>
+<th>Characteristics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>POP3</strong></td>
+<td>110</td>
+<td>simple download; usually delete / keep after download</td>
+</tr>
+<tr>
+<td><strong>IMAP</strong></td>
+<td>143</td>
+<td>server-side folders, read / unread state; multi-device synchronization</td>
+</tr>
+<tr>
+<td><strong>HTTP</strong></td>
+<td>80/443</td>
+<td>Webmail</td>
+</tr>
+</tbody>
+</table>
+<h3 id="34-mail-message-format-and-mime">3.4 Mail message format and MIME<a class="headerlink" href="#34-mail-message-format-and-mime" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Header lines: From, To, Subject, Date, Cc, Bcc.</li>
+<li>A blank line separates the header from the body.</li>
+<li><strong>MIME</strong>: supports non-ASCII text, attachments, multipart bodies; <code>Content-Type</code>, <code>Content-Transfer-Encoding</code>.</li>
+</ul>
+<h3 id="35-smtp-vs-http">3.5 SMTP vs HTTP<a class="headerlink" href="#35-smtp-vs-http" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>SMTP</th>
+<th>HTTP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Direction</td>
+<td>push (sender initiates)</td>
+<td>pull (client requests)</td>
+</tr>
+<tr>
+<td>Purpose</td>
+<td>e-mail transfer</td>
+<td>Web content</td>
+</tr>
+<tr>
+<td>Transport</td>
+<td>TCP 25</td>
+<td>TCP 80</td>
+</tr>
+<tr>
+<td>Format</td>
+<td>ASCII commands / responses</td>
+<td>text requests / responses</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-dns">4. DNS<a class="headerlink" href="#4-dns" title="Permanent link">&para;</a></h2>
+<h3 id="41-services">4.1 Services ★<a class="headerlink" href="#41-services" title="Permanent link">&para;</a></h3>
+<ul>
+<li>hostname-to-IP-address translation;</li>
+<li>host aliasing (CNAME);</li>
+<li>mail server aliasing (MX);</li>
+<li>load distribution (multiple A records).</li>
+</ul>
+<p><strong>Why not centralize DNS</strong>: single point of failure, traffic volume, distant centralized database, maintenance.</p>
+<h3 id="42-hierarchical-structure">4.2 Hierarchical structure ★★<a class="headerlink" href="#42-hierarchical-structure" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Root DNS servers (root)
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>  → Top-Level Domain TLD (.com, .org, .cn, .edu)
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    → Authoritative DNS servers (authoritative)
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>Local DNS server (local resolver, provided by ISP / organization)
+</code></pre></div>
+<ul>
+<li><strong>Root</strong>: 13 logical clusters, replicated many times worldwide (~200 servers in the US); managed by ICANN.</li>
+<li><strong>TLD</strong>: responsible for .com/.org/.cn, etc.; returns the address of the authoritative server.</li>
+<li><strong>Authoritative</strong>: the organization's own DNS, holding authoritative hostname→IP records.</li>
+<li><strong>Local DNS</strong>: forwards queries, caches; usually provided by the ISP / school.</li>
+</ul>
+<h3 id="43-name-resolution-process">4.3 Name resolution process ★★<a class="headerlink" href="#43-name-resolution-process" title="Permanent link">&para;</a></h3>
+<p><strong>Iterated query</strong></p>
+<ol>
+<li>the host asks its local DNS server;</li>
+<li>the local DNS server asks the root → the root returns the .com TLD address;</li>
+<li>the local DNS server asks the .com TLD → it returns the amazon.com authoritative address;</li>
+<li>the local DNS server asks the authoritative server → it returns the IP address;</li>
+<li>the local DNS server returns the result to the host and caches it.</li>
+</ol>
+<p><strong>Recursive query</strong></p>
+<ul>
+<li>the host asks the local DNS server to “resolve it completely on my behalf”; the local DNS server is responsible for all subsequent queries.</li>
+<li>root / TLD servers usually do not do recursion (they only give the next hop).</li>
+</ul>
+<p><strong>In practice</strong>: host→local DNS is recursive; local DNS→root/TLD/authoritative is iterative.</p>
+<h3 id="44-caching">4.4 Caching<a class="headerlink" href="#44-caching" title="Permanent link">&para;</a></h3>
+<ul>
+<li>any name server can cache; TTL controls expiration.</li>
+<li>Advantages: lower delay, less load on the root / TLD servers.</li>
+<li>Disadvantage: cached entries may be out of date (“best-effort”).</li>
+</ul>
+<h3 id="45-resource-records-rr">4.5 Resource records (RR) ★<a class="headerlink" href="#45-resource-records-rr" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A</strong></td>
+<td>hostname → IPv4</td>
+<td><code>www.example.com → 1.2.3.4</code></td>
+</tr>
+<tr>
+<td><strong>NS</strong></td>
+<td>authoritative DNS server for the domain</td>
+<td><code>example.com → dns.example.com</code></td>
+</tr>
+<tr>
+<td><strong>CNAME</strong></td>
+<td>alias name → canonical name</td>
+<td><code>www.ibm.com → servereast.backup2.ibm.com</code></td>
+</tr>
+<tr>
+<td><strong>MX</strong></td>
+<td>mail server for the domain</td>
+<td><code>example.com → mail.example.com</code></td>
+</tr>
+<tr>
+<td>AAAA (supplementary)</td>
+<td>hostname → IPv6</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>Format: <code>(name, value, type, ttl)</code>.</p>
+<h3 id="46-dns-messages">4.6 DNS messages<a class="headerlink" href="#46-dns-messages" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Header: 16-bit ID, flags, # questions, # answer RRs, # authority RRs, # additional RRs.</li>
+<li>Four sections: questions, answers, authority, additional.</li>
+<li>Query and reply messages have the same format; the ID is used to match request / response.</li>
+</ul>
+<h3 id="47-dns-security">4.7 DNS security ⚔<a class="headerlink" href="#47-dns-security" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Attack</th>
+<th>Description</th>
+<th>Defense</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DDoS</strong></td>
+<td>bombard the root / TLD / authoritative servers, or send a flood of queries</td>
+<td>rate limiting, anycast, redundancy</td>
+</tr>
+<tr>
+<td><strong>Cache poisoning</strong></td>
+<td>forge a reply so that the cache stores a bogus record</td>
+<td>DNSSEC, randomized ID / port, 0x20</td>
+</tr>
+<tr>
+<td><strong>Spoofed reply</strong></td>
+<td>guess the ID / port and answer first</td>
+<td>randomization, source port randomization</td>
+</tr>
+<tr>
+<td><strong>DNS spoofing</strong></td>
+<td>modify the local hosts / DNS configuration</td>
+<td>encrypted DNS, DNSSEC</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>DNSSEC</strong>: signs DNS records, providing authentication and message integrity (not confidentiality).</li>
+</ul>
+<hr />
+<h2 id="5-p2p-applications">5. P2P applications<a class="headerlink" href="#5-p2p-applications" title="Permanent link">&para;</a></h2>
+<h3 id="51-file-distribution-time">5.1 File distribution time ★★<a class="headerlink" href="#51-file-distribution-time" title="Permanent link">&para;</a></h3>
+<p><strong>Client-Server</strong></p>
+<div class="arithmatex">\[
+D_{\text{cs}} = \max\left\{\frac{NF}{u_s},\ \frac{F}{d_{\min}}\right\}
+\]</div>
+<ul>
+<li>the server must upload N copies: <span class="mchip"><span class="arithmatex">\(\tfrac{NF}{u_s}\)</span></span>;</li>
+<li>the slowest client's download: <code>F/d_min</code>.</li>
+</ul>
+<p><strong>P2P</strong></p>
+<div class="arithmatex">\[
+D_{\text{p2p}} = \max\left\{\frac{F}{u_s},\ \frac{F}{d_{\min}},\ \frac{NF}{u_s + \sum_i u_i}\right\}
+\]</div>
+<ul>
+<li>the server must upload at least one copy: <code>F/u_s</code>;</li>
+<li>the slowest client: <code>F/d_min</code>;</li>
+<li>the total upload capacity of all peers: <span class="mchip"><span class="arithmatex">\(u_s + \sum u_i\)</span></span>, and <span class="mchip"><span class="arithmatex">\(NF\)</span></span> bits must be distributed.</li>
+</ul>
+<p><strong>Conclusion</strong>: C-S grows linearly in N; the denominator for P2P grows with N, so P2P is <strong>scalable</strong>.</p>
+<h3 id="52-bittorrent">5.2 BitTorrent ★<a class="headerlink" href="#52-bittorrent" title="Permanent link">&para;</a></h3>
+<ul>
+<li>the file is divided into chunks of <strong>256 KB</strong>.</li>
+<li><strong>tracker</strong>: tracks the peers participating in the torrent.</li>
+<li>a peer joins: it asks the tracker for a list of peers and connects to a subset of neighbors.</li>
+<li>requesting: <strong>rarest first</strong> (ask for the rarest chunks first).</li>
+<li>sending: <strong>tit-for-tat</strong>:</li>
+<li>re-evaluate every 10 seconds, preferring the 4 peers with the highest upload rate;</li>
+<li>every 30 seconds “optimistically unchoke” one random peer, giving it a chance.</li>
+<li><strong>churn</strong>: peers may come and go at any time; once the download is complete a peer may leave or remain.</li>
+</ul>
+<hr />
+<h2 id="6-video-streaming-and-cdns">6. Video streaming and CDNs<a class="headerlink" href="#6-video-streaming-and-cdns" title="Permanent link">&para;</a></h2>
+<h3 id="61-video-basics">6.1 Video basics<a class="headerlink" href="#61-video-basics" title="Permanent link">&para;</a></h3>
+<ul>
+<li>video = a sequence of images; compression exploits spatial / temporal redundancy.</li>
+<li><strong>CBR</strong> (constant bit rate) vs <strong>VBR</strong> (variable bit rate).</li>
+<li>streaming challenges: the continuous playout constraint, network jitter, changing bandwidth.</li>
+</ul>
+<h3 id="62-playout-buffering">6.2 Playout buffering<a class="headerlink" href="#62-playout-buffering" title="Permanent link">&para;</a></h3>
+<ul>
+<li>the client pre-buffers a few seconds to absorb network jitter;</li>
+<li>cost: start-up delay; a buffer that is too small → stalling, too large → high delay.</li>
+</ul>
+<h3 id="63-dash">6.3 DASH<a class="headerlink" href="#63-dash" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Dynamic Adaptive Streaming over HTTP</strong>:</li>
+<li>the video is divided into short chunks, each offered at multiple rates;</li>
+<li>the client measures the bandwidth and chooses the rate on demand;</li>
+<li>chunks are pulled over HTTP, which passes through NAT / firewalls easily.</li>
+</ul>
+<h3 id="64-cdn">6.4 CDN ★<a class="headerlink" href="#64-cdn" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Content Distribution Network</strong>: places copies of content at edge nodes.</li>
+<li>users are redirected by DNS / HTTP to the nearest / optimal node.</li>
+<li>Advantages: lower delay, less backbone traffic, higher availability.</li>
+<li><strong>OTT</strong>: the content provider goes over the top of traditional operators and builds its own CDN / network (Netflix, YouTube).</li>
+</ul>
+<hr />
+<h2 id="7-socket-programming">7. Socket programming<a class="headerlink" href="#7-socket-programming" title="Permanent link">&para;</a></h2>
+<h3 id="71-udp">7.1 UDP<a class="headerlink" href="#71-udp" title="Permanent link">&para;</a></h3>
+<p><strong>Server</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_DGRAM</span><span class="p">)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">sock</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s1">''</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">loop</span><span class="p">:</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="n">data</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">recvfrom</span><span class="p">(</span><span class="mi">2048</span><span class="p">)</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="n">sock</span><span class="o">.</span><span class="n">sendto</span><span class="p">(</span><span class="n">reply</span><span class="p">,</span> <span class="n">addr</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Client</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_DGRAM</span><span class="p">)</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">sock</span><span class="o">.</span><span class="n">sendto</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">data</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">recvfrom</span><span class="p">(</span><span class="mi">2048</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>connectionless; <code>sendto/recvfrom</code> preserve datagram boundaries; packets may be lost or arrive out of order.</li>
+</ul>
+<h3 id="72-tcp">7.2 TCP<a class="headerlink" href="#72-tcp" title="Permanent link">&para;</a></h3>
+<p><strong>Server</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">)</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">sock</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="s1">''</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">sock</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">conn</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">conn</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="n">conn</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">reply</span><span class="p">)</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>Client</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">)</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">sock</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">server</span><span class="p">,</span> <span class="n">port</span><span class="p">))</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">sock</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">sock</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>connection-oriented; byte stream with no message boundaries; you must delimit messages yourself (length prefix / newline).</li>
+</ul>
+<h3 id="73-udp-vs-tcp-sockets">7.3 UDP vs TCP sockets<a class="headerlink" href="#73-udp-vs-tcp-sockets" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>UDP</th>
+<th>TCP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Connection</td>
+<td>none</td>
+<td>three-way handshake</td>
+</tr>
+<tr>
+<td>Boundaries</td>
+<td>preserved</td>
+<td>byte stream</td>
+</tr>
+<tr>
+<td>Reliability</td>
+<td>not guaranteed</td>
+<td>reliable / in-order</td>
+</tr>
+<tr>
+<td>Calls</td>
+<td>sendto/recvfrom</td>
+<td>connect/listen/accept/send/recv</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-worked-examples">8. Worked examples<a class="headerlink" href="#8-worked-examples" title="Permanent link">&para;</a></h2>
+<h3 id="example-1-http-rtt-10-points">Example 1: HTTP RTT (10 points)<a class="headerlink" href="#example-1-http-rtt-10-points" title="Permanent link">&para;</a></h3>
+<p><strong>Question</strong>: RTT=100 ms, 10 objects, transmission time 1 ms per object. Find the total time for non-persistent HTTP, persistent HTTP (without pipelining) and persistent HTTP (with pipelining) (ignore DNS).</p>
+<p><strong>Solution</strong>:
+- Non-persistent: <span class="mchip"><span class="arithmatex">\(10\times(2\times100+1) = 2010\ \text{ms}\)</span></span>.
+- Persistent without pipelining: 100 ms to set up the connection + 10 × (100 + 1) = <strong>1110 ms</strong>.
+- Persistent with pipelining: 100 ms to set up the connection + 100 ms for request / first bytes + 10×1 ms ≈ <strong>210 ms</strong>.
+- Conclusion: persistent + pipelining greatly reduces RTT overhead.</p>
+<h3 id="example-2-benefit-of-caching-10-points">Example 2: Benefit of caching (10 points)<a class="headerlink" href="#example-2-benefit-of-caching-10-points" title="Permanent link">&para;</a></h3>
+<p><strong>Question</strong>: access link 1.54 Mbps, object 100 Kbit, request rate 15/s, RTT 2 s. Find the utilization without a cache; if the cache hit rate is 0.4, find the utilization.</p>
+<p><strong>Solution</strong>:
+- average data rate <span class="mchip"><span class="arithmatex">\(15\times100\ \text{Kbit} = 1.5\ \text{Mbps}\)</span></span>; utilization <span class="mchip"><span class="arithmatex">\(\tfrac{1.5}{1.54}\approx0.97\)</span></span> → high queueing delay.
+- cache hit 0.4 → only 60% go over the link → <span class="mchip"><span class="arithmatex">\(0.6\times1.5 = 0.9\ \text{Mbps}\)</span></span>; utilization <span class="mchip"><span class="arithmatex">\(\tfrac{0.9}{1.54}\approx0.58\)</span></span> → delay drops significantly.
+- Conclusion: caching is more economical than upgrading bandwidth.</p>
+<h3 id="example-3-dns-query-10-points">Example 3: DNS query (10 points)<a class="headerlink" href="#example-3-dns-query-10-points" title="Permanent link">&para;</a></h3>
+<p><strong>Question</strong>: <code>www.example.com</code> is not in any cache; describe the iterated query process.</p>
+<p><strong>Solution</strong>:
+1. host → local DNS (recursive request);
+2. local DNS → root: returns the <code>.com</code> TLD address;
+3. local DNS → <code>.com</code> TLD: returns the <code>example.com</code> authoritative address;
+4. local DNS → authoritative: returns the A record for <code>www.example.com</code>;
+5. the local DNS caches it and returns it to the host.</p>
+<h3 id="example-4-p2p-distribution-10-points">Example 4: P2P distribution (10 points)<a class="headerlink" href="#example-4-p2p-distribution-10-points" title="Permanent link">&para;</a></h3>
+<p><strong>Question</strong>: F=1 GB, u_s=10 Mbps, N=10, u_i=1 Mbps for each peer, d_min=10 Mbps. Find the distribution time for C-S and for P2P.</p>
+<p><strong>Solution</strong>:
+- <span class="mchip"><span class="arithmatex">\(F = 8\ \text{Gbit} = 8000\ \text{Mbit}\)</span></span>.
+- C-S: <span class="mchip"><span class="arithmatex">\(\max\{10\times8000/10,\ 8000/10\} = \max\{8000,800\} = 8000\ \text{s}\)</span></span>.
+- P2P: <span class="mchip"><span class="arithmatex">\(\max\{8000/10=800,\ 800,\ 10\times8000/(10+10)=4000\} = 4000\ \text{s}\)</span></span>.
+- P2P takes about half of C-S; the advantage grows with N.</p>
+<h3 id="example-5-socket-call-order-8-points">Example 5: Socket call order (8 points)<a class="headerlink" href="#example-5-socket-call-order-8-points" title="Permanent link">&para;</a></h3>
+<p><strong>Question</strong>: write out the call order for a TCP server and client to set up a connection and exchange data.</p>
+<p><strong>Solution</strong>:
+- Server: <code>socket → bind → listen → accept → recv → send → close</code>.
+- Client: <code>socket → connect → send → recv → close</code>.</p>
+<hr />
+<h2 id="9-common-mistakes-where-marks-are-most-easily-lost">9. Common mistakes (where marks are most easily lost)<a class="headerlink" href="#9-common-mistakes-where-marks-are-most-easily-lost" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Wrong</th>
+<th>Correct</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HTTP is a stateful protocol</td>
+<td>HTTP is <strong>stateless</strong>; cookies add state</td>
+</tr>
+<tr>
+<td>non-persistent HTTP costs 1 RTT per object</td>
+<td><strong>2 RTT</strong> + transmission time</td>
+</tr>
+<tr>
+<td>persistent HTTP has no RTT overhead at all</td>
+<td>1 RTT to set up the connection; without pipelining 1 RTT per object; with pipelining about 1 RTT in total</td>
+</tr>
+<tr>
+<td>cookies are an authentication mechanism</td>
+<td>only state management, with very weak authentication power</td>
+</tr>
+<tr>
+<td>a cache always guarantees the latest version</td>
+<td>it may be out of date; conditional GET / 304 is needed</td>
+</tr>
+<tr>
+<td>DNS has only 13 physical servers</td>
+<td>13 <strong>logical clusters</strong>, each replicated many times</td>
+</tr>
+<tr>
+<td>DNS queries are always recursive</td>
+<td>host→local is usually recursive; local→root/TLD is usually iterative</td>
+</tr>
+<tr>
+<td>SMTP is a pull protocol</td>
+<td>SMTP is <strong>push</strong>; POP3/IMAP are pull</td>
+</tr>
+<tr>
+<td>P2P is always faster than C-S</td>
+<td>it depends on the peers' upload bandwidth / number; the formula takes the max</td>
+</tr>
+<tr>
+<td>UDP has no checksum</td>
+<td>UDP has a 16-bit checksum (optional but usually enabled)</td>
+</tr>
+<tr>
+<td>TCP is a message-boundary protocol</td>
+<td>TCP is a <strong>byte stream</strong>, with no message boundaries</td>
+</tr>
+<tr>
+<td>HTTP/2 completely solves HOL blocking</td>
+<td>it only solves it at the HTTP layer; TCP-layer HOL blocking remains, and only HTTP/3 solves that</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10-self-test-do-it-first-then-check-the-answers">10. Self-test (do it first, then check the answers)<a class="headerlink" href="#10-self-test-do-it-first-then-check-the-answers" title="Permanent link">&para;</a></h2>
+<ol>
+<li>What is the difference between Client-Server and P2P? What are the pros and cons of each?</li>
+<li>What identifies a socket? How do the demultiplexing identifiers of TCP and UDP differ?</li>
+<li>How does the response time of non-persistent HTTP differ from persistent HTTP? How is RTT defined?</li>
+<li>How do cookies work? What HTTP problem do they solve? What privacy risks do they carry?</li>
+<li>What is the role of a Web cache? How does conditional GET work? What does 304 mean?</li>
+<li>What HTTP/1.1 problems does HTTP/2 solve? What does HTTP/3 solve in turn?</li>
+<li>How do SMTP and HTTP differ? Why does e-mail use push and the Web use pull?</li>
+<li>What is the hierarchical structure of DNS? What is the difference between iterated and recursive queries?</li>
+<li>What are the common DNS RR types and their meanings? What are the benefits and risks of DNS caching?</li>
+<li>What is the P2P file distribution time formula? Why is P2P scalable?</li>
+<li>How does a CDN reduce delay? How does DASH adapt to bandwidth?</li>
+<li>What are the main differences between UDP and TCP socket programming?</li>
+</ol>
+<h3 id="answers">Answers<a class="headerlink" href="#answers" title="Permanent link">&para;</a></h3>
+<ol>
+<li>C-S: always-on server, easy to manage, server bottleneck; P2P: scalable, complex management, incentive problem.</li>
+<li>IP + port; UDP uses destination IP + destination port, TCP uses the four-tuple.</li>
+<li>Non-persistent: 2 RTT per object; persistent sets up once, then 1 RTT per object (with pipelining about 1 RTT in total); RTT is the round-trip time of a small packet.</li>
+<li>Set-Cookie / Cookie header + a server database; makes up for HTTP being stateless; cross-site tracking.</li>
+<li>Reduces response time / bandwidth / server load; If-Modified-Since; 304 means not modified.</li>
+<li>HTTP/2: binary framing, multiplexing, header compression, mitigating HTTP-layer HOL blocking; HTTP/3: QUIC/UDP, stream-level multiplexing, avoiding TCP HOL blocking.</li>
+<li>SMTP pushes, HTTP pulls; e-mail must be delivered to the receiver's mail server, while the Web client fetches actively.</li>
+<li>root→TLD→authoritative→local; with iteration you ask each server yourself, with recursion the contacted server resolves on your behalf.</li>
+<li>A/NS/CNAME/MX (+AAAA); caching lowers delay / load, but entries may be out of date / poisoned.</li>
+<li><code>max{F/u_s, F/d_min, NF/(u_s+Σu_i)}</code>; peer upload bandwidth grows with N.</li>
+<li>edge copies, serving from a nearby node, less backbone traffic; DASH divides the video into chunks at multiple rates and the client chooses by bandwidth.</li>
+<li>UDP: connectionless, datagram boundaries, sendto/recvfrom; TCP: connection-oriented, byte stream, listen/accept/connect.</li>
+</ol>
+<hr />
+<h2 id="11-pre-exam-quick-reference-card">11. Pre-exam quick-reference card<a class="headerlink" href="#11-pre-exam-quick-reference-card" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Architecture</td>
+<td>C-S (always-on) / P2P (peer-to-peer)</td>
+</tr>
+<tr>
+<td>Identifier</td>
+<td>IP + port; TCP four-tuple</td>
+</tr>
+<tr>
+<td>HTTP</td>
+<td>stateless; TCP 80; request / response</td>
+</tr>
+<tr>
+<td>Non-persistent</td>
+<td>2 RTT + transmission per object</td>
+</tr>
+<tr>
+<td>Persistent</td>
+<td>1 RTT to set up; connection reuse; pipelining</td>
+</tr>
+<tr>
+<td>Cookie</td>
+<td>Set-Cookie / Cookie + back-end DB</td>
+</tr>
+<tr>
+<td>Cache</td>
+<td>hits lower delay; conditional GET / 304</td>
+</tr>
+<tr>
+<td>HTTP/2</td>
+<td>binary framing, multiplexing, HPACK</td>
+</tr>
+<tr>
+<td>HTTP/3</td>
+<td>QUIC/UDP, stream-level multiplexing</td>
+</tr>
+<tr>
+<td>SMTP</td>
+<td>push; TCP 25</td>
+</tr>
+<tr>
+<td>Mail access</td>
+<td>POP3 110 / IMAP 143</td>
+</tr>
+<tr>
+<td>DNS</td>
+<td>root→TLD→authoritative→local; UDP 53</td>
+</tr>
+<tr>
+<td>RR</td>
+<td>A/NS/CNAME/MX</td>
+</tr>
+<tr>
+<td>P2P</td>
+<td><code>max{F/us,F/dmin,NF/(us+Σui)}</code></td>
+</tr>
+<tr>
+<td>BitTorrent</td>
+<td>256 KB chunk; rarest first; tit-for-tat</td>
+</tr>
+<tr>
+<td>CDN</td>
+<td>edge copies; DASH adaptation</td>
+</tr>
+<tr>
+<td>Socket</td>
+<td>UDP sendto/recvfrom; TCP listen/accept/connect</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../ch1-intro/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Chapter 1 · Introduction">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Chapter 1 · Introduction
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../ch3-transport/" class="md-footer__link md-footer__link--next" aria-label="Next: Chapter 3 · Transport Layer">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Chapter 3 · Transport Layer
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Personal study notes · Unofficial · Course materials remain the property of the instructor.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tracking", "navigation.sections", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../javascripts/table-wrap.js"></script>
+      
+        <script src="../../../javascripts/lang-switch.js"></script>
+      
+        <script src="../../../javascripts/glossary.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

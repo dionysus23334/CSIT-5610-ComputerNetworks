@@ -1,0 +1,2703 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="HKUST CSIT5610 Computer Networks — review notes">
+      
+      
+        <meta name="author" content="dionysus23334">
+      
+      
+        <link rel="canonical" href="https://dionysus23334.github.io/CSIT-5610-ComputerNetworks/en/en/review/ch3-transport/">
+      
+      
+        <link rel="prev" href="../ch2-application/">
+      
+      
+      
+        
+          <link rel="alternate" href="../../../review/ch3-transport/" hreflang="zh">
+        
+          <link rel="alternate" href="./" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Chapter 3 · Transport Layer - CSIT5610 Computer Networks Review Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-3-transport-layer-review-notes" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../" title="CSIT5610 Computer Networks Review Notes" class="md-header__button md-logo" aria-label="CSIT5610 Computer Networks Review Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CSIT5610 Computer Networks Review Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter 3 · Transport Layer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../../review/ch3-transport/" hreflang="zh" class="md-select__link">
+              中文
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dionysus23334/CSIT-5610-ComputerNetworks" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dionysus23334/CSIT-5610-ComputerNetworks
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../" title="CSIT5610 Computer Networks Review Notes" class="md-nav__button md-logo" aria-label="CSIT5610 Computer Networks Review Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    CSIT5610 Computer Networks Review Notes
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dionysus23334/CSIT-5610-ComputerNetworks" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dionysus23334/CSIT-5610-ComputerNetworks
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://dionysus23334.github.io/study-blogs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ← Study archive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../outline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapters
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Chapters
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    All chapters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch1-intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 1 · Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch2-application/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 2 · Application Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 3 · Transport Layer
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 3 · Transport Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0-chapter-thread-memorize-these-three-sentences-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0. Chapter thread (memorize these three sentences first)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-transport-layer-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Transport-layer services
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Transport-layer services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-position-and-responsibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Position and responsibilities ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-multiplexingdemultiplexing-muxdemux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Multiplexing/demultiplexing (mux/demux) ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. UDP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. UDP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-characteristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Characteristics ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-udp-header" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 UDP header ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-principles-of-reliable-data-transfer-rdt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Principles of reliable data transfer (rdt) ★★
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Principles of reliable data transfer (rdt) ★★">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-interfaces-and-assumptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Interfaces and assumptions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-rdt10-reliable-channel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 rdt1.0: reliable channel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-rdt20-channel-with-bit-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 rdt2.0: channel with bit errors ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-rdt21-handling-garbled-acknak" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 rdt2.1: handling garbled ACK/NAK ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-rdt22-nak-free" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 rdt2.2: NAK-free ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-rdt30-channels-with-loss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 rdt3.0: channels with loss ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-stop-and-wait-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7 stop-and-wait performance ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-pipelined-protocols-gbn-and-sr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Pipelined protocols: GBN and SR
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Pipelined protocols: GBN and SR">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-go-back-n-gbn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Go-Back-N (GBN) ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-selective-repeat-sr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Selective Repeat (SR) ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-gbn-vs-sr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 GBN vs SR ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. TCP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. TCP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Overview ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-tcp-segment-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 TCP segment structure ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-sequence-numbers-and-acks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Sequence numbers and ACKs ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-rtt-estimation-and-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 RTT estimation and timeout ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-tcp-sender-simplified" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 TCP sender (simplified) ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56-fast-retransmit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 Fast retransmit ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#57-tcp-receiver-ack-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7 TCP receiver ACK generation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#58-flow-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.8 Flow control ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#59-connection-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.9 Connection management ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#510-retransmission-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.10 Retransmission scenarios
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-congestion-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Congestion control
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Congestion control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-costs-of-congestion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Costs of congestion ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-two-approaches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Two approaches
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-tcp-aimd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 TCP AIMD ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-slow-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Slow start ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-tcp-cubic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 TCP CUBIC ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#66-delay-based-congestion-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.6 Delay-based congestion control
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#67-ecn-explicit-congestion-notification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.7 ECN (explicit congestion notification)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#68-fairness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.8 Fairness ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#69-tcp-throughput-supplement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.9 TCP throughput (supplement)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-quic-for-awareness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. QUIC (for awareness)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-worked-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Worked examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Worked examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-stop-and-wait-utilization-8-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 1: stop-and-wait utilization (8 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2-gbn-retransmission-10-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 2: GBN retransmission (10 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-3-tcp-sequence-numbersack-8-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 3: TCP sequence numbers/ACK (8 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-4-rtt-estimation-8-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 4: RTT estimation (8 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-5-aimd-10-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 5: AIMD (10 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-6-tcp-throughput-6-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 6: TCP throughput (6 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-common-mistakes-where-marks-are-most-often-lost" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Common mistakes (where marks are most often lost)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-self-test-do-it-first-then-check-the-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Self-test (do it first, then check the answers)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Self-test (do it first, then check the answers)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Answers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-pre-exam-quick-reference-card" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Pre-exam quick-reference card
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0-chapter-thread-memorize-these-three-sentences-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0. Chapter thread (memorize these three sentences first)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-transport-layer-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Transport-layer services
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Transport-layer services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-position-and-responsibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Position and responsibilities ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-multiplexingdemultiplexing-muxdemux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Multiplexing/demultiplexing (mux/demux) ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. UDP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. UDP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-characteristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Characteristics ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-udp-header" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 UDP header ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-principles-of-reliable-data-transfer-rdt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Principles of reliable data transfer (rdt) ★★
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Principles of reliable data transfer (rdt) ★★">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-interfaces-and-assumptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Interfaces and assumptions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-rdt10-reliable-channel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 rdt1.0: reliable channel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-rdt20-channel-with-bit-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 rdt2.0: channel with bit errors ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-rdt21-handling-garbled-acknak" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 rdt2.1: handling garbled ACK/NAK ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-rdt22-nak-free" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 rdt2.2: NAK-free ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-rdt30-channels-with-loss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 rdt3.0: channels with loss ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-stop-and-wait-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7 stop-and-wait performance ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-pipelined-protocols-gbn-and-sr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Pipelined protocols: GBN and SR
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Pipelined protocols: GBN and SR">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-go-back-n-gbn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Go-Back-N (GBN) ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-selective-repeat-sr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Selective Repeat (SR) ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-gbn-vs-sr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 GBN vs SR ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. TCP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. TCP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Overview ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-tcp-segment-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 TCP segment structure ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-sequence-numbers-and-acks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Sequence numbers and ACKs ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-rtt-estimation-and-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 RTT estimation and timeout ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-tcp-sender-simplified" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 TCP sender (simplified) ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56-fast-retransmit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 Fast retransmit ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#57-tcp-receiver-ack-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7 TCP receiver ACK generation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#58-flow-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.8 Flow control ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#59-connection-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.9 Connection management ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#510-retransmission-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.10 Retransmission scenarios
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-congestion-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Congestion control
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Congestion control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-costs-of-congestion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Costs of congestion ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-two-approaches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Two approaches
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-tcp-aimd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 TCP AIMD ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-slow-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Slow start ★★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-tcp-cubic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 TCP CUBIC ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#66-delay-based-congestion-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.6 Delay-based congestion control
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#67-ecn-explicit-congestion-notification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.7 ECN (explicit congestion notification)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#68-fairness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.8 Fairness ★
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#69-tcp-throughput-supplement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.9 TCP throughput (supplement)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-quic-for-awareness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. QUIC (for awareness)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-worked-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Worked examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Worked examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-stop-and-wait-utilization-8-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 1: stop-and-wait utilization (8 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2-gbn-retransmission-10-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 2: GBN retransmission (10 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-3-tcp-sequence-numbersack-8-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 3: TCP sequence numbers/ACK (8 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-4-rtt-estimation-8-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 4: RTT estimation (8 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-5-aimd-10-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 5: AIMD (10 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-6-tcp-throughput-6-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 6: TCP throughput (6 points)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-common-mistakes-where-marks-are-most-often-lost" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Common mistakes (where marks are most often lost)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-self-test-do-it-first-then-check-the-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Self-test (do it first, then check the answers)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Self-test (do it first, then check the answers)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Answers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-pre-exam-quick-reference-card" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Pre-exam quick-reference card
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="chapter-3-transport-layer-review-notes">Chapter 3 · Transport Layer · Review Notes<a class="headerlink" href="#chapter-3-transport-layer-review-notes" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Matching slides</strong>: <code>ch3-8.pdf</code> (Kurose &amp; Ross, Chapter 3 Transport Layer, 8th ed.)</p>
+<p><strong>Suggested time</strong>: first pass 120 minutes + worked examples 50 minutes + self-test 40 minutes</p>
+<p><strong>Companion</strong>: Outline §4</p>
+<p><strong>Weight of this chapter</strong>: the most calculation/mechanism-dense chapter in the course: rdt, GBN/SR, TCP sequence numbers/ACK/RTT, flow control, congestion control.</p>
+</blockquote>
+<hr />
+<h2 id="0-chapter-thread-memorize-these-three-sentences-first">0. Chapter thread (memorize these three sentences first)<a class="headerlink" href="#0-chapter-thread-memorize-these-three-sentences-first" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>The transport layer provides process-to-process logical communication</strong>; multiplexing/demultiplexing rely on ports (TCP also needs the 4-tuple).</li>
+<li><strong>Reliable transfer = ACKs + sequence numbers + timers + retransmission</strong>; pipelining (GBN/SR) uses windows to raise utilization.</li>
+<li><strong>TCP adds flow control (rwnd) and congestion control (cwnd) on top of reliable transfer</strong>; AIMD + slow start is the classic form, CUBIC/QUIC are the modern evolution.</li>
+</ol>
+<p><strong>Common question types in this chapter</strong></p>
+<table>
+<thead>
+<tr>
+<th>Question type</th>
+<th>Typical phrasing</th>
+<th>What to prepare</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Calculation</td>
+<td>stop-and-wait utilization, TCP throughput, RTT estimation</td>
+<td>Remember formulas + units</td>
+</tr>
+<tr>
+<td>Mechanism</td>
+<td>rdt2.0 flaw, GBN/SR windows, three-way handshake</td>
+<td>Draw the timing/state diagram</td>
+</tr>
+<tr>
+<td>Analysis</td>
+<td>Given a loss/delay scenario, ask about retransmission/ACK</td>
+<td>Reason from “sequence number + timer”</td>
+</tr>
+<tr>
+<td>Comparison</td>
+<td>TCP vs UDP, GBN vs SR, flow control vs congestion</td>
+<td>Make a table</td>
+</tr>
+<tr>
+<td>Short answer</td>
+<td>Why the three-way handshake? Why is AIMD fair?</td>
+<td>Grasp the key reasons</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="1-transport-layer-services">1. Transport-layer services<a class="headerlink" href="#1-transport-layer-services" title="Permanent link">&para;</a></h2>
+<h3 id="11-position-and-responsibilities">1.1 Position and responsibilities ★<a class="headerlink" href="#11-position-and-responsibilities" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Network layer: <strong>host-to-host</strong>; transport layer: <strong>process-to-process</strong>.</li>
+<li>Sender: breaks application data into segments, adds the transport-layer header, passes it to the network layer.</li>
+<li>Receiver: reassembles segments and delivers them to the correct socket by port.</li>
+<li>The transport layer is implemented only in end systems; routers do not process the transport layer.</li>
+</ul>
+<h3 id="12-multiplexingdemultiplexing-muxdemux">1.2 Multiplexing/demultiplexing (mux/demux) ★★<a class="headerlink" href="#12-multiplexingdemultiplexing-muxdemux" title="Permanent link">&para;</a></h3>
+<p><strong>Multiplexing (sender)</strong>: gather data from multiple sockets, add the header (source/dest port, etc.), pass it to the network layer.</p>
+<p><strong>Demultiplexing (receiver)</strong>: use header fields to deliver the segment to the correct socket.</p>
+<table>
+<thead>
+<tr>
+<th>Protocol</th>
+<th>Demultiplexing identifier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>UDP</strong></td>
+<td><code>&lt;dest IP, dest port&gt;</code></td>
+</tr>
+<tr>
+<td><strong>TCP</strong></td>
+<td><code>&lt;source IP, source port, dest IP, dest port&gt;</code> 4-tuple</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>UDP: same dest port but different source → delivered to the same socket.</li>
+<li>TCP: the 4-tuple uniquely identifies a connection; the same port can have multiple connections.</li>
+</ul>
+<hr />
+<h2 id="2-udp">2. UDP<a class="headerlink" href="#2-udp" title="Permanent link">&para;</a></h2>
+<h3 id="21-characteristics">2.1 Characteristics ★<a class="headerlink" href="#21-characteristics" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Connectionless</strong>: no handshaking; each datagram is independent.</li>
+<li><strong>Unreliable</strong>: no guarantee of arrival, order, or non-duplication.</li>
+<li><strong>No flow control/congestion control</strong>: the sender sends at the application's pace.</li>
+<li>Small overhead, low delay, header is only 8 bytes.</li>
+<li>Suitable for: DNS, DHCP, SNMP, streaming media, games, the QUIC substrate.</li>
+</ul>
+<p><strong>Why use UDP</strong>:</p>
+<ul>
+<li>the application implements reliability/real-time delivery itself;</li>
+<li>it does not want to be slowed down by TCP's congestion control/retransmission;</li>
+<li>for short request/response (DNS), the connection-setup cost is not worth it.</li>
+</ul>
+<h3 id="22-udp-header">2.2 UDP header ★★<a class="headerlink" href="#22-udp-header" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>0               16              31
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>+----------------+----------------+
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>| source port(16)| dest port(16)  |
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>+----------------+----------------+
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>| length(16)     | checksum(16)   |
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>+----------------+----------------+
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>| data ...                        |
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>+---------------------------------+
+</code></pre></div>
+<ul>
+<li>Length: header + data (bytes), minimum 8.</li>
+<li>Checksum: covers the <strong>pseudo-header + UDP header + data</strong>; the pseudo-header contains the source/dest IP, protocol number, and UDP length.</li>
+<li>Computation: 16-bit one's complement sum, then complement it; the receiver verifies (all 1s means no checksum, optional in IPv4).</li>
+</ul>
+<p><strong>The checksum is very weak</strong>: 16 bits, errors may slip through; but better than nothing.</p>
+<hr />
+<h2 id="3-principles-of-reliable-data-transfer-rdt">3. Principles of reliable data transfer (rdt) ★★<a class="headerlink" href="#3-principles-of-reliable-data-transfer-rdt" title="Permanent link">&para;</a></h2>
+<h3 id="31-interfaces-and-assumptions">3.1 Interfaces and assumptions<a class="headerlink" href="#31-interfaces-and-assumptions" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>rdt_send(data)        // called from above
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>udt_send(packet)      // pass to unreliable channel
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>rdt_rcv(packet)       // receive packet from channel
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>deliver_data(data)    // deliver to upper layer
+</code></pre></div>
+<p>Add channel assumptions step by step: <strong>reliable → bit errors → packet loss</strong>.</p>
+<h3 id="32-rdt10-reliable-channel">3.2 rdt1.0: reliable channel<a class="headerlink" href="#32-rdt10-reliable-channel" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Sender: receive data → make packet → send.</li>
+<li>Receiver: receive packet → extract → deliver.</li>
+<li>No ACK, sequence number, or timer needed.</li>
+</ul>
+<h3 id="33-rdt20-channel-with-bit-errors">3.3 rdt2.0: channel with bit errors ★<a class="headerlink" href="#33-rdt20-channel-with-bit-errors" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Needs: <strong>error detection (checksum)</strong>, <strong>ACK/NAK</strong>, <strong>retransmission</strong>.</li>
+<li>The sender sends and then waits for ACK/NAK; on NAK or corruption → retransmit.</li>
+<li><strong>Fatal flaw</strong>: the ACK/NAK itself may be corrupted → the sender does not know whether it was “success” or “failure”, so it may send a duplicate.</li>
+</ul>
+<h3 id="34-rdt21-handling-garbled-acknak">3.4 rdt2.1: handling garbled ACK/NAK ★<a class="headerlink" href="#34-rdt21-handling-garbled-acknak" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Add <strong>sequence number 0/1</strong> to the data packet.</li>
+<li>Sender: send the current packet, wait for the corresponding ACK; timeout/corruption → retransmit.</li>
+<li>Receiver: use the sequence number to detect duplicates; discard duplicates but still send ACK.</li>
+<li>Twice as many states (wait for ACK0 / ACK1).</li>
+</ul>
+<h3 id="35-rdt22-nak-free">3.5 rdt2.2: NAK-free ★<a class="headerlink" href="#35-rdt22-nak-free" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Uses <strong>ACK only</strong>; the ACK carries “the next sequence number expected”.</li>
+<li>Receiver on a correct packet → send ACK (expected seq #); on duplicate/out-of-order → resend the previous ACK.</li>
+<li>Sender on a <strong>duplicate ACK</strong> → retransmit the current packet.</li>
+<li>Same functionality as rdt2.1, but one fewer message type.</li>
+</ul>
+<h3 id="36-rdt30-channels-with-loss">3.6 rdt3.0: channels with loss ★★<a class="headerlink" href="#36-rdt30-channels-with-loss" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Add a <strong>timer</strong>: start it after sending; if no ACK arrives before the timeout → retransmit.</li>
+<li>Sequence numbers 0/1; handling:</li>
+<li>data lost → timeout retransmission;</li>
+<li>ACK lost → timeout retransmission (receiver discards the duplicate);</li>
+<li>delayed ACK → possible duplicate, but sequence numbers can handle it.</li>
+<li><strong>stop-and-wait</strong>: send only one packet at a time, then wait for the ACK; simple but extremely low utilization.</li>
+</ul>
+<h3 id="37-stop-and-wait-performance">3.7 stop-and-wait performance ★★<a class="headerlink" href="#37-stop-and-wait-performance" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+U_{\text{sender}} = \frac{L/R}{RTT + L/R}
+\]</div>
+<p><strong>Example</strong> (slides): 1 Gbps link, 15 ms one-way propagation (RTT=30 ms), 8000-bit packet.
+- <span class="mchip"><span class="arithmatex">\(\tfrac{L}{R} = \tfrac{8000}{10^9} = 8\ \mu\text{s} = 0.008\ \text{ms}\)</span></span>
+- <span class="mchip"><span class="arithmatex">\(U = \tfrac{0.008}{30+0.008} \approx 0.00027\)</span></span>
+- That is, the sender is sending data only <strong>0.027%</strong> of the time.</p>
+<p><strong>Fix</strong>: pipelining — allow multiple unacknowledged packets to be in flight at once; utilization increases by a factor of N.</p>
+<hr />
+<h2 id="4-pipelined-protocols-gbn-and-sr">4. Pipelined protocols: GBN and SR<a class="headerlink" href="#4-pipelined-protocols-gbn-and-sr" title="Permanent link">&para;</a></h2>
+<h3 id="41-go-back-n-gbn">4.1 Go-Back-N (GBN) ★★<a class="headerlink" href="#41-go-back-n-gbn" title="Permanent link">&para;</a></h3>
+<p><strong>Sender</strong></p>
+<ul>
+<li>Window N: at most N consecutive unacknowledged packets.</li>
+<li>k-bit sequence numbers; the window slides.</li>
+<li><strong>Cumulative ACK</strong>: <code>ACK(n)</code> means n and all packets before it have been received.</li>
+<li><strong>One timer</strong>: only for the oldest unacknowledged packet; on timeout → retransmit that packet and all subsequent packets in the window.</li>
+</ul>
+<p><strong>Receiver</strong></p>
+<ul>
+<li>Accepts only in order; expects <code>rcv_base</code>.</li>
+<li>Correct sequence number → deliver, send ACK, <code>rcv_base++</code>.</li>
+<li>Out-of-order packet → <strong>discard</strong> (do not buffer), re-ACK the last correctly received packet (may generate duplicate ACKs).</li>
+</ul>
+<p><strong>Characteristics</strong>: the receiver is simple; losing one packet retransmits the whole window, wasting bandwidth.</p>
+<h3 id="42-selective-repeat-sr">4.2 Selective Repeat (SR) ★★<a class="headerlink" href="#42-selective-repeat-sr" title="Permanent link">&para;</a></h3>
+<p><strong>Sender</strong></p>
+<ul>
+<li>Window N; <strong>a separate timer for each packet</strong>.</li>
+<li>Retransmits only the packet that timed out.</li>
+<li>ACK received → mark that packet as ACKed; the window slides.</li>
+</ul>
+<p><strong>Receiver</strong></p>
+<ul>
+<li>Buffers out-of-order packets; <strong>individually ACKs</strong> each correctly received packet.</li>
+<li>Delivers in order; once the missing packet arrives, delivers the buffered consecutive packets together.</li>
+</ul>
+<p><strong>Window constraint</strong>:</p>
+<div class="arithmatex">\[
+N \le 2^{k-1}
+\]</div>
+<ul>
+<li>k is the number of sequence-number bits; the sequence-number space is 2^k, and the window cannot exceed half of it, otherwise “new packet” and “retransmission of an old packet” cannot be distinguished.</li>
+<li>Example: k=2 (sequence numbers 0..3), N at most 2; with N=3 the receiver will mistake an old packet for a new one.</li>
+</ul>
+<h3 id="43-gbn-vs-sr">4.3 GBN vs SR ★★<a class="headerlink" href="#43-gbn-vs-sr" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>GBN</th>
+<th>SR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Receiver buffering</td>
+<td>does not buffer out-of-order packets</td>
+<td>buffers out-of-order packets</td>
+</tr>
+<tr>
+<td>ACK</td>
+<td>cumulative ACK</td>
+<td>individual ACK</td>
+</tr>
+<tr>
+<td>Retransmission</td>
+<td>whole window</td>
+<td>only the lost packet</td>
+</tr>
+<tr>
+<td>Timer</td>
+<td>one (oldest packet)</td>
+<td>one per packet</td>
+</tr>
+<tr>
+<td>Window</td>
+<td>N</td>
+<td>N ≤ 2^(k-1)</td>
+</tr>
+<tr>
+<td>Complexity</td>
+<td>simple</td>
+<td>complex</td>
+</tr>
+<tr>
+<td>Applicable</td>
+<td>few errors / small window</td>
+<td>many errors / high bandwidth</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-tcp">5. TCP<a class="headerlink" href="#5-tcp" title="Permanent link">&para;</a></h2>
+<h3 id="51-overview">5.1 Overview ★<a class="headerlink" href="#51-overview" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Point-to-point</strong>: one sender, one receiver.</li>
+<li><strong>Reliable, in-order</strong>: byte stream.</li>
+<li><strong>Full duplex</strong>: bidirectional data.</li>
+<li><strong>Connection-oriented</strong>: a handshake establishes state.</li>
+<li><strong>Flow control</strong>: rwnd.</li>
+<li><strong>Congestion control</strong>: cwnd.</li>
+</ul>
+<h3 id="52-tcp-segment-structure">5.2 TCP segment structure ★★<a class="headerlink" href="#52-tcp-segment-structure" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>0               16              31
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>+----------------+----------------+
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>| source port(16)| dest port(16)  |
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>+----------------+----------------+
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>| sequence number (32)            |
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>+---------------------------------+
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>| acknowledgement number (32)     |
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>+---------------------------------+
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>|head| not | flag| receive window |
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>+----+-----+-----+----------------+
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>| checksum(16)   | urg data ptr   |
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>+----------------+----------------+
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>| options (variable length)       |
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>+---------------------------------+
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>| data ...                        |
+</code></pre></div>
+<ul>
+<li>Minimum header <strong>20 bytes</strong> (no options).</li>
+<li>Flags: SYN, ACK, FIN, RST, PSH, URG.</li>
+<li>Sequence number: <strong>byte-stream number</strong>, not a packet number.</li>
+<li>Acknowledgement number: the sequence number of the next byte expected (cumulative ACK).</li>
+</ul>
+<h3 id="53-sequence-numbers-and-acks">5.3 Sequence numbers and ACKs ★★<a class="headerlink" href="#53-sequence-numbers-and-acks" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The sender numbers every byte; the sequence number of the segment's first byte goes in <code>Seq</code>.</li>
+<li>Receiver <code>ACK = next byte expected</code>.</li>
+<li>Example: send 1000 bytes, <code>Seq=1000</code>; the receiver receives them correctly → <code>ACK=2000</code>.</li>
+<li>Loss/out-of-order: the receiver re-ACKs the current expected value; the sender sees 3 duplicate ACKs → fast retransmit.</li>
+</ul>
+<h3 id="54-rtt-estimation-and-timeout">5.4 RTT estimation and timeout ★★<a class="headerlink" href="#54-rtt-estimation-and-timeout" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+\begin{aligned}
+\text{EstimatedRTT} &amp;= (1-\alpha)\cdot\text{EstimatedRTT} + \alpha\cdot\text{SampleRTT}, &amp; \alpha &amp;= 0.125\\
+\text{DevRTT} &amp;= (1-\beta)\cdot\text{DevRTT} + \beta\cdot|\text{SampleRTT} - \text{EstimatedRTT}|, &amp; \beta &amp;= 0.25\\
+\text{TimeoutInterval} &amp;= \text{EstimatedRTT} + 4\cdot\text{DevRTT}
+\end{aligned}
+\]</div>
+<ul>
+<li><code>EstimatedRTT</code>: the smoothed RTT estimate.</li>
+<li><code>DevRTT</code>: RTT deviation (jitter).</li>
+<li>Timeout = estimate + safety margin; large deviation → longer timeout.</li>
+<li>Timeout too long → slow reaction; too short → unnecessary retransmissions.</li>
+</ul>
+<p><strong>Example</strong>: EstimatedRTT=120 ms, DevRTT=10 ms, SampleRTT=100 ms.
+- new Estimated = 0.875×120 + 0.125×100 = <strong>117.5 ms</strong>
+- new Dev = 0.75×10 + 0.25×|100−120| = <strong>12.5 ms</strong>
+- Timeout = 117.5 + 4×12.5 = <strong>167.5 ms</strong></p>
+<h3 id="55-tcp-sender-simplified">5.5 TCP sender (simplified) ★<a class="headerlink" href="#55-tcp-sender-simplified" title="Permanent link">&para;</a></h3>
+<p>Events:</p>
+<ol>
+<li>Application passes data → create segment → start timer → send.</li>
+<li>Timeout → retransmit the oldest unACKed segment → restart timer.</li>
+<li>ACK received → update window; if there is still unACKed data → restart timer; otherwise stop.</li>
+</ol>
+<h3 id="56-fast-retransmit">5.6 Fast retransmit ★<a class="headerlink" href="#56-fast-retransmit" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Receiving <strong>3 duplicate ACKs</strong> (same acknowledgement number) → treat the segment as lost and retransmit immediately, without waiting for the timeout.</li>
+<li>Why 3: a small amount of reordering also produces duplicate ACKs; 3 is a compromise that reduces false judgments.</li>
+</ul>
+<h3 id="57-tcp-receiver-ack-generation">5.7 TCP receiver ACK generation<a class="headerlink" href="#57-tcp-receiver-ack-generation" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>in-order segment received, all earlier data already ACKed</td>
+<td>delayed ACK (up to 500 ms)</td>
+</tr>
+<tr>
+<td>out-of-order segment received</td>
+<td>immediately send a duplicate ACK (expected seq #)</td>
+</tr>
+<tr>
+<td>segment that fills the gap received</td>
+<td>immediate ACK</td>
+</tr>
+</tbody>
+</table>
+<h3 id="58-flow-control">5.8 Flow control ★★<a class="headerlink" href="#58-flow-control" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Goal: prevent the sender from overflowing the receiver's buffer.</li>
+<li>The receiver advertises free space in the <strong>rwnd (receive window)</strong> field of the header.</li>
+<li>The sender guarantees: <span class="mchip"><span class="arithmatex">\(\text{unACKed data} \le rwnd\)</span></span>.</li>
+<li><strong>Difference from congestion control</strong>:</li>
+<li>Flow control: receiver-imposed limit (end-to-end).</li>
+<li>Congestion control: network-imposed limit (global).</li>
+</ul>
+<h3 id="59-connection-management">5.9 Connection management ★★<a class="headerlink" href="#59-connection-management" title="Permanent link">&para;</a></h3>
+<p><strong>Three-way handshake</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>client → server: SYN, seq=x
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>server → client: SYN-ACK, seq=y, ack=x+1
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>client → server: ACK, ack=y+1
+</code></pre></div>
+<ul>
+<li>Goal: synchronize both sides' sequence numbers and confirm both sides' send/receive capability.</li>
+<li>Why three: to prevent an <strong>old duplicate SYN</strong> from reaching the server and causing a wrong connection to be established; two is not enough, four is wasteful.</li>
+</ul>
+<p><strong>Closing a connection</strong></p>
+<ul>
+<li>The active closer sends FIN; the peer ACKs; the peer also sends FIN; final ACK.</li>
+<li>The active closer enters <strong>TIME_WAIT</strong> and waits 2×MSL, to ensure the final ACK can arrive and old packets disappear.</li>
+</ul>
+<h3 id="510-retransmission-scenarios">5.10 Retransmission scenarios<a class="headerlink" href="#510-retransmission-scenarios" title="Permanent link">&para;</a></h3>
+<ul>
+<li>ACK lost: the sender times out and retransmits; the receiver receives a duplicate → ACKs again.</li>
+<li>Data lost: timeout / 3 duplicate ACKs → retransmit.</li>
+<li>Delayed ACK: may cause a “premature timeout”, but sequence numbers/ACKs can recover.</li>
+</ul>
+<hr />
+<h2 id="6-congestion-control">6. Congestion control<a class="headerlink" href="#6-congestion-control" title="Permanent link">&para;</a></h2>
+<h3 id="61-costs-of-congestion">6.1 Costs of congestion ★<a class="headerlink" href="#61-costs-of-congestion" title="Permanent link">&para;</a></h3>
+<ul>
+<li>queueing delay increases;</li>
+<li>buffer overflow → packet loss;</li>
+<li>retransmissions waste bandwidth;</li>
+<li>congestion collapse (throughput drops sharply).</li>
+</ul>
+<p><strong>Three scenarios</strong>:</p>
+<ol>
+<li>One router, finite buffers: arrival rate approaches capacity → queueing/loss.</li>
+<li>Multiple routers, retransmissions: loss causes retransmissions, which make congestion worse.</li>
+<li>Four senders, multi-hop: competing for bandwidth, throughput drops.</li>
+</ol>
+<h3 id="62-two-approaches">6.2 Two approaches<a class="headerlink" href="#62-two-approaches" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>Who does it</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>End-end</strong></td>
+<td>end systems infer from observed loss/delay</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td><strong>Network-assisted</strong></td>
+<td>routers provide explicit feedback</td>
+<td>ECN, ATM ABR</td>
+</tr>
+</tbody>
+</table>
+<h3 id="63-tcp-aimd">6.3 TCP AIMD ★★<a class="headerlink" href="#63-tcp-aimd" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Additive increase (AI)</strong>: <code>cwnd += 1 MSS</code> per RTT.</li>
+<li><strong>Multiplicative decrease (MD)</strong>: on loss, <code>cwnd = cwnd/2</code>.</li>
+<li>Sawtooth: probe for available bandwidth → loss → halve → increase again.</li>
+<li>Fairness: when multiple flows compete, AIMD converges to roughly fair.</li>
+</ul>
+<h3 id="64-slow-start">6.4 Slow start ★★<a class="headerlink" href="#64-slow-start" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Initially <code>cwnd = 1 MSS</code>.</li>
+<li>For every ACK received, <code>cwnd += 1 MSS</code> → <strong>doubles</strong> every RTT (exponential growth).</li>
+<li>After reaching <code>ssthresh</code>, enter <strong>congestion avoidance</strong> (linear growth).</li>
+<li>Timeout: <code>ssthresh = cwnd/2</code>, <code>cwnd = 1</code>, restart slow start.</li>
+<li>3 duplicate ACKs: fast retransmit + fast recovery:</li>
+<li><code>ssthresh = cwnd/2</code></li>
+<li><code>cwnd = ssthresh</code> (or ssthresh+3)</li>
+<li>then grow linearly.</li>
+</ul>
+<p><strong>Example</strong>: initial cwnd=1, ssthresh=8.
+- Slow start: 1→2→4→8 (3 RTTs).
+- Congestion avoidance: 9→10→11...
+- Loss at cwnd=12 (3 dup ACKs): ssthresh=6, cwnd=6, then 7,8,...</p>
+<h3 id="65-tcp-cubic">6.5 TCP CUBIC ★<a class="headerlink" href="#65-tcp-cubic" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Grows the window with a <strong>cubic function</strong> (with time as the independent variable):</li>
+<li>grows slowly near the previous congestion point, fast when far from it;</li>
+<li>better suited to high-bandwidth, long-delay networks.</li>
+<li>Linux default; more stable and faster to recover than AIMD.</li>
+</ul>
+<h3 id="66-delay-based-congestion-control">6.6 Delay-based congestion control<a class="headerlink" href="#66-delay-based-congestion-control" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Measure RTT changes and keep the pipe “just full” without causing loss.</li>
+<li>Representatives: TCP Vegas; BBR uses bandwidth/RTT estimates.</li>
+<li>Pros: few losses; cons: may be unfair to loss-based flows.</li>
+</ul>
+<h3 id="67-ecn-explicit-congestion-notification">6.7 ECN (explicit congestion notification)<a class="headerlink" href="#67-ecn-explicit-congestion-notification" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Routers mark congestion in the IP header (instead of dropping).</li>
+<li>The receiver echoes it back in the TCP ACK; the sender slows down.</li>
+<li>Requires end-to-end support.</li>
+</ul>
+<h3 id="68-fairness">6.8 Fairness ★<a class="headerlink" href="#68-fairness" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Goal: K TCP flows share a bottleneck, each gets about <code>R/K</code>.</li>
+<li>AIMD tends toward fairness.</li>
+<li>Factors that break fairness:</li>
+<li>different RTTs (short RTTs grab more);</li>
+<li>UDP does not slow down;</li>
+<li>multiple parallel connections;</li>
+<li>application-layer unfairness.</li>
+</ul>
+<h3 id="69-tcp-throughput-supplement">6.9 TCP throughput (supplement)<a class="headerlink" href="#69-tcp-throughput-supplement" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+\text{avg throughput} \approx \frac{0.75W}{RTT}
+\]</div>
+<ul>
+<li>W is the window size at loss; the average window is about <span class="mchip"><span class="arithmatex">\(\tfrac{3}{4}W\)</span></span>.</li>
+<li>With loss rate L (Mathis): <span class="mchip"><span class="arithmatex">\(\text{throughput} \approx \tfrac{1.22\cdot\text{MSS}}{RTT\cdot\sqrt{L}}\)</span></span>.</li>
+<li>High-bandwidth long-delay networks need a large window; the loss rate must be extremely low.</li>
+</ul>
+<hr />
+<h2 id="7-quic-for-awareness">7. QUIC (for awareness)<a class="headerlink" href="#7-quic-for-awareness" title="Permanent link">&para;</a></h2>
+<ul>
+<li>An application-layer protocol on top of <strong>UDP</strong>; the transport layer of HTTP/3.</li>
+<li><strong>Stream-level multiplexing</strong>: loss on one stream does not affect the others (avoids TCP HOL blocking).</li>
+<li><strong>0/1-RTT connection establishment</strong>: reduces handshake delay.</li>
+<li><strong>Built-in encryption</strong> (TLS 1.3).</li>
+<li><strong>Connection migration</strong>: keeps the connection alive when a phone switches between WiFi/cellular.</li>
+<li>User-space implementation, easy to iterate quickly.</li>
+</ul>
+<hr />
+<h2 id="8-worked-examples">8. Worked examples<a class="headerlink" href="#8-worked-examples" title="Permanent link">&para;</a></h2>
+<h3 id="example-1-stop-and-wait-utilization-8-points">Example 1: stop-and-wait utilization (8 points)<a class="headerlink" href="#example-1-stop-and-wait-utilization-8-points" title="Permanent link">&para;</a></h3>
+<p><strong>Question</strong>: 1 Gbps link, 15 ms one-way propagation, 8000-bit packet. Find the sender utilization of stop-and-wait.</p>
+<p><strong>Solution</strong>:
+- <span class="mchip"><span class="arithmatex">\(\tfrac{L}{R} = \tfrac{8000}{10^9} = 8\ \mu\text{s} = 0.008\ \text{ms}\)</span></span>
+- <span class="mchip"><span class="arithmatex">\(RTT = 30\ \text{ms}\)</span></span>
+- <span class="mchip"><span class="arithmatex">\(U = \tfrac{0.008}{30+0.008} \approx 0.00027\)</span></span> (0.027%)
+- Conclusion: pipelining is needed to improve utilization.</p>
+<h3 id="example-2-gbn-retransmission-10-points">Example 2: GBN retransmission (10 points)<a class="headerlink" href="#example-2-gbn-retransmission-10-points" title="Permanent link">&para;</a></h3>
+<p><strong>Question</strong>: GBN, N=4, sequence numbers 0..7. Send 0,1,2,3; ACK0 and ACK1 arrive; then send 4,5; packet 2 is lost. What happens when the receiver gets 3,4,5? When does the sender retransmit, and which packets?</p>
+<p><strong>Solution</strong>:
+- The receiver expects 2; 3,4,5 all arrive out of order → discard (or buffer, depending on the implementation), duplicate ACK1.
+- The sender receives duplicate ACK1, but fewer than 3; packet 2's timer times out → retransmit <strong>2,3,4,5</strong> (the whole window).
+- After receiving 2, the receiver delivers 2,3,4,5 in order and sends ACK5.</p>
+<h3 id="example-3-tcp-sequence-numbersack-8-points">Example 3: TCP sequence numbers/ACK (8 points)<a class="headerlink" href="#example-3-tcp-sequence-numbersack-8-points" title="Permanent link">&para;</a></h3>
+<p><strong>Question</strong>: TCP sends 2000 bytes with Seq=5000; the receiver correctly receives the first 1000 bytes, and the last 1000 bytes are lost. What ACK does the receiver send back? How does the sender react?</p>
+<p><strong>Solution</strong>:
+- The receiver receives 5000–5999, expects 6000 → <code>ACK=6000</code>.
+- Later segments outside 6000–6999 (if any) → duplicate ACK 6000.
+- The sender receives 3 duplicate ACK 6000 → fast retransmit the segment starting at 6000.</p>
+<h3 id="example-4-rtt-estimation-8-points">Example 4: RTT estimation (8 points)<a class="headerlink" href="#example-4-rtt-estimation-8-points" title="Permanent link">&para;</a></h3>
+<p><strong>Question</strong>: EstimatedRTT=200 ms, DevRTT=20 ms, SampleRTT=160 ms. Find the new EstimatedRTT, DevRTT, and Timeout.</p>
+<p><strong>Solution</strong>:
+- Estimated = 0.875×200 + 0.125×160 = 175 + 20 = <strong>195 ms</strong>
+- Dev = 0.75×20 + 0.25×|160−195| = 15 + 8.75 = <strong>23.75 ms</strong>
+- Timeout = 195 + 4×23.75 = <strong>290 ms</strong></p>
+<h3 id="example-5-aimd-10-points">Example 5: AIMD (10 points)<a class="headerlink" href="#example-5-aimd-10-points" title="Permanent link">&para;</a></h3>
+<p><strong>Question</strong>: cwnd=1, ssthresh=16. Describe slow start up to cwnd=16, then what happens when 3 duplicate ACKs occur at cwnd=20.</p>
+<p><strong>Solution</strong>:
+- Slow start: 1→2→4→8→16 (4 RTTs, exponential).
+- Congestion avoidance: 17,18,19,20 (+1 per RTT).
+- 3 dup ACKs: ssthresh = 20/2 = 10; cwnd = 10 (fast recovery), then 11,12,... linear growth.
+- If it were a timeout: ssthresh=10, cwnd=1, restart slow start.</p>
+<h3 id="example-6-tcp-throughput-6-points">Example 6: TCP throughput (6 points)<a class="headerlink" href="#example-6-tcp-throughput-6-points" title="Permanent link">&para;</a></h3>
+<p><strong>Question</strong>: W=64 KB, RTT=100 ms. Estimate the average throughput.</p>
+<p><strong>Solution</strong>:
+- <span class="mchip"><span class="arithmatex">\(\tfrac{0.75\times64\ \text{KB}}{0.1\ \text{s}} = 480\ \text{KB/s} \approx 3.84\ \text{Mbps}\)</span></span>.
+- If the loss rate is high, the actual value is lower; high bandwidth and long delay need a larger W.</p>
+<hr />
+<h2 id="9-common-mistakes-where-marks-are-most-often-lost">9. Common mistakes (where marks are most often lost)<a class="headerlink" href="#9-common-mistakes-where-marks-are-most-often-lost" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Mistake</th>
+<th>Correct</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>transport layer = host-to-host</td>
+<td>the transport layer is <strong>process-to-process</strong>; the network layer is host-to-host</td>
+</tr>
+<tr>
+<td>UDP has no checksum</td>
+<td>UDP has a 16-bit checksum (optional in IPv4, usually enabled)</td>
+</tr>
+<tr>
+<td>rdt2.0 is already reliable</td>
+<td>ACK/NAK may be corrupted → it has a fatal flaw</td>
+</tr>
+<tr>
+<td>the GBN receiver buffers out-of-order packets</td>
+<td>GBN usually <strong>discards</strong> out-of-order packets; only SR buffers them</td>
+</tr>
+<tr>
+<td>the SR window may equal the sequence-number space</td>
+<td><strong>N ≤ 2^(k-1)</strong>, otherwise there is ambiguity</td>
+</tr>
+<tr>
+<td>TCP sequence numbers are packet numbers</td>
+<td>they are <strong>byte-stream numbers</strong></td>
+</tr>
+<tr>
+<td>ACK means “this sequence number has been received”</td>
+<td>ACK means “the next byte expected”</td>
+</tr>
+<tr>
+<td>timeout = 2×RTT</td>
+<td>use EstimatedRTT + 4×DevRTT</td>
+</tr>
+<tr>
+<td>3 duplicate ACKs always mean loss</td>
+<td>they may also be reordering; 3 is a compromise</td>
+</tr>
+<tr>
+<td>flow control = congestion control</td>
+<td>rwnd prevents receiver overflow; cwnd prevents network overload</td>
+</tr>
+<tr>
+<td>the three-way handshake is for encryption</td>
+<td>it is for synchronizing sequence numbers and preventing old connections</td>
+</tr>
+<tr>
+<td>slow start keeps growing exponentially</td>
+<td>after ssthresh it turns linear</td>
+</tr>
+<tr>
+<td>AIMD halves the window on loss</td>
+<td>multiplicative decrease; a timeout may drop it to 1</td>
+</tr>
+<tr>
+<td>TCP is always fair</td>
+<td>RTT/UDP/parallel connections break fairness</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10-self-test-do-it-first-then-check-the-answers">10. Self-test (do it first, then check the answers)<a class="headerlink" href="#10-self-test-do-it-first-then-check-the-answers" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Difference between the transport layer and the network layer? What do multiplexing/demultiplexing do?</li>
+<li>UDP header fields? What does the checksum cover? Why is the protection said to be weak?</li>
+<li>Fatal flaw of rdt2.0? How do rdt2.1/2.2 solve it?</li>
+<li>How does rdt3.0 handle packet loss? What is the utilization formula for stop-and-wait?</li>
+<li>Differences between GBN and SR in window, ACK, retransmission, and buffering?</li>
+<li>What is the minimum TCP segment header size? What do the sequence number and acknowledgement number mean?</li>
+<li>How does TCP estimate RTT and set the timeout? What do α and β do?</li>
+<li>What triggers fast retransmit? Why 3 duplicate ACKs?</li>
+<li>Difference between flow control and congestion control? What are rwnd and cwnd?</li>
+<li>What is the procedure of the TCP three-way handshake? Why three times?</li>
+<li>What are the procedures of AIMD, slow start, and fast recovery? What does CUBIC improve?</li>
+<li>What is TCP fairness? Which factors break fairness?</li>
+<li>What are the advantages of QUIC over TCP?</li>
+</ol>
+<h3 id="answers">Answers<a class="headerlink" href="#answers" title="Permanent link">&para;</a></h3>
+<ol>
+<li>The network layer is host-to-host, the transport layer is process-to-process; mux/demux delivers segments to the correct socket.</li>
+<li>Source/dest port, length, checksum; pseudo-header + UDP segment; 16-bit one's complement sum, weak protection.</li>
+<li>ACK/NAK may be corrupted; rdt2.1 adds sequence numbers, rdt2.2 uses ACK + expected seq #.</li>
+<li>Retransmit on timer timeout; <span class="mchip"><span class="arithmatex">\(U=\tfrac{L/R}{RTT+L/R}\)</span></span>.</li>
+<li>GBN: cumulative ACK, one timer, retransmits the whole window, the receiver does not buffer; SR: individual ACK, per-packet timer, retransmits only the lost packet, buffers out-of-order packets.</li>
+<li>20 bytes; Seq is the number of the segment's first byte, ACK is the next byte expected.</li>
+<li>Exponential weighted moving average; α smooths SampleRTT, β smooths the deviation; Timeout=EstimatedRTT+4DevRTT.</li>
+<li>3 duplicate ACKs; they show that later packets arrived but the missing packet did not, so the network probably dropped only that one.</li>
+<li>Flow control prevents receiver overflow (rwnd), congestion control prevents network overload (cwnd).</li>
+<li>SYN, SYN-ACK, ACK; synchronize sequence numbers and prevent old connection requests.</li>
+<li>AI adds 1 MSS per RTT, MD halves on loss; slow start grows exponentially to ssthresh; fast recovery follows 3 duplicate ACKs; CUBIC uses a cubic function.</li>
+<li>K flows sharing a bottleneck each get about R/K; different RTTs, UDP, and parallel connections break it.</li>
+<li>Implemented on top of UDP, stream-level multiplexing, 0/1-RTT, built-in encryption, connection migration.</li>
+</ol>
+<hr />
+<h2 id="11-pre-exam-quick-reference-card">11. Pre-exam quick-reference card<a class="headerlink" href="#11-pre-exam-quick-reference-card" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transport layer</td>
+<td>process-to-process; TCP/UDP</td>
+</tr>
+<tr>
+<td>Demultiplexing</td>
+<td>UDP dest IP + port; TCP 4-tuple</td>
+</tr>
+<tr>
+<td>UDP header</td>
+<td>8 bytes; source/dest port, length, checksum</td>
+</tr>
+<tr>
+<td>rdt2.0</td>
+<td>ACK/NAK may be corrupted</td>
+</tr>
+<tr>
+<td>rdt2.1/2.2</td>
+<td>sequence numbers; ACK + expected seq #</td>
+</tr>
+<tr>
+<td>rdt3.0</td>
+<td>timer; stop-and-wait</td>
+</tr>
+<tr>
+<td>Utilization</td>
+<td><code>(L/R)/(RTT+L/R)</code>; 1Gbps/30ms/8Kbit ≈ 0.00027</td>
+</tr>
+<tr>
+<td>GBN</td>
+<td>cumulative ACK; one timer; retransmit window</td>
+</tr>
+<tr>
+<td>SR</td>
+<td>individual ACK; per-packet timer; buffering; N≤2^(k-1)</td>
+</tr>
+<tr>
+<td>TCP header</td>
+<td>20 bytes; Seq/ACK/window/flags</td>
+</tr>
+<tr>
+<td>RTT</td>
+<td><span class="mchip"><span class="arithmatex">\(0.875\cdot\text{Est} + 0.125\cdot\text{Sample}\)</span></span>; <span class="mchip"><span class="arithmatex">\(\text{Timeout}=\text{Est}+4\text{Dev}\)</span></span></td>
+</tr>
+<tr>
+<td>Fast retransmit</td>
+<td>3 duplicate ACKs</td>
+</tr>
+<tr>
+<td>Flow control</td>
+<td>rwnd; receiver buffer</td>
+</tr>
+<tr>
+<td>Congestion control</td>
+<td>cwnd; AIMD; slow start; CUBIC</td>
+</tr>
+<tr>
+<td>Three-way handshake</td>
+<td>SYN / SYN-ACK / ACK</td>
+</tr>
+<tr>
+<td>Throughput</td>
+<td><span class="mchip"><span class="arithmatex">\(0.75\cdot\tfrac{W}{RTT}\)</span></span></td>
+</tr>
+<tr>
+<td>QUIC</td>
+<td>UDP; stream-level multiplexing; 0/1-RTT</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../ch2-application/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Chapter 2 · Application Layer">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Chapter 2 · Application Layer
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Personal study notes · Unofficial · Course materials remain the property of the instructor.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tracking", "navigation.sections", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../javascripts/table-wrap.js"></script>
+      
+        <script src="../../../javascripts/lang-switch.js"></script>
+      
+        <script src="../../../javascripts/glossary.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
